@@ -55,6 +55,11 @@ bintray {
     override = (project.findProperty("bintray.override") ?: "false").toString().toBoolean()
 }
 
+buildScan {
+    termsOfServiceUrl = "https://gradle.com/terms-of-service"
+    termsOfServiceAgree = "yes"
+}
+
 ktlint {
     ignoreFailures.set(true)
 }
