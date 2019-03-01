@@ -1,7 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.ifmo.multiarray"
-version = "0.1.0"
+version = "1.0.0"
 
 plugins {
     kotlin("jvm") version "1.3.21"
