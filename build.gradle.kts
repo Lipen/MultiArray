@@ -27,32 +27,29 @@ val sourcesJar by tasks.registering(Jar::class) {
     from(sourceSets.main.get().allSource)
 }
 
+val publicationName = "multiarray"
 publishing {
     publications {
-        create<MavenPublication>("mavenJava") {
+        create<MavenPublication>(publicationName) {
             from(components["java"])
             artifact(sourcesJar.get())
         }
     }
 }
-
 bintray {
     user = (findProperty("bintray.user") ?: System.getenv("BINTRAY_USER"))?.toString()
     key = (findProperty("bintray.key") ?: System.getenv("BINTRAY_KEY"))?.toString()
-    setPublications("mavenJava")
-    with(pkg) {
-        repo = "MultiArray"
-        name = "ru.ifmo.multiarray"
-        setLicenses("GPL-3.0")
-        vcsUrl = "https://github.com/Lipen/MultiArray.git"
-        setLabels("multidimensional", "array")
-        with(version) {
-            name = project.version.toString()
-            vcsTag = project.version.toString()
-        }
-    }
     publish = (project.findProperty("bintray.publish") ?: "true").toString().toBoolean()
     override = (project.findProperty("bintray.override") ?: "false").toString().toBoolean()
+    setPublications(publicationName)
+    with(pkg) {
+        repo = "MultiArray"
+        name = "multiarray"
+        userOrg = "lipen"
+        vcsUrl = "https://github.com/Lipen/MultiArray.git"
+        setLabels("kotlin", "multidimensional", "array")
+        setLicenses("GPL-3.0")
+    }
 }
 
 buildScan {
