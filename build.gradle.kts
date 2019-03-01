@@ -1,7 +1,6 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.ifmo.multiarray"
-version = "1.0.0"
 
 plugins {
     kotlin("jvm") version "1.3.21"
@@ -9,6 +8,7 @@ plugins {
     `maven-publish`
     id("com.jfrog.bintray") version "1.8.4"
     id("org.jlleitschuh.gradle.ktlint") version "7.1.0"
+    id("fr.brouillard.oss.gradle.jgitver") version "0.8.0"
 }
 
 repositories {
@@ -45,7 +45,6 @@ bintray {
     with(pkg) {
         repo = "MultiArray"
         name = "multiarray"
-        userOrg = "lipen"
         vcsUrl = "https://github.com/Lipen/MultiArray.git"
         setLabels("kotlin", "multidimensional", "array")
         setLicenses("GPL-3.0")
