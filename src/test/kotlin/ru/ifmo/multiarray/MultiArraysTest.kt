@@ -45,10 +45,6 @@ class MultiArraysTest {
     @Test
     fun `create filled IntMultiArray via vararg factory method`() {
         val init: (IntArray) -> Int = { (i, j) -> i + j }
-        // j/i 1 2
-        // 1 | 2 3
-        // 2 | 3 4
-        // 3 | 4 5
         val array: IntMultiArray = MultiArray.new(3, 2, init = init)
         assertEquals(listOf(3, 2), array.shape.asList())
         assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values)
