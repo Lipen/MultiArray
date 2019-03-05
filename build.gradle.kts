@@ -36,11 +36,15 @@ publishing {
         }
     }
 }
+
+fun getProp(propName: String, envVar: String): String? =
+    (findProperty(propName) ?: System.getenv(envVar))?.toString()
+
 bintray {
-    user = (findProperty("bintray.user") ?: System.getenv("BINTRAY_USER"))?.toString()
-    key = (findProperty("bintray.key") ?: System.getenv("BINTRAY_KEY"))?.toString()
-    publish = (project.findProperty("bintray.publish") ?: "true").toString().toBoolean()
-    override = (project.findProperty("bintray.override") ?: "false").toString().toBoolean()
+    user = getProp("bintray.user", "BINTRAY_USER")
+    key = getProp("bintray.key", "BINTRAY_KEY")
+    publish = true
+    override = false
     setPublications(publicationName)
     with(pkg) {
         repo = "MultiArray"
@@ -48,6 +52,13 @@ bintray {
         vcsUrl = "https://github.com/Lipen/MultiArray.git"
         setLabels("kotlin", "multidimensional", "array")
         setLicenses("GPL-3.0")
+        with(version) {
+            desc = "Multidimensional array for Kotlin"
+            with(gpg) {
+                sign = true
+                passphrase = getProp("bintray.gpg.password", "BINTRAY_GPG_PASSWORD")
+            }
+        }
     }
 }
 
