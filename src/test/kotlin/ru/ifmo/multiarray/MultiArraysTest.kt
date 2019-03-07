@@ -11,7 +11,8 @@ class MultiArraysTest {
     @Test
     fun `create empty MultiArray of Strings`() {
         val array = MultiArray.new<String> { "" }
-        assertEquals(emptyList<Int>(), array.shape.asList())
+        assertTrue(array.shape.isEmpty())
+        assertTrue(array.values.isEmpty())
     }
 
     @Test
@@ -26,27 +27,35 @@ class MultiArraysTest {
     @Test
     fun `create empty IntMultiArray`() {
         val array = IntMultiArray.new()
-        assertEquals(emptyList<Int>(), array.shape.asList())
+        assertTrue(array.shape.isEmpty())
+        assertTrue(array.values.isEmpty())
     }
 
     @Test
     fun `create filled IntMultiArray via vararg ctor`() {
-        val array = IntMultiArray.new(3, 5, 4) { 42 }
+        val array = IntMultiArray.new(3, 5, 4) { (i, j, k) -> i + j + k }
         assertEquals(listOf(3, 5, 4), array.shape.asList())
+        assertEquals(sequence {
+            for (i in 1..3) for (j in 1..5) for (k in 1..4)
+                yield(i + j + k)
+        }.toList(), array.values)
     }
 
     @Test
     fun `create filled IntMultiArray via array ctor`() {
         val shape = intArrayOf(6, 2, 4)
-        val array = IntMultiArray(shape) { 42 }
+        val array = IntMultiArray(shape) { (i, j, k) -> i + j + k }
         assertEquals(shape.toList(), array.shape.asList())
+        assertEquals(sequence {
+            for (i in 1..6) for (j in 1..2) for (k in 1..4)
+                yield(i + j + k)
+        }.toList(), array.values)
     }
 
     @Test
     fun `create filled IntMultiArray via vararg factory method`() {
         val init: (IntArray) -> Int = { (i, j) -> i + j }
         val array: IntMultiArray = MultiArray.new(3, 2, init = init)
-        val array2 = IntMultiArray.new(3, 2) { (i, j) -> i + j }
         assertEquals(listOf(3, 2), array.shape.asList())
         assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values)
     }
@@ -56,13 +65,15 @@ class MultiArraysTest {
     @Test
     fun `create empty BooleanMultiArray`() {
         val array = BooleanMultiArray.new()
-        assertEquals(emptyList<Int>(), array.shape.asList())
+        assertTrue(array.shape.isEmpty())
+        assertTrue(array.values.isEmpty())
     }
 
     @Test
     fun `create filled BooleanMultiArray via vararg ctor`() {
         val array = BooleanMultiArray.new(3, 5, 4) { true }
         assertEquals(listOf(3, 5, 4), array.shape.asList())
+        array.values.forEach { assertTrue(it) }
     }
 
     @Test
