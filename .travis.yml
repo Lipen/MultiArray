@@ -19,8 +19,9 @@ cache:
 script: ./gradlew clean build --scan --stacktrace
 
 deploy:
-  - provider: bintray
+  - provider: script
+    script: ./gradlew bintrayUpload
     skip_cleanup: true
   - provider: script
-    skip-cleanup: true
     script: ./gradlew orchidUpload -Penv=prod
+    skip-cleanup: true
