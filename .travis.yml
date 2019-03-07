@@ -23,5 +23,5 @@ deploy:
     script: ./gradlew bintrayUpload
     skip_cleanup: true
   - provider: script
-    script: ./gradlew orchidUpload -Penv=prod
+    script: ./gradlew orchidDeploy -Penv=prod
     skip-cleanup: true
