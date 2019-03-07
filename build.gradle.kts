@@ -89,6 +89,11 @@ ktlint {
 orchid {
     theme = "Editorial"
     githubToken = System.getenv("GITHUB_TOKEN")
+
+    if (project.hasProperty("env") && project.property("env") == "prod") {
+        baseUrl = "https://lipen.github.io/MultiArray"
+        environment = "prod"
+    }
 }
 
 tasks {
