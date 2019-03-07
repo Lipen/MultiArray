@@ -10,10 +10,12 @@ plugins {
     id("org.jlleitschuh.gradle.ktlint") version "7.1.0"
     id("fr.brouillard.oss.gradle.jgitver") version "0.8.0"
     id("org.jetbrains.dokka") version "0.9.17"
+    id("com.eden.orchidPlugin") version "0.16.4"
 }
 
 repositories {
     jcenter()
+    maven { url = uri("https://kotlin.bintray.com/kotlinx/") }
 }
 
 dependencies {
@@ -21,6 +23,10 @@ dependencies {
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.0")
+
+    orchidRuntime("io.github.javaeden.orchid:OrchidDocs:0.16.4")
+    orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:0.16.4")
+    orchidRuntime("io.github.javaeden.orchid:OrchidPluginDocs:0.16.4")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -78,6 +84,11 @@ buildScan {
 
 ktlint {
     ignoreFailures.set(true)
+}
+
+orchid {
+    theme = "Editorial"
+    githubToken = System.getenv("GITHUB_TOKEN")
 }
 
 tasks {
