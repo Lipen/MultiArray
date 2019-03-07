@@ -16,11 +16,11 @@ cache:
     - $HOME/.gradle/caches/
     - $HOME/.gradle/wrapper/
 
-script:
-  - ./gradlew clean build --scan --stacktrace
+script: ./gradlew clean build --scan --stacktrace
 
 deploy:
-  provider: script
-  script:
-    - ./gradlew bintrayUpload -Pbintray.user=$BINTRAY_USER -Pbintray.key=$BINTRAY_KEY
-  skip_cleanup: true
+  - provider: bintray
+    skip_cleanup: true
+  - provider: script
+    skip-cleanup: true
+    script: ./gradlew orchidUpload -Penv=prod
