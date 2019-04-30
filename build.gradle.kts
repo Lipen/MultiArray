@@ -1,3 +1,4 @@
+import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "ru.ifmo.multiarray"
@@ -21,8 +22,8 @@ repositories {
 dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.0")
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.0")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.0")
 
     orchidRuntime("io.github.javaeden.orchid:OrchidDocs:0.16.4")
     orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:0.16.4")
@@ -103,6 +104,12 @@ tasks {
 
     withType<Test> {
         useJUnitPlatform()
+        testLogging.events(
+            TestLogEvent.FAILED,
+            TestLogEvent.PASSED,
+            TestLogEvent.SKIPPED,
+            TestLogEvent.STANDARD_ERROR
+        )
     }
 
     dokka {
