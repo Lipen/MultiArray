@@ -122,3 +122,5 @@ tasks {
         distributionType = Wrapper.DistributionType.ALL
     }
 }
+
+defaultTasks("clean", "build")
