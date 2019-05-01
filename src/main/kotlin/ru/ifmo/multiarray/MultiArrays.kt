@@ -5,7 +5,7 @@ package ru.ifmo.multiarray
  *
  * @param[T] element type.
  */
-interface MultiArray<T> {
+interface MultiArray<T> : Collection<T> {
     val shape: IntArray
     val values: Collection<T>
 
@@ -13,9 +13,12 @@ interface MultiArray<T> {
     operator fun set(vararg index: Int, value: T)
 
     companion object {
-        fun <T> new(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray(shape, init)
-        fun new(vararg shape: Int, init: (IntArray) -> Int = { 0 }) = IntMultiArray(shape, init)
-        fun new(vararg shape: Int, init: (IntArray) -> Boolean = { false }) = BooleanMultiArray(shape, init)
+        @JvmStatic
+        fun <T> new(shape: IntArray, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.new(shape, init)
+
+        @JvmStatic
+        @JvmName("newVararg")
+        fun <T> new(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.new(shape, init)
     }
 }
 
@@ -24,16 +27,11 @@ interface MultiArray<T> {
  *
  * @param[T] element type.
  */
-private class DefaultMultiArray<T>(
-    override val shape: IntArray,
-    init: (IntArray) -> T
-) : MultiArray<T> {
-    private val strides = Strides(shape)
-    private val buffer =
-        MutableList(if (shape.isNotEmpty()) shape.reduce(Int::times) else 0) {
-            init(strides.index1(it))
-        }
-
+internal class DefaultMultiArray<T> private constructor(
+    private val strides: Strides,
+    private val buffer: MutableList<T>
+) : MultiArray<T>, Collection<T> by buffer {
+    override val shape: IntArray = strides.shape
     override val values: Collection<T> = buffer
 
     override fun get(vararg index: Int): T {
@@ -49,20 +47,24 @@ private class DefaultMultiArray<T>(
     override fun toString(): String {
         return "MultiArray(shape = ${shape.asList()})"
     }
+
+    companion object {
+        @JvmStatic
+        fun <T> new(shape: IntArray, init: (IntArray) -> T): DefaultMultiArray<T> {
+            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val strides = Strides(shape)
+            val buffer = MutableList(size) { init(strides.index1(it)) }
+            return DefaultMultiArray(strides, buffer)
+        }
+    }
 }
 
-class IntMultiArray(
-    override val shape: IntArray,
-    init: (IntArray) -> Int
-) : MultiArray<Int> {
-    private val strides = Strides(shape)
-    private val buffer =
-        IntArray(if (shape.isNotEmpty()) shape.reduce(Int::times) else 0) {
-            init(strides.index1(it))
-        }
-
-    override val values: Collection<Int>
-        get() = buffer.toList()
+class IntMultiArray private constructor(
+    private val strides: Strides,
+    private val buffer: IntArray
+) : MultiArray<Int>, Collection<Int> by buffer.asList() {
+    override val shape: IntArray = strides.shape
+    override val values: Collection<Int> = buffer.asList()
 
     override operator fun get(vararg index: Int): Int {
         validate(index)
@@ -79,22 +81,26 @@ class IntMultiArray(
     }
 
     companion object {
-        fun new(vararg shape: Int, init: (IntArray) -> Int = { 0 }) = IntMultiArray(shape, init)
+        @JvmStatic
+        fun new(shape: IntArray, init: (IntArray) -> Int = { 0 }): IntMultiArray {
+            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val strides = Strides(shape)
+            val buffer = IntArray(size) { init(strides.index1(it)) }
+            return IntMultiArray(strides, buffer)
+        }
+
+        @JvmStatic
+        @JvmName("newVararg")
+        fun new(vararg shape: Int, init: (IntArray) -> Int = { 0 }): IntMultiArray = new(shape, init)
     }
 }
 
-class BooleanMultiArray(
-    override val shape: IntArray,
-    init: (IntArray) -> Boolean
-) : MultiArray<Boolean> {
-    private val strides = Strides(shape)
-    private val buffer =
-        BooleanArray(if (shape.isNotEmpty()) shape.reduce(Int::times) else 0) {
-            init(strides.index1(it))
-        }
-
-    override val values: Collection<Boolean>
-        get() = buffer.toList()
+class BooleanMultiArray private constructor(
+    private val strides: Strides,
+    private val buffer: BooleanArray
+) : MultiArray<Boolean>, Collection<Boolean> by buffer.asList() {
+    override val shape: IntArray = strides.shape
+    override val values: Collection<Boolean> = buffer.asList()
 
     override operator fun get(vararg index: Int): Boolean {
         validate(index)
@@ -111,7 +117,17 @@ class BooleanMultiArray(
     }
 
     companion object {
-        fun new(vararg shape: Int, init: (IntArray) -> Boolean = { false }) = BooleanMultiArray(shape, init)
+        @JvmStatic
+        fun new(shape: IntArray, init: (IntArray) -> Boolean = { false }): BooleanMultiArray {
+            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val strides = Strides(shape)
+            val buffer = BooleanArray(size) { init(strides.index1(it)) }
+            return BooleanMultiArray(strides, buffer)
+        }
+
+        @JvmStatic
+        @JvmName("newVararg")
+        fun new(vararg shape: Int, init: (IntArray) -> Boolean = { false }): BooleanMultiArray = new(shape, init)
     }
 }
 
@@ -127,6 +143,7 @@ private class Strides(val shape: IntArray) {
         }.toList().reversed()
     }
 
+    @Suppress("unused")
     fun offset0(index0: IntArray): Int {
         return index0.asSequence().zip(strides.asSequence()) { i, s -> i * s }.sum()
     }
@@ -135,6 +152,7 @@ private class Strides(val shape: IntArray) {
         return index1.asSequence().zip(strides.asSequence()) { i, s -> (i - 1) * s }.sum()
     }
 
+    @Suppress("unused")
     fun index0(offset: Int): IntArray {
         val result = IntArray(shape.size)
         var current = offset
