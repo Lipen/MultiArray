@@ -12,6 +12,7 @@ plugins {
     id("fr.brouillard.oss.gradle.jgitver") version "0.8.0"
     id("org.jetbrains.dokka") version "0.9.17"
     id("com.eden.orchidPlugin") version "0.16.4"
+    id("com.github.ben-manes.versions") version "0.21.0"
 }
 
 repositories {
