@@ -59,6 +59,9 @@ private class DefaultMultiArray<T> private constructor(
     }
 }
 
+/**
+ * One-based `Int` multi-dimensional array.
+ */
 class IntMultiArray private constructor(
     private val strides: Strides,
     private val buffer: IntArray
@@ -95,6 +98,9 @@ class IntMultiArray private constructor(
     }
 }
 
+/**
+ * One-based `Boolean` multi-dimensional array.
+ */
 class BooleanMultiArray private constructor(
     private val strides: Strides,
     private val buffer: BooleanArray
