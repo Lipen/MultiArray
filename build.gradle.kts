@@ -49,9 +49,7 @@ publishing {
         }
     }
     repositories {
-        maven {
-            this.url = uri("$buildDir/repository")
-        }
+        maven(url = "$buildDir/repository")
     }
 }
 
