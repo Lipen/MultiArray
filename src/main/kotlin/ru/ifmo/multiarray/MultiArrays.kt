@@ -27,7 +27,7 @@ interface MultiArray<T> : Collection<T> {
  *
  * @param[T] element type.
  */
-internal class DefaultMultiArray<T> private constructor(
+private class DefaultMultiArray<T> private constructor(
     private val strides: Strides,
     private val buffer: MutableList<T>
 ) : MultiArray<T>, Collection<T> by buffer {
