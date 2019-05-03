@@ -17,7 +17,6 @@ plugins {
 
 repositories {
     jcenter()
-    maven { url = uri("https://kotlin.bintray.com/kotlinx/") }
 }
 
 dependencies {
