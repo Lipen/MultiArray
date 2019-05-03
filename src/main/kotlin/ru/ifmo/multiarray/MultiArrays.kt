@@ -18,7 +18,7 @@ interface MultiArray<T> : Collection<T> {
 
         @JvmStatic
         @JvmName("newVararg")
-        fun <T> new(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.new(shape, init)
+        fun <T> new(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = new(shape, init)
     }
 }
 
