@@ -51,7 +51,7 @@ private class DefaultMultiArray<T> private constructor(
     companion object {
         @JvmStatic
         fun <T> new(shape: IntArray, init: (IntArray) -> T): DefaultMultiArray<T> {
-            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = MutableList(size) { init(strides.index1(it)) }
             return DefaultMultiArray(strides, buffer)
@@ -86,7 +86,7 @@ class IntMultiArray private constructor(
     companion object {
         @JvmStatic
         fun new(shape: IntArray, init: (IntArray) -> Int = { 0 }): IntMultiArray {
-            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = IntArray(size) { init(strides.index1(it)) }
             return IntMultiArray(strides, buffer)
@@ -125,7 +125,7 @@ class BooleanMultiArray private constructor(
     companion object {
         @JvmStatic
         fun new(shape: IntArray, init: (IntArray) -> Boolean = { false }): BooleanMultiArray {
-            val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
+            val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = BooleanArray(size) { init(strides.index1(it)) }
             return BooleanMultiArray(strides, buffer)
@@ -193,3 +193,6 @@ private fun <T> MultiArray<T>.validate(index: IntArray) {
             throw IndexOutOfBoundsException("Index $ix (${i + 1}-th) out of bounds ($domain)")
     }
 }
+
+private fun IntArray.reduceIfNotEmpty(default: Int = 0): Int =
+    if (isNotEmpty()) reduce(Int::times) else default
