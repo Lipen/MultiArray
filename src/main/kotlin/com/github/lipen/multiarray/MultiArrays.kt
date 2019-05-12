@@ -1,4 +1,4 @@
-package ru.ifmo.multiarray
+package com.github.lipen.multiarray
 
 /**
  * Multi-dimensional array inspired by [kmath](https://github.com/altavir/kmath).
@@ -14,11 +14,11 @@ interface MultiArray<T> : Collection<T> {
 
     companion object {
         @JvmStatic
-        fun <T> new(shape: IntArray, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.new(shape, init)
+        fun <T> create(shape: IntArray, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.create(shape, init)
 
         @JvmStatic
-        @JvmName("newVararg")
-        fun <T> new(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = new(shape, init)
+        @JvmName("createVararg")
+        fun <T> create(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = create(shape, init)
     }
 }
 
@@ -50,7 +50,7 @@ private class DefaultMultiArray<T> private constructor(
 
     companion object {
         @JvmStatic
-        fun <T> new(shape: IntArray, init: (IntArray) -> T): DefaultMultiArray<T> {
+        fun <T> create(shape: IntArray, init: (IntArray) -> T): DefaultMultiArray<T> {
             val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = MutableList(size) { init(strides.index1(it)) }
@@ -85,7 +85,8 @@ class IntMultiArray private constructor(
 
     companion object {
         @JvmStatic
-        fun new(shape: IntArray, init: (IntArray) -> Int = { 0 }): IntMultiArray {
+        @JvmOverloads
+        fun create(shape: IntArray, init: (IntArray) -> Int = { 0 }): IntMultiArray {
             val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = IntArray(size) { init(strides.index1(it)) }
@@ -93,8 +94,9 @@ class IntMultiArray private constructor(
         }
 
         @JvmStatic
-        @JvmName("newVararg")
-        fun new(vararg shape: Int, init: (IntArray) -> Int = { 0 }): IntMultiArray = new(shape, init)
+        @JvmOverloads
+        @JvmName("createVararg")
+        fun create(vararg shape: Int, init: (IntArray) -> Int = { 0 }): IntMultiArray = create(shape, init)
     }
 }
 
@@ -124,7 +126,8 @@ class BooleanMultiArray private constructor(
 
     companion object {
         @JvmStatic
-        fun new(shape: IntArray, init: (IntArray) -> Boolean = { false }): BooleanMultiArray {
+        @JvmOverloads
+        fun create(shape: IntArray, init: (IntArray) -> Boolean = { false }): BooleanMultiArray {
             val size = shape.reduceIfNotEmpty()
             val strides = Strides(shape)
             val buffer = BooleanArray(size) { init(strides.index1(it)) }
@@ -132,8 +135,9 @@ class BooleanMultiArray private constructor(
         }
 
         @JvmStatic
-        @JvmName("newVararg")
-        fun new(vararg shape: Int, init: (IntArray) -> Boolean = { false }): BooleanMultiArray = new(shape, init)
+        @JvmOverloads
+        @JvmName("createVararg")
+        fun create(vararg shape: Int, init: (IntArray) -> Boolean = { false }): BooleanMultiArray = create(shape, init)
     }
 }
 

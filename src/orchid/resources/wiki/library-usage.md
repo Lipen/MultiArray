@@ -2,6 +2,6 @@ Using gradle (with Kotlin DSL):
 
 ```kotlin
 dependencies {
-    implementation("ru.ifmo.multiarray:multiarray:$latestVersion")
+    implementation("com.github.Lipen:kotlin-multiarray:$latestVersion")
 }
 ```

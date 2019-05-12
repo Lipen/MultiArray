@@ -1,17 +1,16 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-group = "ru.ifmo.multiarray"
+group = "com.github.lipen"
 
 plugins {
-    kotlin("jvm") version "1.3.21"
+    kotlin("jvm") version "1.3.31"
     `build-scan`
     `maven-publish`
-    id("com.jfrog.bintray") version "1.8.4"
-    id("org.jlleitschuh.gradle.ktlint") version "7.1.0"
+    id("org.jlleitschuh.gradle.ktlint") version "8.0.0"
     id("fr.brouillard.oss.gradle.jgitver") version "0.8.0"
-    id("org.jetbrains.dokka") version "0.9.17"
-    id("com.eden.orchidPlugin") version "0.16.4"
+    id("org.jetbrains.dokka") version "0.9.18"
+    id("com.eden.orchidPlugin") version "0.16.10"
     id("com.github.ben-manes.versions") version "0.21.0"
 }
 
@@ -53,29 +52,6 @@ publishing {
     }
 }
 
-bintray {
-    user = System.getenv("BINTRAY_USER")
-    key = System.getenv("BINTRAY_KEY")
-    publish = true
-    override = false
-    setPublications("maven")
-    with(pkg) {
-        userOrg = "lipen"
-        repo = "maven"
-        name = "multiarray"
-        vcsUrl = "https://github.com/Lipen/MultiArray.git"
-        setLabels("kotlin", "multidimensional", "array")
-        setLicenses("GPL-3.0")
-        with(version) {
-            desc = "Multidimensional array for Kotlin"
-            with(gpg) {
-                sign = true
-                passphrase = System.getenv("BINTRAY_GPG_PASSWORD")
-            }
-        }
-    }
-}
-
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
@@ -104,7 +80,7 @@ tasks {
         useJUnitPlatform()
         testLogging.events(
             TestLogEvent.FAILED,
-            TestLogEvent.PASSED,
+            // TestLogEvent.PASSED,
             TestLogEvent.SKIPPED,
             TestLogEvent.STANDARD_ERROR
         )

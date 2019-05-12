@@ -1,1 +1,1 @@
-rootProject.name = "multiarray"
+rootProject.name = "MultiArray"
