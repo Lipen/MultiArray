@@ -24,9 +24,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.0")
 
-    orchidRuntime("io.github.javaeden.orchid:OrchidDocs:0.16.4")
-    orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:0.16.4")
-    orchidRuntime("io.github.javaeden.orchid:OrchidPluginDocs:0.16.4")
+    orchidRuntime("io.github.javaeden.orchid:OrchidDocs:0.16.10")
+    orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:0.16.10")
+    orchidRuntime("io.github.javaeden.orchid:OrchidPluginDocs:0.16.10")
+    orchidRuntime("io.github.javaeden.orchid:OrchidAsciidoc:0.16.10")
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
