@@ -4,14 +4,14 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 group = "com.github.lipen"
 
 plugins {
-    kotlin("jvm") version "1.3.31"
+    kotlin("jvm") version Versions.kotlin
     `build-scan`
     `maven-publish`
-    id("org.jlleitschuh.gradle.ktlint") version "8.0.0"
-    id("fr.brouillard.oss.gradle.jgitver") version "0.8.0"
-    id("org.jetbrains.dokka") version "0.9.18"
-    id("com.eden.orchidPlugin") version "0.16.10"
-    id("com.github.ben-manes.versions") version "0.21.0"
+    id("org.jlleitschuh.gradle.ktlint") version Versions.ktlint
+    id("com.github.ben-manes.versions") version Versions.gradle_versions
+    id("fr.brouillard.oss.gradle.jgitver") version Versions.jgitver
+    id("org.jetbrains.dokka") version Versions.dokka
+    id("com.eden.orchidPlugin") version Versions.orchid
 }
 
 repositories {
@@ -19,15 +19,15 @@ repositories {
 }
 
 dependencies {
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
+    implementation(kotlin("stdlib-jdk8"))
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.0")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.0")
+    testImplementation(Libs.junit_jupiter_api)
+    testRuntimeOnly(Libs.junit_jupiter_engine)
 
-    orchidRuntime("io.github.javaeden.orchid:OrchidDocs:0.16.10")
-    orchidRuntime("io.github.javaeden.orchid:OrchidKotlindoc:0.16.10")
-    orchidRuntime("io.github.javaeden.orchid:OrchidPluginDocs:0.16.10")
-    orchidRuntime("io.github.javaeden.orchid:OrchidAsciidoc:0.16.10")
+    orchidRuntime(Libs.orchid_docs)
+    orchidRuntime(Libs.orchid_kotlindoc)
+    orchidRuntime(Libs.orchid_plugin_docs)
+    orchidRuntime(Libs.orchid_asciidoc)
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
@@ -82,10 +82,11 @@ tasks {
     }
 
     withType<Test> {
+        @Suppress("UnstableApiUsage")
         useJUnitPlatform()
         testLogging.events(
-            TestLogEvent.FAILED,
             // TestLogEvent.PASSED,
+            TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
             TestLogEvent.STANDARD_ERROR
         )
