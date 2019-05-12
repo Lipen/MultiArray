@@ -1,5 +1,6 @@
 [![Build Status](https://travis-ci.org/Lipen/MultiArray.svg)](https://travis-ci.org/Lipen/MultiArray)
-[![Download](https://api.bintray.com/packages/lipen/maven/multiarray/images/download.svg)](https://bintray.com/lipen/maven/multiarray/_latestVersion)
+[![JitPack/Lipen/MultiArray](https://jitpack.io/v/Lipen/MultiArray.svg)](https://jitpack.io/#Lipen/MultiArray)
+[![Hits-of-Code](https://hitsofcode.com/github/Lipen/MultiArray)](https://hitsofcode.com/view/github.com/Lipen/MultiArray)
 
 # MultiArray
 
