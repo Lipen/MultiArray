@@ -62,6 +62,10 @@ ktlint {
     ignoreFailures.set(true)
 }
 
+jgitver {
+    strategy("MAVEN")
+}
+
 orchid {
     theme = "Editorial"
     githubToken = System.getenv("GITHUB_TOKEN")
