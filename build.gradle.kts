@@ -1,4 +1,5 @@
 import org.gradle.api.tasks.testing.logging.TestLogEvent
+import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "com.github.lipen"
@@ -31,18 +32,23 @@ dependencies {
 }
 
 val sourcesJar by tasks.registering(Jar::class) {
-    from(sourceSets.main.get().allSource)
     archiveClassifier.set("sources")
+    from(sourceSets.main.get().allSource)
 }
 
-val dokkaJar by tasks.registering(Jar::class) {
-    from(tasks.dokka)
-    archiveClassifier.set("dokka")
+val dokkaJavadoc by tasks.registering(DokkaTask::class) {
+    outputFormat = "javadoc"
+    outputDirectory = "$buildDir/dokkaJavadoc"
+}
+
+val dokkaJavadocJar by tasks.registering(Jar::class) {
+    archiveClassifier.set("javadoc")
+    from(dokkaJavadoc)
 }
 
 artifacts {
     add("archives", sourcesJar)
-    add("archives", dokkaJar)
+    add("archives", dokkaJavadocJar)
 }
 
 publishing {
@@ -50,7 +56,7 @@ publishing {
         create<MavenPublication>("maven") {
             from(components["java"])
             artifact(sourcesJar.get())
-            artifact(dokkaJar.get())
+            artifact(dokkaJavadocJar.get())
         }
     }
     repositories {
@@ -99,7 +105,7 @@ tasks {
 
     dokka {
         outputFormat = "html"
-        outputDirectory = "$buildDir/javadoc"
+        outputDirectory = "$buildDir/dokkaHtml"
     }
 
     wrapper {
