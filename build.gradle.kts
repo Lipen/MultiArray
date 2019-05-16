@@ -37,7 +37,7 @@ val sourcesJar by tasks.registering(Jar::class) {
 
 val dokkaJar by tasks.registering(Jar::class) {
     from(tasks.dokka)
-    archiveClassifier.set("javadoc")
+    archiveClassifier.set("dokka")
 }
 
 artifacts {
