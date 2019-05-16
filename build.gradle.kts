@@ -40,6 +40,11 @@ val dokkaJar by tasks.registering(Jar::class) {
     archiveClassifier.set("javadoc")
 }
 
+artifacts {
+    add("archives", sourcesJar)
+    add("archives", dokkaJar)
+}
+
 publishing {
     publications {
         create<MavenPublication>("maven") {
