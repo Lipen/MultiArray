@@ -96,7 +96,7 @@ tasks {
         @Suppress("UnstableApiUsage")
         useJUnitPlatform()
         testLogging.events(
-            // TestLogEvent.PASSED,
+            TestLogEvent.PASSED,
             TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
             TestLogEvent.STANDARD_ERROR
