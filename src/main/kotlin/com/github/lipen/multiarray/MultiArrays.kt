@@ -34,12 +34,12 @@ private class DefaultMultiArray<T> private constructor(
     override val shape: IntArray = strides.shape
     override val values: Collection<T> = buffer
 
-    override fun get(vararg index: Int): T {
+    override operator fun get(vararg index: Int): T {
         validate(index)
         return buffer[strides.offset1(index)]
     }
 
-    override fun set(vararg index: Int, value: T) {
+    override operator fun set(vararg index: Int, value: T) {
         validate(index)
         buffer[strides.offset1(index)] = value
     }
