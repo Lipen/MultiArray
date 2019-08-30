@@ -7,7 +7,7 @@ object Versions {
     const val gradle_versions = "0.21.0"
     const val jgitver = "0.8.0"
     const val dokka = "0.9.18"
-    const val orchid = "0.17.4"
+    const val orchid = "0.16.10"
 }
 
 object Libs {
