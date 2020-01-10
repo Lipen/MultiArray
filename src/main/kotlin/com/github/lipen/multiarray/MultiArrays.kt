@@ -9,8 +9,11 @@ interface MultiArray<T> : Collection<T> {
     val shape: IntArray
     val values: List<T>
 
-    operator fun get(vararg index: Int): T
-    operator fun set(vararg index: Int, value: T)
+    fun getBy(index: IntArray): T
+    fun setBy(index: IntArray, value: T)
+
+    operator fun get(vararg index: Int): T = getBy(index)
+    operator fun set(vararg index: Int, value: T): Unit = setBy(index, value)
 
     companion object {
         @JvmStatic
@@ -34,12 +37,12 @@ private class DefaultMultiArray<T> private constructor(
     override val shape: IntArray = strides.shape
     override val values: List<T> = buffer
 
-    override operator fun get(vararg index: Int): T {
+    override fun getBy(index: IntArray): T {
         validate(index)
         return buffer[strides.offset1(index)]
     }
 
-    override operator fun set(vararg index: Int, value: T) {
+    override fun setBy(index: IntArray, value: T) {
         validate(index)
         buffer[strides.offset1(index)] = value
     }
@@ -69,12 +72,12 @@ class IntMultiArray private constructor(
     override val shape: IntArray = strides.shape
     override val values: List<Int> = buffer.asList()
 
-    override operator fun get(vararg index: Int): Int {
+    override fun getBy(index: IntArray): Int {
         validate(index)
         return buffer[strides.offset1(index)]
     }
 
-    override operator fun set(vararg index: Int, value: Int) {
+    override fun setBy(index: IntArray, value: Int) {
         validate(index)
         buffer[strides.offset1(index)] = value
     }
@@ -110,12 +113,12 @@ class BooleanMultiArray private constructor(
     override val shape: IntArray = strides.shape
     override val values: List<Boolean> = buffer.asList()
 
-    override operator fun get(vararg index: Int): Boolean {
+    override fun getBy(index: IntArray): Boolean {
         validate(index)
         return buffer[strides.offset1(index)]
     }
 
-    override operator fun set(vararg index: Int, value: Boolean) {
+    override fun setBy(index: IntArray, value: Boolean) {
         validate(index)
         buffer[strides.offset1(index)] = value
     }
