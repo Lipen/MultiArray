@@ -1,6 +1,6 @@
 = MultiArray
 
-image:https://travis-ci.org/Lipen/MultiArray.svg["Build Status", link="https://travis-ci.org/Lipen/MultiArray"]
+image:https://travis-ci.com/Lipen/MultiArray.svg["Build Status", link="https://travis-ci.com/Lipen/MultiArray"]
 image:https://jitpack.io/v/Lipen/MultiArray.svg["JitPack", link="https://jitpack.io/p/Lipen/MultiArray"]
 image:https://hitsofcode.com/github/Lipen/MultiArray["Hits-of-Code", link="https://hitsofcode.com/view/github/Lipen/MultiArray"]
 
