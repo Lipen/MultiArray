@@ -7,7 +7,7 @@ package com.github.lipen.multiarray
  */
 interface MultiArray<T> : Collection<T> {
     val shape: IntArray
-    val values: Collection<T>
+    val values: List<T>
 
     operator fun get(vararg index: Int): T
     operator fun set(vararg index: Int, value: T)
@@ -32,7 +32,7 @@ private class DefaultMultiArray<T> private constructor(
     private val buffer: MutableList<T>
 ) : MultiArray<T>, Collection<T> by buffer {
     override val shape: IntArray = strides.shape
-    override val values: Collection<T> = buffer
+    override val values: List<T> = buffer
 
     override operator fun get(vararg index: Int): T {
         validate(index)
@@ -67,7 +67,7 @@ class IntMultiArray private constructor(
     private val buffer: IntArray
 ) : MultiArray<Int>, Collection<Int> by buffer.asList() {
     override val shape: IntArray = strides.shape
-    override val values: Collection<Int> = buffer.asList()
+    override val values: List<Int> = buffer.asList()
 
     override operator fun get(vararg index: Int): Int {
         validate(index)
@@ -108,7 +108,7 @@ class BooleanMultiArray private constructor(
     private val buffer: BooleanArray
 ) : MultiArray<Boolean>, Collection<Boolean> by buffer.asList() {
     override val shape: IntArray = strides.shape
-    override val values: Collection<Boolean> = buffer.asList()
+    override val values: List<Boolean> = buffer.asList()
 
     override operator fun get(vararg index: Int): Boolean {
         validate(index)
