@@ -23,7 +23,7 @@ class MultiArraysTest {
             MultiArray.create(2, 3) { (i, j) -> "($i,$j)" }
         assertEquals(6, array.size)
         assertArrayEquals(intArrayOf(2, 3), array.shape)
-        assertEquals(listOf("(1,1)", "(1,2)", "(1,3)", "(2,1)", "(2,2)", "(2,3)"), array.values.toList())
+        assertEquals(listOf("(1,1)", "(1,2)", "(1,3)", "(2,1)", "(2,2)", "(2,3)"), array.values)
     }
 
     // IntMultiArray tests
@@ -44,7 +44,7 @@ class MultiArraysTest {
         assertEquals(sequence {
             for (i in 1..6) for (j in 1..2) for (k in 1..4)
                 yield(i + j + k)
-        }.toList(), array.values.toList())
+        }.toList(), array.values)
     }
 
     @Test
@@ -53,7 +53,7 @@ class MultiArraysTest {
             IntMultiArray.create(3, 2) { (i, j) -> i + j }
         assertEquals(6, array.size)
         assertArrayEquals(intArrayOf(3, 2), array.shape)
-        assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values.toList())
+        assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values)
     }
 
     // BooleanMultiArray tests
@@ -79,6 +79,6 @@ class MultiArraysTest {
             BooleanMultiArray.create(4, 2) { (i, j) -> i == j }
         assertArrayEquals(intArrayOf(4, 2), array.shape)
         @Suppress("BooleanLiteralArgument")
-        assertEquals(listOf(true, false, false, true, false, false, false, false), array.values.toList())
+        assertEquals(listOf(true, false, false, true, false, false, false, false), array.values)
     }
 }
