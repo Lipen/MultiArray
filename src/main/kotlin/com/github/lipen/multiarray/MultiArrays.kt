@@ -3,171 +3,170 @@ package com.github.lipen.multiarray
 /**
  * Multi-dimensional array inspired by [kmath](https://github.com/altavir/kmath).
  *
- * @param[T] element type.
+ * @param[T] Element type.
  */
-interface MultiArray<T> : Collection<T> {
-    val shape: IntArray
-    val values: List<T>
+class MultiArray<T> private constructor(
+    private val storage: MutableStorage<T>,
+    private val strides: Strides
+) {
+    val shape: IntArray = strides.shape
+    val values: List<T> = storage.values
 
-    fun getBy(index: IntArray): T
-    fun setBy(index: IntArray, value: T)
+    constructor(array: Array<T>, strides: Strides) : this(MutableStorage(array), strides)
+    constructor(array: IntArray, strides: Strides) : this(MutableStorage(array), strides)
+    constructor(array: BooleanArray, strides: Strides) : this(MutableStorage(array), strides)
 
-    operator fun get(vararg index: Int): T = getBy(index)
-    operator fun set(vararg index: Int, value: T): Unit = setBy(index, value)
-
-    companion object {
-        @JvmStatic
-        fun <T> create(shape: IntArray, init: (IntArray) -> T): MultiArray<T> = DefaultMultiArray.create(shape, init)
-
-        @JvmStatic
-        @JvmName("createVararg")
-        fun <T> create(vararg shape: Int, init: (IntArray) -> T): MultiArray<T> = create(shape, init)
-    }
-}
-
-/**
- * One-based multi-dimensional array.
- *
- * @param[T] element type.
- */
-private class DefaultMultiArray<T> private constructor(
-    private val strides: Strides,
-    private val buffer: MutableList<T>
-) : MultiArray<T>, Collection<T> by buffer {
-    override val shape: IntArray = strides.shape
-    override val values: List<T> = buffer
-
-    override fun getBy(index: IntArray): T {
+    fun getBy(index: IntArray): T {
         validate(index)
-        return buffer[strides.offset1(index)]
+        return storage[strides.offset1(index)]
     }
 
-    override fun setBy(index: IntArray, value: T) {
+    fun setBy(index: IntArray, value: T) {
         validate(index)
-        buffer[strides.offset1(index)] = value
+        storage[strides.offset1(index)] = value
     }
+
+    fun get(vararg index: Int): T = getBy(index)
+    fun set(vararg index: Int, value: T): Unit = setBy(index, value)
 
     override fun toString(): String {
-        return "MultiArray(shape = ${shape.asList()})"
+        return "MultiArray<${storage.typeString}>(shape = ${shape.asList()})"
     }
 
     companion object {
         @JvmStatic
-        fun <T> create(shape: IntArray, init: (IntArray) -> T): DefaultMultiArray<T> {
-            val size = shape.reduceIfNotEmpty()
+        inline fun <reified T> create(
+            shape: IntArray,
+            init: (IntArray) -> T
+        ): MultiArray<T> {
+            if (shape.isEmpty()) return MultiArray(intArrayOf(), Strides(intArrayOf()))
+
+            val size = shape.reduce(Int::times)
             val strides = Strides(shape)
-            val buffer = MutableList(size) { init(strides.index1(it)) }
-            return DefaultMultiArray(strides, buffer)
-        }
-    }
-}
 
-/**
- * One-based `Int` multi-dimensional array.
- */
-class IntMultiArray private constructor(
-    private val strides: Strides,
-    private val buffer: IntArray
-) : MultiArray<Int>, Collection<Int> by buffer.asList() {
-    override val shape: IntArray = strides.shape
-    override val values: List<Int> = buffer.asList()
-
-    override fun getBy(index: IntArray): Int {
-        validate(index)
-        return buffer[strides.offset1(index)]
-    }
-
-    override fun setBy(index: IntArray, value: Int) {
-        validate(index)
-        buffer[strides.offset1(index)] = value
-    }
-
-    override fun toString(): String {
-        return "IntMultiArray(shape = ${shape.asList()})"
-    }
-
-    companion object {
-        @JvmStatic
-        @JvmOverloads
-        fun create(shape: IntArray, init: (IntArray) -> Int = { 0 }): IntMultiArray {
-            val size = shape.reduceIfNotEmpty()
-            val strides = Strides(shape)
-            val buffer = IntArray(size) { init(strides.index1(it)) }
-            return IntMultiArray(strides, buffer)
-        }
-
-        @JvmStatic
-        @JvmOverloads
-        @JvmName("createVararg")
-        fun create(vararg shape: Int, init: (IntArray) -> Int = { 0 }): IntMultiArray = create(shape, init)
-    }
-}
-
-/**
- * One-based `Boolean` multi-dimensional array.
- */
-class BooleanMultiArray private constructor(
-    private val strides: Strides,
-    private val buffer: BooleanArray
-) : MultiArray<Boolean>, Collection<Boolean> by buffer.asList() {
-    override val shape: IntArray = strides.shape
-    override val values: List<Boolean> = buffer.asList()
-
-    override fun getBy(index: IntArray): Boolean {
-        validate(index)
-        return buffer[strides.offset1(index)]
-    }
-
-    override fun setBy(index: IntArray, value: Boolean) {
-        validate(index)
-        buffer[strides.offset1(index)] = value
-    }
-
-    override fun toString(): String {
-        return "BooleanMultiArray(shape = ${shape.asList()})"
-    }
-
-    companion object {
-        @JvmStatic
-        @JvmOverloads
-        fun create(shape: IntArray, init: (IntArray) -> Boolean = { false }): BooleanMultiArray {
-            val size = shape.reduceIfNotEmpty()
-            val strides = Strides(shape)
-            val buffer = BooleanArray(size) { init(strides.index1(it)) }
-            return BooleanMultiArray(strides, buffer)
-        }
-
-        @JvmStatic
-        @JvmOverloads
-        @JvmName("createVararg")
-        fun create(vararg shape: Int, init: (IntArray) -> Boolean = { false }): BooleanMultiArray = create(shape, init)
-    }
-}
-
-private class Strides(val shape: IntArray) {
-    private val strides: List<Int> by lazy {
-        sequence {
-            yield(1)
-            var cur = 1
-            for (i in (shape.size - 1) downTo 1) {
-                cur *= shape[i]
-                yield(cur)
+            return when (T::class) {
+                Int::class -> MultiArray(
+                    IntArray(size) { init(strides.index1(it)) as Int },
+                    strides
+                )
+                Boolean::class -> MultiArray(
+                    BooleanArray(size) { init(strides.index1(it)) as Boolean },
+                    strides
+                )
+                else -> MultiArray(
+                    Array(size) { init(strides.index1(it)) },
+                    strides
+                )
             }
-        }.toList().reversed()
+        }
+
+        @JvmStatic
+        @JvmName("createVararg")
+        inline fun <reified T> create(
+            vararg shape: Int,
+            noinline init: (IntArray) -> T
+        ): MultiArray<T> = create(shape, init)
+
+        @JvmStatic
+        fun createInt(
+            shape: IntArray,
+            init: (IntArray) -> Int = { 0 }
+        ): MultiArray<Int> = create(shape, init)
+
+        @JvmStatic
+        @JvmName("createIntVararg")
+        fun createInt(
+            vararg shape: Int,
+            init: (IntArray) -> Int = { 0 }
+        ): MultiArray<Int> = create(shape, init)
+
+        @JvmStatic
+        fun createBoolean(
+            shape: IntArray,
+            init: (IntArray) -> Boolean = { false }
+        ): MultiArray<Boolean> = create(shape, init)
+
+        @JvmStatic
+        @JvmName("createBooleanVararg")
+        fun createBoolean(
+            vararg shape: Int,
+            init: (IntArray) -> Boolean = { false }
+        ): MultiArray<Boolean> = create(shape, init)
+    }
+}
+
+private class MutableStorage<T> private constructor(
+    private val type: Type,
+    private val genericArray: Array<T>? = null,
+    private val intArray: IntArray? = null,
+    private val booleanArray: BooleanArray? = null
+) {
+    @Suppress("UNCHECKED_CAST")
+    val values: List<T> = when (type) {
+        Type.GenericArray -> genericArray!!.asList()
+        Type.IntArray -> intArray!!.asList() as List<T>
+        Type.BooleanArray -> booleanArray!!.asList() as List<T>
     }
 
-    @Suppress("unused")
+    val typeString: String = when (type) {
+        Type.GenericArray -> "T"
+        Type.IntArray -> "Int"
+        Type.BooleanArray -> "Boolean"
+    }
+
+    @Suppress("UNCHECKED_CAST")
+    operator fun get(index: Int): T = when (type) {
+        Type.GenericArray -> genericArray!![index]
+        Type.IntArray -> intArray!![index] as T
+        Type.BooleanArray -> booleanArray!![index] as T
+    }
+
+    operator fun set(index: Int, value: T): Unit = when (type) {
+        Type.GenericArray -> genericArray!![index] = value
+        Type.IntArray -> intArray!![index] = value as Int
+        Type.BooleanArray -> booleanArray!![index] = value as Boolean
+    }
+
+    enum class Type {
+        GenericArray,
+        IntArray,
+        BooleanArray,
+    }
+
+    companion object {
+        operator fun <T> invoke(array: Array<T>): MutableStorage<T> =
+            MutableStorage(Type.GenericArray, genericArray = array)
+
+        operator fun <T> invoke(array: IntArray): MutableStorage<T> =
+            MutableStorage(Type.IntArray, intArray = array)
+
+        operator fun <T> invoke(array: BooleanArray): MutableStorage<T> =
+            MutableStorage(Type.BooleanArray, booleanArray = array)
+    }
+}
+
+class Strides(val shape: IntArray) {
+    private val strides: IntArray =
+        if (shape.isEmpty())
+            intArrayOf()
+        else
+            IntArray(shape.size).apply {
+                this[lastIndex] = 1
+                for (i in lastIndex - 1 downTo 0) {
+                    this[i] = this[i + 1] * shape[i + 1]
+                }
+            }
+
     fun offset0(index0: IntArray): Int {
-        return index0.asSequence().zip(strides.asSequence()) { i, s -> i * s }.sum()
+        return strides.foldIndexed(0) { i, acc, s -> acc + index0[i] * s }
     }
 
     fun offset1(index1: IntArray): Int {
-        return index1.asSequence().zip(strides.asSequence()) { i, s -> (i - 1) * s }.sum()
+        return strides.foldIndexed(0) { i, acc, s -> acc + (index1[i] - 1) * s }
     }
 
-    @Suppress("unused")
     fun index0(offset: Int): IntArray {
-        val result = IntArray(shape.size)
+        val result = IntArray(strides.size)
         var current = offset
         for ((i, s) in strides.withIndex()) {
             result[i] = current / s // 0-based
@@ -178,7 +177,7 @@ private class Strides(val shape: IntArray) {
     }
 
     fun index1(offset: Int): IntArray {
-        val result = IntArray(shape.size) { 1 }
+        val result = IntArray(strides.size) { 1 }
         var current = offset
         for ((i, s) in strides.withIndex()) {
             result[i] = current / s + 1 // 1-based
@@ -201,5 +200,11 @@ private fun <T> MultiArray<T>.validate(index: IntArray) {
     }
 }
 
-private fun IntArray.reduceIfNotEmpty(default: Int = 0): Int =
-    if (isNotEmpty()) reduce(Int::times) else default
+fun main() {
+    val xs = MultiArray.create(2, 3) { 42 }
+    println("xs = $xs")
+    println("xs::class = ${xs::class}")
+    println("xs.javaClass = ${xs.javaClass}")
+    // println("xs is IntMultiArray = ${xs is IntMultiArray}")
+    println("xs.values = ${xs.values}")
+}
