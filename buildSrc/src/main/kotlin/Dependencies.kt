@@ -1,7 +1,7 @@
 @file:Suppress("PublicApiImplicitType")
 
 object Versions {
-    const val kotlin = "1.3.31"
+    const val kotlin = "1.3.61"
     const val ktlint = "8.0.0"
     const val junit = "5.5.0-M1"
     const val gradle_versions = "0.21.0"
