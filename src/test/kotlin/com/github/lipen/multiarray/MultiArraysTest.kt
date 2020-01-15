@@ -12,7 +12,7 @@ class MultiArraysTest {
     @Test
     fun `create empty MultiArray of Strings`() {
         val array: MultiArray<String> = MultiArray.create { "" }
-        assertEquals(0, array.size)
+        assertEquals(0, array.values.size)
         assertTrue(array.shape.isEmpty())
         assertTrue(array.values.isEmpty())
     }
@@ -21,7 +21,7 @@ class MultiArraysTest {
     fun `create filled MultiArray of Strings`() {
         val array: MultiArray<String> =
             MultiArray.create(2, 3) { (i, j) -> "($i,$j)" }
-        assertEquals(6, array.size)
+        assertEquals(6, array.values.size)
         assertArrayEquals(intArrayOf(2, 3), array.shape)
         assertEquals(listOf("(1,1)", "(1,2)", "(1,3)", "(2,1)", "(2,2)", "(2,3)"), array.values)
     }
@@ -31,7 +31,7 @@ class MultiArraysTest {
     @Test
     fun `create empty IntMultiArray`() {
         val array = IntMultiArray.create()
-        assertEquals(0, array.size)
+        assertEquals(0, array.values.size)
         assertTrue(array.shape.isEmpty())
         assertTrue(array.values.isEmpty())
     }
@@ -39,7 +39,7 @@ class MultiArraysTest {
     @Test
     fun `create filled IntMultiArray via array factory method`() {
         val array = IntMultiArray.create(intArrayOf(6, 2, 4)) { (i, j, k) -> i + j + k }
-        assertEquals(48, array.size)
+        assertEquals(48, array.values.size)
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
         assertEquals(sequence {
             for (i in 1..6) for (j in 1..2) for (k in 1..4)
@@ -51,7 +51,7 @@ class MultiArraysTest {
     fun `create filled IntMultiArray via vararg factory method`() {
         val array: IntMultiArray =
             IntMultiArray.create(3, 2) { (i, j) -> i + j }
-        assertEquals(6, array.size)
+        assertEquals(6, array.values.size)
         assertArrayEquals(intArrayOf(3, 2), array.shape)
         assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values)
     }
