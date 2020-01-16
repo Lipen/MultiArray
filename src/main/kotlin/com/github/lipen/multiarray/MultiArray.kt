@@ -35,32 +35,19 @@ interface MultiArray<T> {
         @Suppress("UNCHECKED_CAST")
         inline fun <reified T> create(
             shape: IntArray,
-            noinline init: (IntArray) -> T
+            crossinline init: (IntArray) -> T
         ): MultiArray<T> = when (T::class) {
-            Int::class -> IntMultiArray.create(shape, init as (IntArray) -> Int) as MultiArray<T>
-            Boolean::class -> BooleanMultiArray.create(shape, init as (IntArray) -> Boolean) as MultiArray<T>
+            Int::class -> IntMultiArray.create(shape) { init(it) as Int } as MultiArray<T>
+            Boolean::class -> BooleanMultiArray.create(shape) { init(it) as Boolean } as MultiArray<T>
             else -> GenericMultiArray.create(shape, init)
         }
 
         @JvmName("createVararg")
         inline fun <reified T> create(
             vararg shape: Int,
-            noinline init: (IntArray) -> T
+            crossinline init: (IntArray) -> T
         ): MultiArray<T> = create(shape, init)
     }
 }
 
-fun <T> MultiArray<T>.fillBy(init: (IntArray) -> T) {
-    for (index in indices) {
-        setAt(index, init(index))
-    }
-}
-
-inline fun <T, reified R> MultiArray<T>.mapValues(crossinline transform: (T) -> R): MultiArray<R> =
-    MultiArray.create(shape) { index -> transform(getAt(index)) }
-
-inline fun <T> MultiArray<T>.mapValuesToInt(crossinline transform: (T) -> Int): IntMultiArray =
-    IntMultiArray.create(shape) { index -> transform(getAt(index)) }
-
-inline fun <T> MultiArray<T>.mapValuesToBoolean(crossinline transform: (T) -> Boolean): BooleanMultiArray =
-    BooleanMultiArray.create(shape) { index -> transform(getAt(index)) }
+// TODO: reshape

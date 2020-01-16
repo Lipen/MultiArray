@@ -35,7 +35,7 @@ class GenericMultiArray<T>(
         @JvmStatic
         inline fun <reified T> create(
             shape: IntArray,
-            noinline init: (IntArray) -> T
+            init: (IntArray) -> T
         ): MultiArray<T> {
             val size = if (shape.isNotEmpty()) shape.reduce(Int::times) else 0
             @Suppress("UNCHECKED_CAST")
@@ -46,7 +46,7 @@ class GenericMultiArray<T>(
         @JvmName("createVararg")
         inline fun <reified T> create(
             vararg shape: Int,
-            noinline init: (IntArray) -> T
+            init: (IntArray) -> T
         ): MultiArray<T> = create(shape, init)
     }
 }

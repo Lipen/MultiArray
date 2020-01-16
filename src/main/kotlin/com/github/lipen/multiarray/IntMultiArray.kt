@@ -35,7 +35,7 @@ class IntMultiArray(
             IntMultiArray(IntArray(if (shape.isNotEmpty()) shape.reduce(Int::times) else 0), shape)
 
         @JvmStatic
-        fun create(shape: IntArray, init: (IntArray) -> Int): IntMultiArray =
+        inline fun create(shape: IntArray, init: (IntArray) -> Int): IntMultiArray =
             create(shape).apply { fillBy(init) }
 
         @JvmStatic
@@ -43,6 +43,6 @@ class IntMultiArray(
         fun create(vararg shape: Int): IntMultiArray = create(shape)
 
         @JvmName("createVararg")
-        fun create(vararg shape: Int, init: (IntArray) -> Int): IntMultiArray = create(shape, init)
+        inline fun create(vararg shape: Int, init: (IntArray) -> Int): IntMultiArray = create(shape, init)
     }
 }
