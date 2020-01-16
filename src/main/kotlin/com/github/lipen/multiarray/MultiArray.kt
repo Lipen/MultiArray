@@ -1,4 +1,5 @@
 package com.github.lipen.multiarray
+
 /**
  * Multidimensional array inspired by [kmath](https://github.com/altavir/kmath)
  * and [victor](https://github.com/JetBrains-Research/viktor).
