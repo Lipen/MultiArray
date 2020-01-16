@@ -28,7 +28,7 @@ class GenericMultiArray<T>(
     }
 
     override fun toString(): String {
-        return "MultiArray(shape = ${shape.asList()}, values = ${values})"
+        return "MultiArray(shape = ${shape.asList()}, values = $values)"
     }
 
     companion object {
