@@ -6,7 +6,7 @@ package com.github.lipen.multiarray
  *
  * @param[T] Element type.
  */
-interface MultiArray<T> {
+interface MultiArray<T> : Collection<T> {
     val values: List<T>
     val shape: IntArray
     val dims: Int
@@ -25,6 +25,15 @@ interface MultiArray<T> {
 
     operator fun get(vararg index: Int): T = getAt(index)
     operator fun set(vararg index: Int, value: T): Unit = setAt(index, value)
+
+    // Delegate to this.values for Collection<T>
+
+    override val size: Int get() = values.size
+
+    override fun contains(element: T): Boolean = values.contains(element)
+    override fun containsAll(elements: Collection<T>): Boolean = values.containsAll(elements)
+    override fun isEmpty(): Boolean = values.isEmpty()
+    override fun iterator(): Iterator<T> = values.iterator()
 
     companion object {
         /**
