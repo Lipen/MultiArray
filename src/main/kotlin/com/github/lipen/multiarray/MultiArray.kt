@@ -35,7 +35,7 @@ interface MultiArray<T> {
         @Suppress("UNCHECKED_CAST")
         inline fun <reified T> create(
             shape: IntArray,
-            crossinline init: (IntArray) -> T
+            init: (IntArray) -> T
         ): MultiArray<T> = when (T::class) {
             Int::class -> IntMultiArray.create(shape) { init(it) as Int } as MultiArray<T>
             Boolean::class -> BooleanMultiArray.create(shape) { init(it) as Boolean } as MultiArray<T>
@@ -45,7 +45,7 @@ interface MultiArray<T> {
         @JvmName("createVararg")
         inline fun <reified T> create(
             vararg shape: Int,
-            crossinline init: (IntArray) -> T
+            init: (IntArray) -> T
         ): MultiArray<T> = create(shape, init)
     }
 }
