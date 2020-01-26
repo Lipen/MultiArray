@@ -7,24 +7,38 @@ Editorial:
   primaryColor: '#DE9149'
   social:
     github: 'Lipen/MultiArray'
+  legacySearch: false
+  metaComponents:
+    - type: 'orchidSearch'
   menu:
     - type: 'separator'
       title: 'Wiki'
     - type: 'wiki'
     - type: 'separator'
       title: 'API Docs'
-    - type: 'kotlindocPackages'
-    - type: 'kotlindocClasses'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      node: 'classes'
+      asSubmenu: true
+      submenuTitle: 'Classes'
+    - type: 'sourcedocPages'
+      moduleType: 'kotlindoc'
+      node: 'packages'
+      asSubmenu: true
+      submenuTitle: 'Packages'
 
 kotlindoc:
   sourceDirs:
     - './../../main/kotlin'
+  sourcePages:
+    menu:
+      - type: 'sourcedocPageLinks'
+        moduleType: 'kotlindoc'
+        itemTitleType: 'SIGNATURE'
+        includeItems: true
   pages:
     extraCss:
       - 'assets/css/orchidKotlindoc.scss'
-    menu:
-      - type: 'kotlindocClassLinks'
-        includeItems: true
 
 services:
   publications:
@@ -33,3 +47,5 @@ services:
         branch: gh-pages
         username: 'Lipen'
         repo: 'MultiArray'
+      githubReleases:
+        repo: 'Lipen/MultiArray'

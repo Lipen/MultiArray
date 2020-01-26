@@ -1,2 +1,2 @@
-- [Library usage](library-usage.md)
-- [Features](features.md)
+- [Installation](installation.md)
+- [Usage](usage.md)
