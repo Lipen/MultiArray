@@ -25,10 +25,6 @@ dependencies {
     testRuntimeOnly(Libs.junit_jupiter_engine)
 
     orchidRuntimeOnly(Libs.orchid_all)
-    orchidRuntimeOnly(Libs.orchid_docs)
-    orchidRuntimeOnly(Libs.orchid_kotlindoc)
-    orchidRuntimeOnly(Libs.orchid_plugin_docs)
-    orchidRuntimeOnly(Libs.orchid_asciidoc)
 }
 
 val sourcesJar by tasks.creating(Jar::class) {

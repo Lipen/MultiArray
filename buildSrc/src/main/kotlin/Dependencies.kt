@@ -14,8 +14,4 @@ object Libs {
     const val junit_jupiter_api = "org.junit.jupiter:junit-jupiter-api:${Versions.junit}"
     const val junit_jupiter_engine = "org.junit.jupiter:junit-jupiter-engine:${Versions.junit}"
     const val orchid_all = "io.github.javaeden.orchid:OrchidAll:${Versions.orchid}"
-    const val orchid_docs = "io.github.javaeden.orchid:OrchidDocs:${Versions.orchid}"
-    const val orchid_kotlindoc = "io.github.javaeden.orchid:OrchidKotlindoc:${Versions.orchid}"
-    const val orchid_plugin_docs = "io.github.javaeden.orchid:OrchidPluginDocs:${Versions.orchid}"
-    const val orchid_asciidoc = "io.github.javaeden.orchid:OrchidAsciidoc:${Versions.orchid}"
 }

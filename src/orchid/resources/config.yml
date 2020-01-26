@@ -43,9 +43,7 @@ kotlindoc:
 services:
   publications:
     stages:
-      ghPages:
+      - type: 'githubPages'
         branch: gh-pages
         username: 'Lipen'
         repo: 'MultiArray'
-      githubReleases:
-        repo: 'Lipen/MultiArray'
