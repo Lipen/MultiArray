@@ -7,8 +7,8 @@ abstract class AbstractMultiArray<T>(
     final override val shape: IntArray
 ) : MultiArray<T> {
     final override val dims: Int = shape.size
-    final override val indices: Sequence<IntArray> by lazy {
-        values.indices.asSequence().map { unsafeIndex(it) }
+    final override val indices: Set<IntArray> by lazy {
+        values.indices.map { unsafeIndex(it) }.toSet()
     }
 
     protected fun offset(index: IntArray): Int {

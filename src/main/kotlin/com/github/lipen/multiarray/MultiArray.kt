@@ -10,7 +10,7 @@ interface MultiArray<T> {
     val values: List<T>
     val shape: IntArray
     val dims: Int
-    val indices: Sequence<IntArray>
+    val indices: Set<IntArray>
     val domains: List<IntRange>
 
     fun getAt(index: IntArray): T

@@ -30,7 +30,7 @@ fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
     indices.asSequence().zip(values.asSequence())
 
 fun <T> MultiArray<T>.withIndexReversed(): Sequence<Pair<IntArray, T>> =
-    indices.zip(values.asSequence()).toList().asReversed().asSequence()
+    indices.zip(values).asReversed().asSequence()
 
 @PublishedApi
 internal val indexNotFound: IntArray = intArrayOf()
