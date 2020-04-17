@@ -10,8 +10,8 @@ fun <T> MultiArray<T>.getOrNull(vararg index: Int): T? = getOrNull_(index)
 fun <T> MultiArray<T>.getOrNull_(index: IntArray): T? =
     if (index in indices) getAt(index) else null
 
-fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T): T = getOrElse_(index, defaultValue)
-fun <T> MultiArray<T>.getOrElse_(index: IntArray, defaultValue: () -> T): T =
+inline fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T): T = getOrElse_(index, defaultValue)
+inline fun <T> MultiArray<T>.getOrElse_(index: IntArray, defaultValue: () -> T): T =
     if (index in indices) getAt(index) else defaultValue()
 
 inline fun <T> MultiArray<T>.fillBy(init: (IntArray) -> T) {
