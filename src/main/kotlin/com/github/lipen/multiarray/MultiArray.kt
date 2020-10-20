@@ -1,12 +1,8 @@
+@file:Suppress("FunctionName")
+
 package com.github.lipen.multiarray
 
-/**
- * Multidimensional array inspired by [kmath](https://github.com/altavir/kmath)
- * and [victor](https://github.com/JetBrains-Research/viktor).
- *
- * @param[T] Element type.
- */
-interface MultiArray<T> {
+interface MultiArray<out T> {
     val values: List<T>
     val shape: IntArray
     val dims: Int
@@ -17,37 +13,78 @@ interface MultiArray<T> {
     operator fun get(i: Int): T
     operator fun get(i: Int, j: Int): T
     operator fun get(i: Int, j: Int, k: Int): T
-
-    fun setAt(index: IntArray, value: T)
-    operator fun set(i: Int, value: T)
-    operator fun set(i: Int, j: Int, value: T)
-    operator fun set(i: Int, j: Int, k: Int, value: T)
-
-    operator fun get(vararg index: Int): T = getAt(index)
-    operator fun set(vararg index: Int, value: T): Unit = setAt(index, value)
-
-    companion object {
-        /**
-         * Smart constructor. Resulting `MultiArray<T>` is backed by `IntMultiArray` if [T] is `Int`,
-         * by `BooleanMultiArray` if [T] is `Boolean`, and by `GenericMultiArray<T>` otherwise.
-         */
-        @JvmStatic
-        @Suppress("UNCHECKED_CAST")
-        inline fun <reified T> create(
-            shape: IntArray,
-            init: (IntArray) -> T
-        ): MultiArray<T> = when (T::class) {
-            Int::class -> IntMultiArray.create(shape) { init(it) as Int } as MultiArray<T>
-            Boolean::class -> BooleanMultiArray.create(shape) { init(it) as Boolean } as MultiArray<T>
-            else -> GenericMultiArray.create(shape, init)
-        }
-
-        @JvmName("createVararg")
-        inline fun <reified T> create(
-            vararg shape: Int,
-            init: (IntArray) -> T
-        ): MultiArray<T> = create(shape, init)
-    }
+    operator fun get(vararg index: Int): T
 }
 
-// TODO: reshape
+typealias IntMultiArray = MultiArray<Int>
+typealias BooleanMultiArray = MultiArray<Boolean>
+
+// internal class MultiArrayImpl<out T>(
+//     delegate: MutableMultiArray<T>
+// ): MultiArray<T> by delegate {
+//     override fun toString(): String {
+//         return "MultiArray(shape = ${shape.asList()}, values = $values)"
+//     }
+// }
+//
+// fun <T> MutableMultiArray<T>.toImmutable() : MultiArray<T> = MultiArrayImpl(this)
+
+/* Smart */
+
+inline fun <reified T> newMultiArray(
+    shape: IntArray,
+    zerobased: Boolean = false,
+    init: (IntArray) -> T
+): MultiArray<T> = newMutableMultiArray(shape, zerobased, init)
+
+@JvmName("newMultiArrayVararg")
+inline fun <reified T> newMultiArray(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (IntArray) -> T
+): MultiArray<T> = newMultiArray(shape, zerobased, init)
+
+/* Generic */
+
+inline fun <reified T> newGenericMultiArray(
+    shape: IntArray,
+    zerobased: Boolean = false,
+    init: (IntArray) -> T
+): MultiArray<T> = newMutableGenericMultiArray(shape, zerobased, init)
+
+@JvmName("newGenericMultiArrayVararg")
+inline fun <reified T> newGenericMultiArray(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (IntArray) -> T
+): MultiArray<T> = newGenericMultiArray(shape, zerobased, init)
+
+/* Int */
+
+inline fun newIntMultiArray(
+    shape: IntArray,
+    zerobased: Boolean = false,
+    init: (IntArray) -> Int = { 0 }
+): IntMultiArray = newMutableIntMultiArray(shape, zerobased, init)
+
+@JvmName("newIntMultiArrayVararg")
+inline fun newIntMultiArray(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (IntArray) -> Int = { 0 }
+): IntMultiArray = newIntMultiArray(shape, zerobased, init)
+
+/* Boolean */
+
+inline fun newBooleanMultiArray(
+    shape: IntArray,
+    zerobased: Boolean = false,
+    init: (IntArray) -> Boolean = { false }
+): BooleanMultiArray = newMutableBooleanMultiArray(shape, zerobased, init)
+
+@JvmName("newBooleanMultiArrayVararg")
+inline fun newBooleanMultiArray(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (IntArray) -> Boolean = { false }
+): BooleanMultiArray = newBooleanMultiArray(shape, zerobased, init)

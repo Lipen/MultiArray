@@ -14,31 +14,26 @@ inline fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T)
 inline fun <T> MultiArray<T>.getOrElse_(index: IntArray, defaultValue: () -> T): T =
     if (index in indices) getAt(index) else defaultValue()
 
-inline fun <T> MultiArray<T>.fillBy(init: (IntArray) -> T) {
-    for (index in indices)
-        setAt(index, init(index))
-}
-
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
-    MultiArray.create(shape) { index -> transform(getAt(index)) }
+    newMultiArray(shape) { index -> transform(getAt(index)) }
 
 // Note: Implementation could be just `map(transform) as IntMultiArray`,
-// because `MultiArray.create` smartly dispatches over input type `T`,
+// because `newMultiArray` smartly dispatches over input type `T`,
 // and produces necessary `IntMultiArray` when `T` is `Int`.
 inline fun <T> MultiArray<T>.mapToInt(transform: (T) -> Int): IntMultiArray =
-    IntMultiArray.create(shape) { index -> transform(getAt(index)) }
+    newIntMultiArray(shape) { index -> transform(getAt(index)) }
 
 inline fun <T> MultiArray<T>.mapToBoolean(transform: (T) -> Boolean): BooleanMultiArray =
-    BooleanMultiArray.create(shape) { index -> transform(getAt(index)) }
+    newBooleanMultiArray(shape) { index -> transform(getAt(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MultiArray<R> =
-    MultiArray.create(shape) { index -> transform(index, getAt(index)) }
+    newMultiArray(shape) { index -> transform(index, getAt(index)) }
 
 inline fun <T> MultiArray<T>.mapIndexedToInt(transform: (IntArray, T) -> Int): IntMultiArray =
-    IntMultiArray.create(shape) { index -> transform(index, getAt(index)) }
+    newIntMultiArray(shape) { index -> transform(index, getAt(index)) }
 
 inline fun <T> MultiArray<T>.mapIndexedToBoolean(transform: (IntArray, T) -> Boolean): BooleanMultiArray =
-    BooleanMultiArray.create(shape) { index -> transform(index, getAt(index)) }
+    newBooleanMultiArray(shape) { index -> transform(index, getAt(index)) }
 
 fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
     indices.asSequence().zip(values.asSequence())

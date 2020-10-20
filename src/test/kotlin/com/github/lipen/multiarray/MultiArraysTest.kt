@@ -11,7 +11,7 @@ class MultiArraysTest {
 
     @Test
     fun `create empty MultiArray of Strings`() {
-        val array: MultiArray<String> = MultiArray.create { "" }
+        val array: MultiArray<String> = newMultiArray { "" }
         assertEquals(0, array.values.size)
         assertTrue(array.shape.isEmpty())
         assertTrue(array.values.isEmpty())
@@ -19,18 +19,27 @@ class MultiArraysTest {
 
     @Test
     fun `create filled MultiArray of Strings`() {
-        val array: MultiArray<String> =
-            MultiArray.create(2, 3) { (i, j) -> "($i,$j)" }
+        val array: MultiArray<String> = newMultiArray(2, 3) { (i, j) -> "($i,$j)" }
         assertEquals(6, array.values.size)
         assertArrayEquals(intArrayOf(2, 3), array.shape)
         assertEquals(listOf("(1,1)", "(1,2)", "(1,3)", "(2,1)", "(2,2)", "(2,3)"), array.values)
+    }
+
+    @Test
+    fun `mutate MutableMultiArray of Strings`() {
+        val array: MutableMultiArray<String> = newMutableMultiArray(2, 3) { (i, j) -> "$i-$j" }
+        array[1, 1] = "first"
+        array[1, 2] = "cat"
+        array[2, 1] = "dog"
+        array[2, 3] = "last"
+        assertEquals(listOf("first", "cat", "1-3", "dog", "2-2", "last"), array.values)
     }
 
     // IntMultiArray tests
 
     @Test
     fun `create empty IntMultiArray`() {
-        val array = IntMultiArray.create()
+        val array: IntMultiArray = newIntMultiArray()
         assertEquals(0, array.values.size)
         assertTrue(array.shape.isEmpty())
         assertTrue(array.values.isEmpty())
@@ -38,7 +47,7 @@ class MultiArraysTest {
 
     @Test
     fun `create filled IntMultiArray via array factory method`() {
-        val array = IntMultiArray.create(intArrayOf(6, 2, 4)) { (i, j, k) -> i + j + k }
+        val array: IntMultiArray = newIntMultiArray(intArrayOf(6, 2, 4)) { (i, j, k) -> i + j + k }
         assertEquals(48, array.values.size)
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
         assertEquals(sequence {
@@ -49,36 +58,53 @@ class MultiArraysTest {
 
     @Test
     fun `create filled IntMultiArray via vararg factory method`() {
-        val array: IntMultiArray =
-            IntMultiArray.create(3, 2) { (i, j) -> i + j }
+        val array: IntMultiArray = newIntMultiArray(3, 2) { (i, j) -> i + j }
         assertEquals(6, array.values.size)
         assertArrayEquals(intArrayOf(3, 2), array.shape)
         assertEquals(listOf(2, 3, 3, 4, 4, 5), array.values)
+    }
+
+    @Test
+    fun `mutate MutableIntMultiArray`() {
+        val array: MutableIntMultiArray = newMutableIntMultiArray(4, 2) { (i, j) -> i + j }
+        array[1, 1] = 0
+        array[1, 2] = 12
+        array[2, 1] = 21
+        array[4, 2] = 42
+        assertEquals(listOf(0, 12, 21, 4, 4, 5, 5, 42), array.values)
     }
 
     // BooleanMultiArray tests
 
     @Test
     fun `create empty BooleanMultiArray`() {
-        val array = BooleanMultiArray.create()
+        val array: BooleanMultiArray = newBooleanMultiArray()
         assertTrue(array.shape.isEmpty())
         assertTrue(array.values.isEmpty())
     }
 
     @Test
     fun `create filled BooleanMultiArray via array factory method`() {
-        val array: BooleanMultiArray =
-            BooleanMultiArray.create(intArrayOf(6, 2, 4)) { true }
+        val array: BooleanMultiArray = newBooleanMultiArray(intArrayOf(6, 2, 4)) { true }
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
         array.values.forEach { assertTrue(it) }
     }
 
     @Test
     fun `create filled BooleanMultiArray via vararg factory method`() {
-        val array: BooleanMultiArray =
-            BooleanMultiArray.create(4, 2) { (i, j) -> i == j }
+        val array: BooleanMultiArray = newBooleanMultiArray(4, 2) { (i, j) -> i == j }
         assertArrayEquals(intArrayOf(4, 2), array.shape)
         @Suppress("BooleanLiteralArgument")
         assertEquals(listOf(true, false, false, true, false, false, false, false), array.values)
     }
+
+    @Test
+    fun `mutate MutableBooleanMultiArray`() {
+        val array: MutableBooleanMultiArray = newMutableBooleanMultiArray(3, 2) { (i, j) -> i == j }
+        array[1, 1] = false
+        array[1, 2] = true
+        array[2, 1] = true
+        assertEquals(listOf(false, true, true, true, false, false), array.values)
+    }
+
 }
