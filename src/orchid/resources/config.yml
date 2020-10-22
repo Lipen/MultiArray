@@ -26,7 +26,7 @@ Editorial:
       node: 'packages'
       asSubmenu: true
       submenuTitle: 'Packages'
-p
+
 kotlindoc:
   sourceDirs:
     - './../../main/kotlin'
