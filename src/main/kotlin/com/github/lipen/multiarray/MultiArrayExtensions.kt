@@ -17,23 +17,8 @@ inline fun <T> MultiArray<T>.getOrElse_(index: IntArray, defaultValue: () -> T):
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
     newMultiArray(shape) { index -> transform(getAt(index)) }
 
-// Note: Implementation could be just `map(transform) as IntMultiArray`,
-// because `newMultiArray` smartly dispatches over input type `T`,
-// and produces necessary `IntMultiArray` when `T` is `Int`.
-inline fun <T> MultiArray<T>.mapToInt(transform: (T) -> Int): IntMultiArray =
-    newIntMultiArray(shape) { index -> transform(getAt(index)) }
-
-inline fun <T> MultiArray<T>.mapToBoolean(transform: (T) -> Boolean): BooleanMultiArray =
-    newBooleanMultiArray(shape) { index -> transform(getAt(index)) }
-
 inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MultiArray<R> =
     newMultiArray(shape) { index -> transform(index, getAt(index)) }
-
-inline fun <T> MultiArray<T>.mapIndexedToInt(transform: (IntArray, T) -> Int): IntMultiArray =
-    newIntMultiArray(shape) { index -> transform(index, getAt(index)) }
-
-inline fun <T> MultiArray<T>.mapIndexedToBoolean(transform: (IntArray, T) -> Boolean): BooleanMultiArray =
-    newBooleanMultiArray(shape) { index -> transform(index, getAt(index)) }
 
 fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
     indices.asSequence().zip(values.asSequence())

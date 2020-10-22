@@ -1,6 +1,8 @@
 package com.github.lipen.multiarray.internal
 
-internal interface WithOffset : WithDomains {
+internal interface Offset {
+    val domains: List<IntRange>
+
     fun offset(index: IntArray): Int
     fun offset(i: Int): Int
     fun offset(i: Int, j: Int): Int
@@ -14,16 +16,12 @@ internal interface WithOffset : WithDomains {
     fun unsafeIndex(offset: Int): IntArray
 }
 
-internal abstract class AbstractWithOffset(
-    val shape: IntArray,
-    withStrides: WithStrides
-) : WithOffset,
-    WithStrides by withStrides {
-
-    private val dims: Int = shape.size
+internal abstract class AbstractOffset(shape: IntArray) : Offset {
+    protected val strides: Strides = Strides(shape)
     private val offsetBounds: IntRange by lazy {
         0 until domains.map { it.last - it.first + 1 }.fold(1, Int::times)
     }
+    private val dims: Int = shape.size
 
     final override fun offset(index: IntArray): Int {
         checkIndex(index)
@@ -86,10 +84,7 @@ internal abstract class AbstractWithOffset(
     }
 }
 
-internal class WithOffsetImpl1(
-    shape: IntArray,
-    withStrides: WithStrides
-) : AbstractWithOffset(shape, withStrides) {
+internal class OffsetImpl1(shape: IntArray) : AbstractOffset(shape) {
     override val domains: List<IntRange> = shape.map { 1..it }
 
     override fun unsafeOffset(index: IntArray): Int = strides.offset1(index)
@@ -99,10 +94,7 @@ internal class WithOffsetImpl1(
     override fun unsafeIndex(offset: Int): IntArray = strides.index1(offset)
 }
 
-internal class WithOffsetImpl0(
-    shape: IntArray,
-    withStrides: WithStrides
-) : AbstractWithOffset(shape, withStrides) {
+internal class OffsetImpl0(shape: IntArray) : AbstractOffset(shape) {
     override val domains: List<IntRange> = shape.map { 0 until it }
 
     override fun unsafeOffset(index: IntArray): Int = strides.offset0(index)

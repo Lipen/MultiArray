@@ -1,7 +1,7 @@
 package com.github.lipen.multiarray.internal
 
 internal class Strides(shape: IntArray) {
-    val strides: IntArray =
+    private val strides: IntArray =
         if (shape.isEmpty())
             intArrayOf()
         else
