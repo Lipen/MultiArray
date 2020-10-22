@@ -15,10 +15,10 @@ inline fun <T> MultiArray<T>.getOrElse_(index: IntArray, defaultValue: () -> T):
     if (index in indices) getAt(index) else defaultValue()
 
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
-    newMultiArray(shape) { index -> transform(getAt(index)) }
+    MultiArray.new(shape) { index -> transform(getAt(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MultiArray<R> =
-    newMultiArray(shape) { index -> transform(index, getAt(index)) }
+    MultiArray.new(shape) { index -> transform(index, getAt(index)) }
 
 fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
     indices.asSequence().zip(values.asSequence())
