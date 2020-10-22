@@ -1,3 +1,5 @@
+@file:Suppress("FunctionName")
+
 package com.github.lipen.multiarray
 
 typealias IntMultiArray = MultiArray<Int>
@@ -7,7 +9,8 @@ interface MultiArray<out T> {
     val values: List<T>
     val shape: IntArray
     val domains: List<IntRange>
-    val indices: Set<IntArray>
+    val indices: Sequence<IntArray>
+    val indicesReversed: Sequence<IntArray>
 
     fun getAt(index: IntArray): T
     operator fun get(i: Int): T
@@ -21,106 +24,116 @@ interface MultiArray<out T> {
     companion object Factory {
         // Smart
 
-        inline fun <reified T> newUninitialized(
+        inline fun <reified T> newUninitialized_(
             shape: IntArray,
             zerobased: Boolean = false
-        ): MultiArray<T> = MutableMultiArray.newUninitialized(shape, zerobased)
+        ): MultiArray<T> = MutableMultiArray.newUninitialized_(shape, zerobased)
 
-        @JvmName("newUninitializedVararg")
-        inline fun <reified T> newUninitializedMultiArray(
+        inline fun <reified T> newUninitialized(
             vararg shape: Int,
             zerobased: Boolean = false
-        ): MultiArray<T> = newUninitialized(shape, zerobased)
+        ): MultiArray<T> = newUninitialized_(shape, zerobased)
 
-        inline fun <reified T> new(
+        inline fun <reified T> new_(
             shape: IntArray,
             zerobased: Boolean = false,
             init: (IntArray) -> T
         ): MultiArray<T> = MutableMultiArray.new(shape, zerobased, init)
 
-        @JvmName("newVararg")
         inline fun <reified T> new(
             vararg shape: Int,
             zerobased: Boolean = false,
             init: (IntArray) -> T
-        ): MultiArray<T> = new(shape, zerobased, init)
+        ): MultiArray<T> = new_(shape, zerobased, init)
 
         // Generic
 
-        inline fun <reified T> newGenericUninitialized(
+        fun <T> from(
+            data: Array<T>,
             shape: IntArray,
             zerobased: Boolean = false
-        ): MultiArray<T> = MutableMultiArray.newGenericUninitialized(shape, zerobased)
+        ): MultiArray<T> = MutableMultiArray.from(data, shape, zerobased)
 
-        @JvmName("newGenericVararg")
+        inline fun <reified T> newGenericUninitialized_(
+            shape: IntArray,
+            zerobased: Boolean = false
+        ): MultiArray<T> = MutableMultiArray.newGenericUninitialized_(shape, zerobased)
+
         inline fun <reified T> newGenericUninitialized(
             vararg shape: Int,
             zerobased: Boolean = false
-        ): MultiArray<T> = newGenericUninitialized(shape, zerobased)
+        ): MultiArray<T> = newGenericUninitialized_(shape, zerobased)
 
-        inline fun <reified T> newGeneric(
+        inline fun <reified T> newGeneric_(
             shape: IntArray,
             zerobased: Boolean = false,
             init: (IntArray) -> T
-        ): MultiArray<T> = MutableMultiArray.newGeneric(shape, zerobased, init)
+        ): MultiArray<T> = MutableMultiArray.newGeneric_(shape, zerobased, init)
 
-        @JvmName("newGenericVararg")
         inline fun <reified T> newGeneric(
             vararg shape: Int,
             zerobased: Boolean = false,
             init: (IntArray) -> T
-        ): MultiArray<T> = newGeneric(shape, zerobased, init)
+        ): MultiArray<T> = newGeneric_(shape, zerobased, init)
 
         // Int
 
-        fun newInt(
+        fun from(
+            data: IntArray,
             shape: IntArray,
             zerobased: Boolean = false
-        ): IntMultiArray = MutableMultiArray.newInt(shape, zerobased)
+        ): IntMultiArray = MutableMultiArray.from(data, shape, zerobased)
 
-        @JvmName("newIntVararg")
+        fun newInt_(
+            shape: IntArray,
+            zerobased: Boolean = false
+        ): IntMultiArray = MutableMultiArray.newInt_(shape, zerobased)
+
         fun newInt(
             vararg shape: Int,
             zerobased: Boolean = false
-        ): IntMultiArray = newInt(shape, zerobased)
+        ): IntMultiArray = newInt_(shape, zerobased)
 
-        inline fun newInt(
+        inline fun newInt_(
             shape: IntArray,
             zerobased: Boolean = false,
             init: (IntArray) -> Int
-        ): IntMultiArray = MutableMultiArray.newInt(shape, zerobased, init)
+        ): IntMultiArray = MutableMultiArray.newInt_(shape, zerobased, init)
 
-        @JvmName("newIntVararg")
         inline fun newInt(
             vararg shape: Int,
             zerobased: Boolean = false,
             init: (IntArray) -> Int
-        ): IntMultiArray = newInt(shape, zerobased, init)
+        ): IntMultiArray = newInt_(shape, zerobased, init)
 
         // Boolean
 
-        fun newBoolean(
+        fun from(
+            data: BooleanArray,
             shape: IntArray,
             zerobased: Boolean = false
-        ): BooleanMultiArray = MutableMultiArray.newBoolean(shape, zerobased)
+        ): BooleanMultiArray = MutableMultiArray.from(data, shape, zerobased)
 
-        @JvmName("newBooleanVararg")
+        fun newBoolean_(
+            shape: IntArray,
+            zerobased: Boolean = false
+        ): BooleanMultiArray = MutableMultiArray.newBoolean_(shape, zerobased)
+
         fun newBoolean(
             vararg shape: Int,
             zerobased: Boolean = false
-        ): BooleanMultiArray = newBoolean(shape, zerobased)
+        ): BooleanMultiArray = newBoolean_(shape, zerobased)
 
-        inline fun newBoolean(
+        inline fun newBoolean_(
             shape: IntArray,
             zerobased: Boolean = false,
             init: (IntArray) -> Boolean
-        ): BooleanMultiArray = MutableMultiArray.newBoolean(shape, zerobased, init)
+        ): BooleanMultiArray = MutableMultiArray.newBoolean_(shape, zerobased, init)
 
-        @JvmName("newBooleanVararg")
         inline fun newBoolean(
             vararg shape: Int,
             zerobased: Boolean = false,
             init: (IntArray) -> Boolean
-        ): BooleanMultiArray = newBoolean(shape, zerobased, init)
+        ): BooleanMultiArray = newBoolean_(shape, zerobased, init)
     }
 }

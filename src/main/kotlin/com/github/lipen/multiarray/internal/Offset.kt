@@ -3,57 +3,66 @@ package com.github.lipen.multiarray.internal
 internal interface Offset {
     val domains: List<IntRange>
 
+    fun index(offset: Int): IntArray
     fun offset(index: IntArray): Int
     fun offset(i: Int): Int
     fun offset(i: Int, j: Int): Int
     fun offset(i: Int, j: Int, k: Int): Int
-    fun index(offset: Int): IntArray
 
+    fun unsafeIndex(offset: Int): IntArray
     fun unsafeOffset(index: IntArray): Int
     fun unsafeOffset(i: Int): Int
     fun unsafeOffset(i: Int, j: Int): Int
     fun unsafeOffset(i: Int, j: Int, k: Int): Int
-    fun unsafeIndex(offset: Int): IntArray
 
     companion object {
-        fun from(shape: IntArray, zerobased: Boolean): Offset =
-            if (zerobased) from0(shape) else from1(shape)
-
-        fun from0(shape: IntArray): Offset = OffsetImpl0(shape)
-        fun from1(shape: IntArray): Offset = OffsetImpl1(shape)
+        fun from(shape: IntArray, zerobased: Boolean): Offset = OffsetImpl(shape, zerobased)
     }
 }
 
-private abstract class AbstractOffset(shape: IntArray) : Offset {
-    protected val strides: Strides = Strides(shape)
-    private val offsetBounds: IntRange by lazy {
-        0 until domains.map { it.last - it.first + 1 }.fold(1, Int::times)
-    }
+private class OffsetImpl(
+    shape: IntArray,
+    zerobased: Boolean
+) : Offset {
+    private val strides: Strides = Strides.from(shape, zerobased)
     private val dims: Int = shape.size
+    override val domains: List<IntRange> = strides.domains
+    private val offsetBounds: IntRange =
+        0 until domains.map { it.last - it.first + 1 }.fold(1, Int::times)
 
-    final override fun offset(index: IntArray): Int {
+    override fun unsafeIndex(offset: Int): IntArray = strides.index(offset)
+    override fun unsafeOffset(index: IntArray): Int = strides.offset(index)
+    override fun unsafeOffset(i: Int): Int = strides.offset(i)
+    override fun unsafeOffset(i: Int, j: Int): Int = strides.offset(i, j)
+    override fun unsafeOffset(i: Int, j: Int, k: Int): Int = strides.offset(i, j, k)
+
+    override fun index(offset: Int): IntArray {
+        checkOffset(offset)
+        return unsafeIndex(offset)
+    }
+
+    override fun offset(index: IntArray): Int {
         checkIndex(index)
         return unsafeOffset(index)
     }
 
-    final override fun offset(i: Int): Int {
+    override fun offset(i: Int): Int {
         checkIndex(i)
         return unsafeOffset(i)
     }
 
-    final override fun offset(i: Int, j: Int): Int {
+    override fun offset(i: Int, j: Int): Int {
         checkIndex(i, j)
         return unsafeOffset(i, j)
     }
 
-    final override fun offset(i: Int, j: Int, k: Int): Int {
+    override fun offset(i: Int, j: Int, k: Int): Int {
         checkIndex(i, j, k)
         return unsafeOffset(i, j, k)
     }
 
-    final override fun index(offset: Int): IntArray {
-        checkOffset(offset)
-        return unsafeIndex(offset)
+    private fun checkOffset(offset: Int) {
+        require(offset in offsetBounds) { "Offset $offset is out of bounds ($offsetBounds)" }
     }
 
     private fun checkIndex(index: IntArray) {
@@ -86,28 +95,4 @@ private abstract class AbstractOffset(shape: IntArray) : Offset {
         check(j in domains[1]) { "Index j = $j is out of bounds (${domains[1]})" }
         check(k in domains[2]) { "Index k = $k is out of bounds (${domains[2]})" }
     }
-
-    private fun checkOffset(offset: Int) {
-        require(offset in offsetBounds) { "Offset $offset is out of bounds ($offsetBounds)" }
-    }
-}
-
-private class OffsetImpl1(shape: IntArray) : AbstractOffset(shape) {
-    override val domains: List<IntRange> = shape.map { 1..it }
-
-    override fun unsafeOffset(index: IntArray): Int = strides.offset1(index)
-    override fun unsafeOffset(i: Int): Int = strides.offset1(i)
-    override fun unsafeOffset(i: Int, j: Int): Int = strides.offset1(i, j)
-    override fun unsafeOffset(i: Int, j: Int, k: Int): Int = strides.offset1(i, j, k)
-    override fun unsafeIndex(offset: Int): IntArray = strides.index1(offset)
-}
-
-private class OffsetImpl0(shape: IntArray) : AbstractOffset(shape) {
-    override val domains: List<IntRange> = shape.map { 0 until it }
-
-    override fun unsafeOffset(index: IntArray): Int = strides.offset0(index)
-    override fun unsafeOffset(i: Int): Int = strides.offset0(i)
-    override fun unsafeOffset(i: Int, j: Int): Int = strides.offset0(i, j)
-    override fun unsafeOffset(i: Int, j: Int, k: Int): Int = strides.offset0(i, j, k)
-    override fun unsafeIndex(offset: Int): IntArray = strides.index0(offset)
 }

@@ -32,7 +32,7 @@ internal interface Mutate<T> {
 }
 
 private abstract class AbstractMutate<T>(
-    final override val offsetDelegate: Offset
+    override val offsetDelegate: Offset
 ) : Mutate<T>
 
 private class MutateImplMutableList<T>(

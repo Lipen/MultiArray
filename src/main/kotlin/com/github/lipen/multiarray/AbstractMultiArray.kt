@@ -8,9 +8,10 @@ internal abstract class AbstractMultiArray<out T> internal constructor(
     private val offsetDelegate: Offset
 ) : MultiArray<T> {
     final override val domains: List<IntRange> = offsetDelegate.domains
-    final override val indices: Set<IntArray> by lazy {
-        values.indices.map { offsetDelegate.unsafeIndex(it) }.toSet()
-    }
+    final override val indices: Sequence<IntArray> =
+        values.indices.asSequence().map { offsetDelegate.unsafeIndex(it) }
+    final override val indicesReversed: Sequence<IntArray> =
+        values.indices.reversed().asSequence().map { offsetDelegate.unsafeIndex(it) }
 
     final override fun getAt(index: IntArray): T = values[offsetDelegate.offset(index)]
     final override operator fun get(i: Int): T = values[offsetDelegate.offset(i)]
