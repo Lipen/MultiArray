@@ -88,7 +88,7 @@ private abstract class AbstractOffset(shape: IntArray) : Offset {
     }
 
     private fun checkOffset(offset: Int) {
-        require(offset in offsetBounds) { "Offset $offset is out of bounds (${offsetBounds})" }
+        require(offset in offsetBounds) { "Offset $offset is out of bounds ($offsetBounds)" }
     }
 }
 

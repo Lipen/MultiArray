@@ -10,7 +10,7 @@ interface MutableMultiArray<T> : MultiArray<T> {
     operator fun set(vararg index: Int, value: T): Unit = setAt(index, value)
 }
 
-/// Smart
+// Smart
 
 @Suppress("UNCHECKED_CAST")
 inline fun <reified T> newUninitializedMutableMultiArray(
@@ -42,7 +42,7 @@ inline fun <reified T> newMutableMultiArray(
     init: (IntArray) -> T
 ): MutableMultiArray<T> = newMutableMultiArray(shape, zerobased, init)
 
-/// Generic
+// Generic
 
 fun <T> _newMutableGenericMultiArray(
     data: Array<T>,
@@ -81,7 +81,7 @@ inline fun <reified T> newMutableGenericMultiArray(
     init: (IntArray) -> T
 ): MutableMultiArray<T> = newMutableGenericMultiArray(shape, zerobased, init)
 
-/// Int
+// Int
 
 typealias MutableIntMultiArray = MutableMultiArray<Int>
 
@@ -120,7 +120,7 @@ inline fun newMutableIntMultiArray(
     init: (IntArray) -> Int
 ): MutableIntMultiArray = newMutableIntMultiArray(shape, zerobased, init)
 
-/// Boolean
+// Boolean
 
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>
 

@@ -16,7 +16,7 @@ interface MultiArray<out T> {
         error("This MultiArray cannot be converted to MutableMultiArray")
 }
 
-/// Smart
+// Smart
 
 inline fun <reified T> newUninitializedMultiArray(
     shape: IntArray,
@@ -42,7 +42,7 @@ inline fun <reified T> newMultiArray(
     init: (IntArray) -> T
 ): MultiArray<T> = newMultiArray(shape, zerobased, init)
 
-/// Generic
+// Generic
 
 inline fun <reified T> newUninitializedGenericMultiArray(
     shape: IntArray,
@@ -68,7 +68,7 @@ inline fun <reified T> newGenericMultiArray(
     init: (IntArray) -> T
 ): MultiArray<T> = newGenericMultiArray(shape, zerobased, init)
 
-/// Int
+// Int
 
 typealias IntMultiArray = MultiArray<Int>
 
@@ -96,7 +96,7 @@ inline fun newIntMultiArray(
     init: (IntArray) -> Int
 ): IntMultiArray = newIntMultiArray(shape, zerobased, init)
 
-/// Boolean
+// Boolean
 
 typealias BooleanMultiArray = MultiArray<Boolean>
 

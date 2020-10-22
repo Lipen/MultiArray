@@ -50,10 +50,13 @@ class MultiArraysTest {
         val array: IntMultiArray = newIntMultiArray(intArrayOf(6, 2, 4)) { (i, j, k) -> i + j + k }
         assertEquals(48, array.values.size)
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
-        assertEquals(sequence {
-            for (i in 1..6) for (j in 1..2) for (k in 1..4)
-                yield(i + j + k)
-        }.toList(), array.values)
+        assertEquals(
+            sequence {
+                for (i in 1..6) for (j in 1..2) for (k in 1..4)
+                    yield(i + j + k)
+            }.toList(),
+            array.values
+        )
     }
 
     @Test
@@ -106,5 +109,4 @@ class MultiArraysTest {
         array[2, 1] = true
         assertEquals(listOf(false, true, true, true, false, false), array.values)
     }
-
 }
