@@ -1,8 +1,5 @@
 package com.github.lipen.multiarray
 
-import com.github.lipen.multiarray.internal.MutateImplArray
-import com.github.lipen.multiarray.internal.MutateImplBooleanArray
-import com.github.lipen.multiarray.internal.MutateImplIntArray
 import com.github.lipen.multiarray.internal.reduceIfNotEmpty
 
 interface MutableMultiArray<T> : MultiArray<T> {
@@ -51,7 +48,7 @@ fun <T> _newMutableGenericMultiArray(
     data: Array<T>,
     shape: IntArray,
     zerobased: Boolean = false
-): MutableMultiArray<T> = _createMutableMultiArray(data.asList(), shape, zerobased) { MutateImplArray(data, it) }
+): MutableMultiArray<T> = _createMutableMultiArray(data, shape, zerobased)
 
 inline fun <reified T> newUninitializedMutableGenericMultiArray(
     shape: IntArray,
@@ -93,7 +90,7 @@ fun _newMutableIntMultiArray(
     shape: IntArray,
     zerobased: Boolean
 ): MutableIntMultiArray =
-    _createMutableMultiArray(data.asList(), shape, zerobased) { MutateImplIntArray(data, it) }
+    _createMutableMultiArray(data, shape, zerobased)
 
 fun newMutableIntMultiArray(
     shape: IntArray,
@@ -132,7 +129,7 @@ fun _newMutableBooleanMultiArray(
     shape: IntArray,
     zerobased: Boolean
 ): MutableBooleanMultiArray =
-    _createMutableMultiArray(data.asList(), shape, zerobased) { MutateImplBooleanArray(data, it) }
+    _createMutableMultiArray(data, shape, zerobased)
 
 fun newMutableBooleanMultiArray(
     shape: IntArray,

@@ -14,9 +14,17 @@ internal interface Offset {
     fun unsafeOffset(i: Int, j: Int): Int
     fun unsafeOffset(i: Int, j: Int, k: Int): Int
     fun unsafeIndex(offset: Int): IntArray
+
+    companion object {
+        fun from(shape: IntArray, zerobased: Boolean): Offset =
+            if (zerobased) from0(shape) else from1(shape)
+
+        fun from0(shape: IntArray): Offset = OffsetImpl0(shape)
+        fun from1(shape: IntArray): Offset = OffsetImpl1(shape)
+    }
 }
 
-internal abstract class AbstractOffset(shape: IntArray) : Offset {
+private abstract class AbstractOffset(shape: IntArray) : Offset {
     protected val strides: Strides = Strides(shape)
     private val offsetBounds: IntRange by lazy {
         0 until domains.map { it.last - it.first + 1 }.fold(1, Int::times)
@@ -84,7 +92,7 @@ internal abstract class AbstractOffset(shape: IntArray) : Offset {
     }
 }
 
-internal class OffsetImpl1(shape: IntArray) : AbstractOffset(shape) {
+private class OffsetImpl1(shape: IntArray) : AbstractOffset(shape) {
     override val domains: List<IntRange> = shape.map { 1..it }
 
     override fun unsafeOffset(index: IntArray): Int = strides.offset1(index)
@@ -94,7 +102,7 @@ internal class OffsetImpl1(shape: IntArray) : AbstractOffset(shape) {
     override fun unsafeIndex(offset: Int): IntArray = strides.index1(offset)
 }
 
-internal class OffsetImpl0(shape: IntArray) : AbstractOffset(shape) {
+private class OffsetImpl0(shape: IntArray) : AbstractOffset(shape) {
     override val domains: List<IntRange> = shape.map { 0 until it }
 
     override fun unsafeOffset(index: IntArray): Int = strides.offset0(index)

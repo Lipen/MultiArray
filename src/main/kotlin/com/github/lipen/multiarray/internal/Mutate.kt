@@ -7,13 +7,35 @@ internal interface Mutate<T> {
     operator fun set(i: Int, value: T)
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)
+
+    companion object {
+        fun <T> from(
+            data: MutableList<T>,
+            offsetDelegate: Offset
+        ): Mutate<T> = MutateImplMutableList(data, offsetDelegate)
+
+        fun <T> from(
+            data: Array<T>,
+            offsetDelegate: Offset
+        ): Mutate<T> = MutateImplArray(data, offsetDelegate)
+
+        fun from(
+            data: IntArray,
+            offsetDelegate: Offset
+        ): Mutate<Int> = MutateImplIntArray(data, offsetDelegate)
+
+        fun from(
+            data: BooleanArray,
+            offsetDelegate: Offset
+        ): Mutate<Boolean> = MutateImplBooleanArray(data, offsetDelegate)
+    }
 }
 
-internal abstract class AbstractMutate<T>(
+private abstract class AbstractMutate<T>(
     final override val offsetDelegate: Offset
 ) : Mutate<T>
 
-internal class MutateImplMutableList<T>(
+private class MutateImplMutableList<T>(
     private val data: MutableList<T>,
     offsetDelegate: Offset
 ) : AbstractMutate<T>(offsetDelegate) {
@@ -34,7 +56,7 @@ internal class MutateImplMutableList<T>(
     }
 }
 
-internal class MutateImplArray<T>(
+private class MutateImplArray<T>(
     private val data: Array<T>,
     offsetDelegate: Offset
 ) : AbstractMutate<T>(offsetDelegate) {
@@ -55,7 +77,7 @@ internal class MutateImplArray<T>(
     }
 }
 
-internal class MutateImplIntArray(
+private class MutateImplIntArray(
     private val data: IntArray,
     offsetDelegate: Offset
 ) : AbstractMutate<Int>(offsetDelegate) {
@@ -76,7 +98,7 @@ internal class MutateImplIntArray(
     }
 }
 
-internal class MutateImplBooleanArray(
+private class MutateImplBooleanArray(
     private val data: BooleanArray,
     offsetDelegate: Offset
 ) : AbstractMutate<Boolean>(offsetDelegate) {
