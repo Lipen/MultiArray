@@ -1,0 +1,19 @@
+{
+  "ownKey": "groovydoc",
+  "childrenPages": {"groovydoc": {
+    "ownKey": "groovydoc",
+    "ownPages": [{
+      "reference": {
+        "path": "groovydoc",
+        "baseUrl": "https://lipen.github.io/MultiArray",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://lipen.github.io/MultiArray/groovydoc"
+      },
+      "description": "",
+      "title": "",
+      "content": ""
+    }]
+  }}
+}

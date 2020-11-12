@@ -1,0 +1,4830 @@
+<!DOCTYPE HTML>
+<!--
+    Editorial by HTML5 UP
+    html5up.net | @ajlkn
+    Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+-->
+<html>
+<head>
+
+
+
+
+<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"/>
+<meta name="generator" content="Orchid 0.18.2-SNAPSHOT"/>
+<link rel="icon" href="https://lipen.github.io/MultiArray/favicon.ico">
+
+
+<meta name="robots" content="index, follow">
+
+
+
+<title>MultiArray</title>
+
+
+<meta name="description" content="Multidimensional array for Kotlin.">
+
+
+
+
+
+<script>
+    window.site = {"orchidVersion":"0.18.2-SNAPSHOT","baseUrl":"https://lipen.github.io/MultiArray","environment":"prod","version":"0.9.1-SNAPSHOT"};
+</script>
+
+
+
+
+    <!-- start:inject components -->
+    
+        
+            
+        
+    
+    <!-- end:inject components -->
+
+
+
+    <!-- start:inject components -->
+    
+    <!-- end:inject components -->
+
+
+
+
+
+<!-- start:inject styles -->
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/css/editorial_main.css"  />
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/css/editorial_orchidCustomizations.css"  />
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/assets/css/orchidSearch.css"  />
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/assets/css/orchidSourceDoc.css"  />
+<link rel="stylesheet" type="text/css" href="https://lipen.github.io/MultiArray/assets/css/orchidKotlindoc.css"  />
+<!-- end:inject styles -->
+
+</head>
+<body class="is-loading">
+
+
+<!-- Wrapper -->
+<div id="wrapper">
+
+    <!-- Main -->
+    <div id="main">
+        <div class="inner">
+
+            <!-- Header -->
+            
+                <header id="header">
+    <a href="https://lipen.github.io/MultiArray" class="logo">MultiArray</a>
+    <ul class="icons">
+    
+    
+        <li>
+            <a href="https://github.com/Lipen/MultiArray" class="icon fa-github">
+                <span class="label">github</span>
+            </a>
+        </li>
+    
+    
+    </ul>
+</header>
+            
+            
+            
+            
+                <section id="pageContent">
+                    <header class="major"><h2>MultiArray</h2></header>
+                    <article>
+                        
+    <!-- start:inject components -->
+    
+        
+            
+                
+                    
+                        <div class="sourcedoc-page orchid-sourcedoc content">
+  
+<div class="sourcedoc-section section-root section-level-1" id="MultiArray">
+
+
+  <h1 class="sourcedoc-section section-name">MultiArray</h1>
+  
+    <div class="sourcedoc-section section-element" id="3f52975fbe729de721c2b3803c4f59b7c1be09eb">
+      
+      <p class="sourcedoc-section section-signature">
+        <code>interface <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="fields">
+
+
+  <p class="sourcedoc-section section-name"><strong>Fields</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="234cd84df2698e26f9cdd459f6b1372eb238ff8b">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract values: List&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="3be0192a82c29d4dd267d37de3b06f84ee5bf367">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="5385c1307c4ba07530f903c374d729512b03ddb9">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract domains: List&lt;IntRange&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="eb656722ead8e8edc33ad87d869f906bfb0a80c6">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract indices: Sequence<IntArray>&lt;IntArray&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dcf1a5e3f8677fa8967b4f44207c84e2bafe41ac">
+        <td class="sourcedoc-section section-signature">
+          <code>abstract indicesReversed: Sequence<IntArray>&lt;IntArray&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="methods">
+
+
+  <h2 class="sourcedoc-section section-name">Methods</h2>
+  
+    <div class="sourcedoc-section section-element" id="3638eaaaa4520b16e76d97d6eed97a3054f7d70e">
+      
+      <h3 class="sourcedoc-section element-name">getAt</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract fun getAt(index: IntArray): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ae6d9dccd6c6bce71e457e0a9ef374139d732a78">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0ddedc0fe04237909b6420829189d195b9724be9">
+        <td class="sourcedoc-section section-signature">
+          <code>index: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8a9dcd716d0e224c1ffc88f00e9b5e5056276dfb">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="56c00532a487ba7f128b2e64a5ac0aaedc016cf1">
+      
+      <h3 class="sourcedoc-section element-name">get</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract operator fun get(i: Int): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b594c5ca205db5583b336c900eacf08bd5d6b02d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d35f5caf75f39375c089bc8f2b75b3595761128f">
+        <td class="sourcedoc-section section-signature">
+          <code>i: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b18d945e74941d01d757b4a8f34f69d40f612611">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="e02fbfbfe3a2b93536d24fcaf4b2ff52bd528456">
+      
+      <h3 class="sourcedoc-section element-name">get</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract operator fun get(i: Int, j: Int): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5d05a4ad73647320840de632828f4a18db55ed15">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d35f5caf75f39375c089bc8f2b75b3595761128f">
+        <td class="sourcedoc-section section-signature">
+          <code>i: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="248bbf909d01d473e89c0127253b6e0ea1b9b8a1">
+        <td class="sourcedoc-section section-signature">
+          <code>j: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8b2bf4d3599d525f3304e0d9b4b7137297872a02">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4f31cbbd1c57689b4a10f31cc1dfcb55f5577d86">
+      
+      <h3 class="sourcedoc-section element-name">get</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract operator fun get(i: Int, j: Int, k: Int): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="99d65e039229f5b6fc7faddf496b482b052c78d3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="d35f5caf75f39375c089bc8f2b75b3595761128f">
+        <td class="sourcedoc-section section-signature">
+          <code>i: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="248bbf909d01d473e89c0127253b6e0ea1b9b8a1">
+        <td class="sourcedoc-section section-signature">
+          <code>j: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="c2ae054e567a965a771fa01c084f76fffbae78a6">
+        <td class="sourcedoc-section section-signature">
+          <code>k: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cd1148d8d0d37edff20dedc1641110941553e199">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ab6f4a00a16759c1ae0911382004ecd6dad92c17">
+      
+      <h3 class="sourcedoc-section element-name">get</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>abstract operator fun get(vararg index: Int): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="72117a90ee91ca4303c6a8353c68112717984518">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="18db478cdf3a62a7b3eb6416dde4bd2de6975a9e">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg index: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="55b18ced165059c1731a959423bd38aa74f34c82">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9d44d5892da7fbc734622d145d7ff62f0662c869">
+      
+      <h3 class="sourcedoc-section element-name">asMut</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>open fun asMut(): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablemultiarray">MutableMultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ca4732e7167f7f85a078b90246a98d9b8c085cff">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0f36afca55e37f9f9836b6d258361590306bcdd0">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablemultiarray">MutableMultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="extensions">
+
+
+  <h2 class="sourcedoc-section section-name">Extensions</h2>
+  
+    <div class="sourcedoc-section section-element" id="f6f340d0c60a7068707140f67abd0fa97049a3bf">
+      
+      <h3 class="sourcedoc-section element-name">getOrDefault</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrDefault(vararg index: Int, defaultValue: T): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="456ae9c281b8db7a5470d1c604247341ffd09320">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d0690b376e1e472a108b7040a97670bcc2299439">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="18db478cdf3a62a7b3eb6416dde4bd2de6975a9e">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg index: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="28598d44cbe3481cb09759d6bcdad16eb20bfe02">
+        <td class="sourcedoc-section section-signature">
+          <code>defaultValue: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2ff1ab74cf40fe55ab364a6e125b5c1606815db2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f616668c477000e13feb9b005a689ec60da61319">
+      
+      <h3 class="sourcedoc-section element-name">getOrDefault_</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrDefault_(index: IntArray, defaultValue: T): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b311f71c5ec43726e376be11d3f82b673dc66aa8">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e07b54a3c21cdb05b7407a7c862a167fa8a3e513">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0ddedc0fe04237909b6420829189d195b9724be9">
+        <td class="sourcedoc-section section-signature">
+          <code>index: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="28598d44cbe3481cb09759d6bcdad16eb20bfe02">
+        <td class="sourcedoc-section section-signature">
+          <code>defaultValue: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d5c8afa45d4470e6e4554d4a48e59925f240e954">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bd8292da9279081e772ed1e6c4ff0de16fb49e6b">
+      
+      <h3 class="sourcedoc-section element-name">getOrNull</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrNull(vararg index: Int): T?</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="7006b85a50b85122994dbca0f6e175bbfe92ac36">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="75d9ebdfdaf69a351aaf17c914c33155093898e8">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="18db478cdf3a62a7b3eb6416dde4bd2de6975a9e">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg index: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f52a902683deb5ea12f587fad181e84b071ddd11">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="bcec94e8eb3de081de5e08d1443dd2983243293a">
+        <td class="sourcedoc-section section-signature">
+          <code>T?</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="05cb8e2a33f1096dc25e4181012999217f15fd6c">
+      
+      <h3 class="sourcedoc-section element-name">getOrNull_</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrNull_(index: IntArray): T?</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2008fc56b68d681d0d2c1d2c901c407c6a330ea4">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="d9587edf281b27980489cc7fa4f4f7bcebd6c01f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0ddedc0fe04237909b6420829189d195b9724be9">
+        <td class="sourcedoc-section section-signature">
+          <code>index: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="2c80cc79f2b54e1f3082563d483783af8d63e8aa">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="bcec94e8eb3de081de5e08d1443dd2983243293a">
+        <td class="sourcedoc-section section-signature">
+          <code>T?</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="01f78bc88c1905b46700cac0dc933f68cbbd4349">
+      
+      <h3 class="sourcedoc-section element-name">getOrElse</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrElse(vararg index: Int, defaultValue: ()-&gt;T): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="044cd8615caff0ef7a07579988b56e0e9a25da01">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="4df0d2083a50685bfae8f87063c1c331d90aadc7">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="18db478cdf3a62a7b3eb6416dde4bd2de6975a9e">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg index: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="e3e4e8c223fd7a8460a08207dc644e48acfb815b">
+        <td class="sourcedoc-section section-signature">
+          <code>defaultValue: ()-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="57db72339313be53e81281d90a1819f846ba3e6a">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="ba174ef7841c14a5f0acf7e2e0c8169cd8afa9fa">
+      
+      <h3 class="sourcedoc-section element-name">getOrElse_</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.getOrElse_(index: IntArray, defaultValue: ()-&gt;T): T</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="fad2b14c2ee7e0b2469f4604e6d2807fe571628e">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f84b3c8ddd31d97bf1e58b089333156898ffd7e5">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="0ddedc0fe04237909b6420829189d195b9724be9">
+        <td class="sourcedoc-section section-signature">
+          <code>index: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="e3e4e8c223fd7a8460a08207dc644e48acfb815b">
+        <td class="sourcedoc-section section-signature">
+          <code>defaultValue: ()-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="50090474d5d1a69e7ae958b0678a0dfd0b0d13e2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="c2c53d66948214258a26ca9ca845d7ac0c17f8e7">
+        <td class="sourcedoc-section section-signature">
+          <code>T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f4baaf285d5741645aa8e360e7717a28c813714f">
+      
+      <h3 class="sourcedoc-section element-name">map</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T, R&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.map(transform: (T)-&gt;R): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;R&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="79efe2db9181047d54775f39be34eed792f27774">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c1ca2d7d680c7859797e3b0895bb6564f604cb0b">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="9fa619bee8856ac1485ed40fdd1f34dadf0aa29a">
+        <td class="sourcedoc-section section-signature">
+          <code>transform: (T)-&gt;R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b23d8592f024cc6f963765c7ff5d8195816d4ca9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="721ac0faa1e51e912515a0cef0b189a5799e0a46">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;R&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d07d941a7c3f1b0c4a39d4a01b70cedd40164d2e">
+      
+      <h3 class="sourcedoc-section element-name">mapIndexed</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T, R&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.mapIndexed(transform: (IntArray, T)-&gt;R): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;R&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="0e2519bfa752a1bd949e39afeefcd20d59c279d5">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a34c3caece2997490028140605d56bdb2d1087c2">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="e9a30375030ed8a7d4aa3bb5e9809150cc2e0e6a">
+        <td class="sourcedoc-section section-signature">
+          <code>transform: (IntArray, T)-&gt;R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="60f6efa418b21fbc6c5d44b5b7a8cb225a3e61ad">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="721ac0faa1e51e912515a0cef0b189a5799e0a46">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;R&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="15b0d612fa704067d7e21af20c715efab08bea18">
+      
+      <h3 class="sourcedoc-section element-name">withIndex</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.withIndex(): Sequence<Pair<IntArray, T>>&lt;Pair<IntArray, T>&lt;IntArray, T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b1e09d5606dd3bacdba087e4b6943e417b6fa02c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="88e419fcb7ccc970f95c73a8be19168e5066cbb2">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35a228cc2e3ad52e4047d93acb7d5a8738ae8385">
+        <td class="sourcedoc-section section-signature">
+          <code>Sequence<Pair<IntArray, T>>&lt;Pair<IntArray, T>&lt;IntArray, T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="fe7312307231d75bbb58d3590547b7d3954c3aad">
+      
+      <h3 class="sourcedoc-section element-name">withIndexReversed</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.withIndexReversed(): Sequence<Pair<IntArray, T>>&lt;Pair<IntArray, T>&lt;IntArray, T&gt;&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b3aa1fd48238b2f034ab813d9fa4acf2c789ef68">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a01dcd0319ebda757dd7ca85e198d4027ff30e5f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="35a228cc2e3ad52e4047d93acb7d5a8738ae8385">
+        <td class="sourcedoc-section section-signature">
+          <code>Sequence<Pair<IntArray, T>>&lt;Pair<IntArray, T>&lt;IntArray, T&gt;&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="63f14519c8442469deb5644939ffb9ae30b8d6ba">
+      
+      <h3 class="sourcedoc-section element-name">indexOf</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T : Any&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.indexOf(element: T): IntArray</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="63293ee405c5ab32d4c8994ee08428c2b8be7413">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1d4ea2bbf084640b4d9118800803c57f0f1a25d8">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="1a323677d440ff8bb88b380d122f0f4d33955a77">
+        <td class="sourcedoc-section section-signature">
+          <code>element: T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b3c85893617ad2176edd99fd4ff0f12b87f2a570">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4e1eee767ff111b716b2cc9473b02ef4802f7fa3">
+        <td class="sourcedoc-section section-signature">
+          <code>IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="70bf1b93639b023334736fb20acf58c184e1ec38">
+      
+      <h3 class="sourcedoc-section element-name">indexOfFirst</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T : Any&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.indexOfFirst(predicate: (T)-&gt;Boolean): IntArray</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="1d2cc1cf0ec5ab9b2fc95a8ad9c30ee6ad812b70">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="5eba68ec3b26f21f0b6fbf053726070e03b59578">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b1ad2437a2d236f8883d09c5d75b9128d9950cfd">
+        <td class="sourcedoc-section section-signature">
+          <code>predicate: (T)-&gt;Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="870a2b824e54fd32a8cdd147e0c2a44edc847882">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4e1eee767ff111b716b2cc9473b02ef4802f7fa3">
+        <td class="sourcedoc-section section-signature">
+          <code>IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="877c9c5a7ed3894351d63a421847c00768744955">
+      
+      <h3 class="sourcedoc-section element-name">indexOfLast</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T : Any&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.indexOfLast(predicate: (T)-&gt;Boolean): IntArray</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="e4d0f2abaf28ecd263dda3ec17e20f2d8fb15d14">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="c1102bf87d5d7af63769ecda4eff286a891ee88a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="b1ad2437a2d236f8883d09c5d75b9128d9950cfd">
+        <td class="sourcedoc-section section-signature">
+          <code>predicate: (T)-&gt;Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="a8c6acc538bba56151dea4e05a0b1ccc305b39b9">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="4e1eee767ff111b716b2cc9473b02ef4802f7fa3">
+        <td class="sourcedoc-section section-signature">
+          <code>IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a6822768e7afb111bad4407097c4f74ae30d7f7f">
+      
+      <h3 class="sourcedoc-section element-name">foldIndexed</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T, R&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.foldIndexed(initial: R, operation: (IntArray, R, T)-&gt;R): R</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="3d63eeae12b5d89befeac062c836b1d249953c36">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="75912df0dd9571c9b9088627f7807db4a0157551">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="bcccbe074620da46c945313369e7c9058ad44c17">
+        <td class="sourcedoc-section section-signature">
+          <code>initial: R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a3a7e768a062e711240d2e0d890f26df2886d643">
+        <td class="sourcedoc-section section-signature">
+          <code>operation: (IntArray, R, T)-&gt;R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="f0625a321bc9b45361325fbdc892c1b4a475ad6f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06576556d1ad802f247cad11ae748be47b70cd9c">
+        <td class="sourcedoc-section section-signature">
+          <code>R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7902ed6d45836b2f0683e236f13ab1af89895357">
+      
+      <h3 class="sourcedoc-section element-name">foldRightIndexed</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T, R&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.foldRightIndexed(initial: R, operation: (IntArray, T, R)-&gt;R): R</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="cd2be7ef976c3230db442aa541219ef8718ff965">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="8bebf87cba5427d4fc7139c9e9b0711134c1aa3d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="bcccbe074620da46c945313369e7c9058ad44c17">
+        <td class="sourcedoc-section section-signature">
+          <code>initial: R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="dc41751319dff31fc9dd3baff1a6a2cda756bdd1">
+        <td class="sourcedoc-section section-signature">
+          <code>operation: (IntArray, T, R)-&gt;R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="ef76692a7531b30b6a83f85d77efc11ceafff21d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="06576556d1ad802f247cad11ae748be47b70cd9c">
+        <td class="sourcedoc-section section-signature">
+          <code>R</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="9cbf190ad4f4771a0c1a335e5d19bb35c9be3fea">
+      
+      <h3 class="sourcedoc-section element-name">forEachIndexed</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;.forEachIndexed(action: (IntArray, T)-&gt;Unit)</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="efc8810e7157b0226cfc34179e7c9884d3d3d203">
+
+
+  <p class="sourcedoc-section section-name"><strong>Receiver</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="36cb386e59c5eed1042b5c1abd96b776d3707592">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="621219b45e1c305b34e0dd1d39d7f06615605df3">
+        <td class="sourcedoc-section section-signature">
+          <code>action: (IntArray, T)-&gt;Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b9001be063248cc67b921a634eed21770ea03a30">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f6b935ab337145efdeadda28cae18aa89a845e36">
+        <td class="sourcedoc-section section-signature">
+          <code>Unit</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-2" id="companionObject">
+
+
+  <h2 class="sourcedoc-section section-name">CompanionObject</h2>
+  
+    <div class="sourcedoc-section section-element" id="3f52975fbe729de721c2b3803c4f59b7c1be09eb">
+      
+      <h3 class="sourcedoc-section element-name">MultiArray</h3>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>interface <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-3" id="b32c3198ad67ab60b382ff154f755e8548c1d2d3">
+
+
+  <h3 class="sourcedoc-section section-name">Methods</h3>
+  
+    <div class="sourcedoc-section section-element" id="13cd4d4f9e1c94b93910dfcb668b4cae47322994">
+      
+      <h4 class="sourcedoc-section element-name">newUninitialized_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; newUninitialized_(shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="8f3e8da4725c4153fa0ab54d71ecd967b460ef84">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="4469748a79a1d2797937163fdec64eeb152fb3e7">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="bca09e4c10fc7c9efaca3dc54a6049a70cccf9ac">
+      
+      <h4 class="sourcedoc-section element-name">newUninitialized</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; newUninitialized(vararg shape: Int, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="d2ee4270b87d2304117812d474400618cdae6cb3">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="5bcbe33f0c9da80214d8cdaa420357e2a89c4e4d">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="4fa382cf116ce276887e19888f33a8e9c0089aa0">
+      
+      <h4 class="sourcedoc-section element-name">new_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; new_(shape: IntArray, zerobased: Boolean, init: (IntArray)-&gt;T): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="4a1a64e987c0d76b1ac0e2401dac5a9ef3589864">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="99e73f26688f73c49e626423df56708c7d68e503">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="f0fec42ecc5d8e82e71b49a098c3dbf7734b7b13">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8ab724e5ed6e53fd26954186534a1f82a52af035">
+      
+      <h4 class="sourcedoc-section element-name">new</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; new(vararg shape: Int, zerobased: Boolean, init: (IntArray)-&gt;T): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="ff98ee4e41b9768edbff33d38f55bd716e4a6f83">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="99e73f26688f73c49e626423df56708c7d68e503">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="44a3a9731ac6a1964ccbcb118b46ae338d4d1f0f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2f3eff35443fbcf358e0e116fc209c81c2fcfa97">
+      
+      <h4 class="sourcedoc-section element-name">from</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; from(data: Array&lt;T&gt;, shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="e84f15a2a989b7484765dfced720f200cbc2f62c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="a0d512a12a0f1999bce218ea53f1512db4e1931b">
+        <td class="sourcedoc-section section-signature">
+          <code>data: Array&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="bb9c17b11a5a14edf210fd27c83d4e9ac9ab76da">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="8608a8b568a717ff101052d6dcea34a2a3441d5f">
+      
+      <h4 class="sourcedoc-section element-name">from</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun from(data: IntArray, shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="ba1b27c561a5d0e7e5fda7312a80a70013939f78">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="92e92284c511b7003cfb2181a3be6083ccbacbbb">
+        <td class="sourcedoc-section section-signature">
+          <code>data: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="ba3d8a79e18c035de2f57035e13bf7d2fe5ef68f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="859a92261a82471cf73a1645b1de8abff1e0774d">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0f6460f5c2d3a61c35658c9661d366a9f3189277">
+      
+      <h4 class="sourcedoc-section element-name">from</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun from(data: BooleanArray, shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="de04ab476d5d6a484712122f415350faf4501b05">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="da934b3f9b225eb2caa8ad767f5d77a989056b8f">
+        <td class="sourcedoc-section section-signature">
+          <code>data: BooleanArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="e4b53fe2043fdd9b0745ae1fb0c3c43fcf2407b8">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7f7da9ab00d3d68ef3e4d01491eb65469f8d880c">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0c0bf28e4b789450dce733e47fab0b152ed538a2">
+      
+      <h4 class="sourcedoc-section element-name">newGenericUninitialized_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; newGenericUninitialized_(shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="52c2e7541057cd15b14bc07c4acef4e3c69e9f26">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="d87813141179baec2a8442161162f946b2fa689c">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f6143234c5a86a39671779cd66fdc31de1213d50">
+      
+      <h4 class="sourcedoc-section element-name">newGenericUninitialized</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun &lt;T&gt; newGenericUninitialized(vararg shape: Int, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="041117506d01cd2692749e737b753e4fea00a630">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="11b934c1cfe247e34f12c0d6adc84e952ed04c18">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="b0faeecb205b553ddfacb38df026e39d82c1140d">
+      
+      <h4 class="sourcedoc-section element-name">newGeneric_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; newGeneric_(shape: IntArray, zerobased: Boolean, init: (IntArray)-&gt;T): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="650f8b08b52ef3587a6dde4e421a06f5a22b3189">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="99e73f26688f73c49e626423df56708c7d68e503">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="823b40f9d1a3d0a4e1a83d9580cf0205641fbc94">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="f7ffe5a957e338225c33d4cb7381143a4a30ad36">
+      
+      <h4 class="sourcedoc-section element-name">newGeneric</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun &lt;T&gt; newGeneric(vararg shape: Int, zerobased: Boolean, init: (IntArray)-&gt;T): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="147fa5c71657a2c1e50115c3880f615cad1f8c91">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="99e73f26688f73c49e626423df56708c7d68e503">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;T</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="225b2a9c4c0db6ec68260c993c89377c9412b97f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="3d3f6c9015805e2283b9f8f0f41a99ba0337e86e">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>&lt;T&gt;</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="0a08e5efd3f55ae5e5a8903eac73034ffdd02793">
+      
+      <h4 class="sourcedoc-section element-name">newInt_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun newInt_(shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="98c506b9c62572d1f418db86729884c7ac12839f">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="c98fe31c396db37a6812dc83469fde1c9d67ed8b">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="859a92261a82471cf73a1645b1de8abff1e0774d">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="11efe1245ed071d6574ab2caec71f6dfdedaff65">
+      
+      <h4 class="sourcedoc-section element-name">newInt_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun newInt_(shape: IntArray, zerobased: Boolean, init: (IntArray)-&gt;Int): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="c54cac3f2422c74e5552197e74549589a676c305">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a01828a10637d8e3076a0d9701f8781991c08822">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="9ffead154ce02b565b8f9c701c2676078110abd0">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="859a92261a82471cf73a1645b1de8abff1e0774d">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="be1b574e9cf21ffcb905e4a93aa5965e759be58b">
+      
+      <h4 class="sourcedoc-section element-name">newInt</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun newInt(vararg shape: Int, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="dd3ed6a98093d4a8fc566359d143e23dcf0f5bf6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="8138608d610c1f20dc01197f0f1df1cabdbcbe4f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="859a92261a82471cf73a1645b1de8abff1e0774d">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="a0cb68d253ea18b0f0f5124541f1111c920255b6">
+      
+      <h4 class="sourcedoc-section element-name">newInt</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun newInt(vararg shape: Int, zerobased: Boolean, init: (IntArray)-&gt;Int): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="cd7cf0e0535916101efd9726fdaa3c35e3efd60a">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="a01828a10637d8e3076a0d9701f8781991c08822">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="ee600489818377682d1ced4a161e9128c3d5c702">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="859a92261a82471cf73a1645b1de8abff1e0774d">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="d19f6a1f5f04eb210435264f37a2b483f33261af">
+      
+      <h4 class="sourcedoc-section element-name">newBoolean_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun newBoolean_(shape: IntArray, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="0c6db801fb3878a12cf8d00135f22b06ee6e91d6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="5794b0587e6542b908b0e918ee561fabd68133f6">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7f7da9ab00d3d68ef3e4d01491eb65469f8d880c">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="7cd75aaa08bdc8caaa5d942bf0627678a3471ac9">
+      
+      <h4 class="sourcedoc-section element-name">newBoolean_</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun newBoolean_(shape: IntArray, zerobased: Boolean, init: (IntArray)-&gt;Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="3438b90811c08ea0e3f1ceab099496f6391ec07d">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="90c513a86ee7294edd93945a3ad4037e5a0aa281">
+        <td class="sourcedoc-section section-signature">
+          <code>shape: IntArray</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="67a199e21a401c77f105e293b8f6ab2edd0811fd">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="1bb4dc3c7d454a4152d697aa91ee2ec367e62d23">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7f7da9ab00d3d68ef3e4d01491eb65469f8d880c">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="2c114d5435deb0fcb578af4f96adb36df96bca71">
+      
+      <h4 class="sourcedoc-section element-name">newBoolean</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>fun newBoolean(vararg shape: Int, zerobased: Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="67d6100d7dfc8380ed77cdce9ecea62f84563d0c">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="87d9afab2c5e6011f7798bcd5edab0d2de3a59cc">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7f7da9ab00d3d68ef3e4d01491eb65469f8d880c">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+    <div class="sourcedoc-section section-element" id="1bd129a98dc47a12502e8f2dc67915b9cf203c9f">
+      
+      <h4 class="sourcedoc-section element-name">newBoolean</h4>
+      
+      <p class="sourcedoc-section section-signature">
+        <code>inline fun newBoolean(vararg shape: Int, zerobased: Boolean, init: (IntArray)-&gt;Boolean): <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+      </p>
+      <div class="sourcedoc-section section-comments"></div>
+
+      
+      
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="5a4689743fb2065f94a74273ce63d53d959b8bd6">
+
+
+  <p class="sourcedoc-section section-name"><strong>Parameters</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="f96fb44c9c2b77a7877f7a5f25458aafa25cb18b">
+        <td class="sourcedoc-section section-signature">
+          <code>vararg shape: Int</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="b005fd47afc5d70f88cde952977c017fb637bd43">
+        <td class="sourcedoc-section section-signature">
+          <code>zerobased: Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      <tr class="sourcedoc-section section-element" id="67a199e21a401c77f105e293b8f6ab2edd0811fd">
+        <td class="sourcedoc-section section-signature">
+          <code>init: (IntArray)-&gt;Boolean</code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+          
+<div class="sourcedoc-section section-root section-level-4" id="b8cefe75e68baf35f97740ff4bde8385cbbed48f">
+
+
+  <p class="sourcedoc-section section-name"><strong>ReturnValue</strong></p>
+
+  <div class="table-container">
+    <table class="table is-fullwidth is-bordered">
+      <thead>
+      <tr>
+        <th>Name</th>
+        <th>Description</th>
+      </tr>
+      </thead>
+      <tbody>
+      
+      <tr class="sourcedoc-section section-element" id="7f7da9ab00d3d68ef3e4d01491eb65469f8d880c">
+        <td class="sourcedoc-section section-signature">
+          <code><a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a></code>
+        </td>
+        <td class="sourcedoc-section section-comments content">
+        
+        </td>
+      </tr>
+      
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+        
+      
+    </div>
+  
+
+</div>
+
+</div>
+
+
+
+
+
+
+                    
+                
+            
+        
+    
+    <!-- end:inject components -->
+
+
+                    </article>
+                </section>
+            
+        </div>
+        <hr>
+
+        <!-- Page Footer -->
+        <div class="inner">
+    <footer id="footer">
+        <div class="clearfix">
+            
+            
+        </div>
+    </footer>
+</div>
+
+    </div>
+
+    <!-- Sidebar -->
+    <div id="sidebar">
+    <div class="inner">
+
+        <!-- Search -->
+        <section id="search" class="alt">
+            <form data-orchid-search="">
+                <input type="text" name="query" id="query" placeholder="Search"/>
+            </form>
+            <div class="box" id="search-results" data-orchid-search-results style="display: none;">
+                <b>Search Results</b>
+                <ul></ul>
+            </div>
+            <div class="box" id="search-progress" data-orchid-search-progress style="display: none;">
+                <div class="loader">Loading...</div>
+            </div>
+        </section>
+
+        <!-- Menu -->
+        <nav id="siteNav" class="menu">
+            <header class="major">
+                <h2>MultiArray</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    
+    <li>
+        <a class="subheader">Wiki</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/wiki/installation">Installation</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/wiki/usage">Usage</a>
+    </li>
+    
+
+                
+                    
+    
+    <li>
+        <a class="subheader">API Docs</a>
+    </li>
+    
+
+                
+                    
+    <li>
+        <span class="opener">Classes</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray">BooleanMultiArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray">IntMultiArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray">MultiArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablebooleanmultiarray">MutableBooleanMultiArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutableintmultiarray">MutableIntMultiArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablemultiarray">MutableMultiArray</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Packages</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray">com.github.lipen.multiarray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/internal">com.github.lipen.multiarray.internal</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+        <nav class="menu">
+            <header class="major">
+                <h2>MultiArray</h2>
+            </header>
+            <ul class="top-level">
+                
+                    
+    <li>
+        <span class="opener">Fields</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#234cd84df2698e26f9cdd459f6b1372eb238ff8b">abstract values: List&lt;T&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#3be0192a82c29d4dd267d37de3b06f84ee5bf367">abstract shape: IntArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#5385c1307c4ba07530f903c374d729512b03ddb9">abstract domains: List&lt;IntRange&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#eb656722ead8e8edc33ad87d869f906bfb0a80c6">abstract indices: Sequence&lt;IntArray&gt;&lt;IntArray&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#dcf1a5e3f8677fa8967b4f44207c84e2bafe41ac">abstract indicesReversed: Sequence&lt;IntArray&gt;&lt;IntArray&gt;</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Methods</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#3638eaaaa4520b16e76d97d6eed97a3054f7d70e">abstract fun getAt(index: IntArray): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#56c00532a487ba7f128b2e64a5ac0aaedc016cf1">abstract operator fun get(i: Int): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#e02fbfbfe3a2b93536d24fcaf4b2ff52bd528456">abstract operator fun get(i: Int, j: Int): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#4f31cbbd1c57689b4a10f31cc1dfcb55f5577d86">abstract operator fun get(i: Int, j: Int, k: Int): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#ab6f4a00a16759c1ae0911382004ecd6dad92c17">abstract operator fun get(vararg index: Int): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#9d44d5892da7fbc734622d145d7ff62f0662c869">open fun asMut(): MutableMultiArray&lt;T&gt;</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">Extensions</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#f6f340d0c60a7068707140f67abd0fa97049a3bf">fun &lt;T&gt; MultiArray&lt;T&gt;.getOrDefault(vararg index: Int, defaultValue: T): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#f616668c477000e13feb9b005a689ec60da61319">fun &lt;T&gt; MultiArray&lt;T&gt;.getOrDefault_(index: IntArray, defaultValue: T): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#bd8292da9279081e772ed1e6c4ff0de16fb49e6b">fun &lt;T&gt; MultiArray&lt;T&gt;.getOrNull(vararg index: Int): T?</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#05cb8e2a33f1096dc25e4181012999217f15fd6c">fun &lt;T&gt; MultiArray&lt;T&gt;.getOrNull_(index: IntArray): T?</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#01f78bc88c1905b46700cac0dc933f68cbbd4349">inline fun &lt;T&gt; MultiArray&lt;T&gt;.getOrElse(vararg index: Int, defaultValue: ()-&gt;T): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#ba174ef7841c14a5f0acf7e2e0c8169cd8afa9fa">inline fun &lt;T&gt; MultiArray&lt;T&gt;.getOrElse_(index: IntArray, defaultValue: ()-&gt;T): T</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#f4baaf285d5741645aa8e360e7717a28c813714f">inline fun &lt;T, R&gt; MultiArray&lt;T&gt;.map(transform: (T)-&gt;R): MultiArray&lt;R&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#d07d941a7c3f1b0c4a39d4a01b70cedd40164d2e">inline fun &lt;T, R&gt; MultiArray&lt;T&gt;.mapIndexed(transform: (IntArray, T)-&gt;R): MultiArray&lt;R&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#15b0d612fa704067d7e21af20c715efab08bea18">fun &lt;T&gt; MultiArray&lt;T&gt;.withIndex(): Sequence&lt;Pair&lt;IntArray, T&gt;&gt;&lt;Pair&lt;IntArray, T&gt;&lt;IntArray, T&gt;&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#fe7312307231d75bbb58d3590547b7d3954c3aad">fun &lt;T&gt; MultiArray&lt;T&gt;.withIndexReversed(): Sequence&lt;Pair&lt;IntArray, T&gt;&gt;&lt;Pair&lt;IntArray, T&gt;&lt;IntArray, T&gt;&gt;</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#63f14519c8442469deb5644939ffb9ae30b8d6ba">fun &lt;T : Any&gt; MultiArray&lt;T&gt;.indexOf(element: T): IntArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#70bf1b93639b023334736fb20acf58c184e1ec38">inline fun &lt;T : Any&gt; MultiArray&lt;T&gt;.indexOfFirst(predicate: (T)-&gt;Boolean): IntArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#877c9c5a7ed3894351d63a421847c00768744955">inline fun &lt;T : Any&gt; MultiArray&lt;T&gt;.indexOfLast(predicate: (T)-&gt;Boolean): IntArray</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#a6822768e7afb111bad4407097c4f74ae30d7f7f">inline fun &lt;T, R&gt; MultiArray&lt;T&gt;.foldIndexed(initial: R, operation: (IntArray, R, T)-&gt;R): R</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#7902ed6d45836b2f0683e236f13ab1af89895357">inline fun &lt;T, R&gt; MultiArray&lt;T&gt;.foldRightIndexed(initial: R, operation: (IntArray, T, R)-&gt;R): R</a>
+    </li>
+    
+
+        
+            
+    
+    <li>
+        <a href="#9cbf190ad4f4771a0c1a335e5d19bb35c9be3fea">fun &lt;T&gt; MultiArray&lt;T&gt;.forEachIndexed(action: (IntArray, T)-&gt;Unit)</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+                    
+    <li>
+        <span class="opener">CompanionObject</span>
+        <ul>
+        
+            
+    
+    <li>
+        <a href="#3f52975fbe729de721c2b3803c4f59b7c1be09eb">interface MultiArray</a>
+    </li>
+    
+
+        
+        </ul>
+    </li>
+
+                
+            </ul>
+        </nav>
+        
+
+        <!-- Section -->
+        <section>
+            <p class="text-center">
+                Currently 0.9.1-SNAPSHOT. Created with <a href="https://orchid.run">Orchid </a> and <b>Orchid Editorial Theme</b>.
+            </p>
+        </section>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <p class="copyright text-center">&copy; MultiArray. All rights reserved.<br>Design by <a href="https://html5up.net">HTML5 UP</a></p>
+        </footer>
+
+    </div>
+</div>
+
+</div>
+
+<!-- start:inject scripts -->
+<script  src="https://lipen.github.io/MultiArray/Editorial/5f4196df/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script  src="https://lipen.github.io/MultiArray/Editorial/5f4196df/ajax/libs/skel/3.0.1/skel.min.js"></script>
+<script  src="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/js/editorial_util.js"></script>
+<script  src="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/js/editorial_main.js"></script>
+<script  src="https://lipen.github.io/MultiArray/Editorial/5f4196df/assets/js/editorial_orchidCustomizations.js"></script>
+<script  src="https://lipen.github.io/MultiArray/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script  src="https://lipen.github.io/MultiArray/lunr/lunr.js"></script>
+<script  src="https://lipen.github.io/MultiArray/assets/js/orchidSearch.js"></script>
+<!-- end:inject scripts -->
+
+</body>
+</html>

@@ -1,0 +1,69 @@
+{
+  "ownKey": "wiki",
+  "childrenPages": {"wiki": {
+    "ownKey": "wiki",
+    "childrenPages": {
+      "installation": {
+        "ownKey": "installation",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://lipen.github.io/MultiArray",
+            "fileName": "installation",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://lipen.github.io/MultiArray/wiki/installation"
+          },
+          "next": {
+            "path": "wiki",
+            "baseUrl": "https://lipen.github.io/MultiArray",
+            "fileName": "usage",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://lipen.github.io/MultiArray/wiki/usage"
+          },
+          "description": "",
+          "title": "Installation",
+          "content": "<p>Using Gradle Kotlin DSL:<\/p>\n<pre><code class=\"language-kotlin\">dependencies {\n    implementation(&quot;com.github.Lipen:MultiArray:$multiarrayVersion&quot;)\n}\n<\/code><\/pre>\n"
+        }]
+      },
+      "usage": {
+        "ownKey": "usage",
+        "ownPages": [{
+          "reference": {
+            "path": "wiki",
+            "baseUrl": "https://lipen.github.io/MultiArray",
+            "fileName": "usage",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://lipen.github.io/MultiArray/wiki/usage"
+          },
+          "previous": {
+            "path": "wiki",
+            "baseUrl": "https://lipen.github.io/MultiArray",
+            "fileName": "installation",
+            "extension": "html",
+            "usePrettyUrl": true,
+            "link": "https://lipen.github.io/MultiArray/wiki/installation"
+          },
+          "description": "",
+          "title": "Usage",
+          "content": "<ul>\n<li>\n<p>Multidimensional array of arbitrary type (e.g. <code>String<\/code>):<\/p>\n<pre><code class=\"language-kotlin\">val array: MultiArray&lt;String&gt; = MultiArray.create(2, 3) { (i, j) -&gt; &quot;[$i,$j]&quot; }\n<\/code><\/pre>\n<\/li>\n<li>\n<p>Multidimensional array of <code>Int<\/code>s:<\/p>\n<pre><code class=\"language-kotlin\">val array = IntMultiArray.create(3, 2) { (i, j) -&gt; 10*i + j }\n<\/code><\/pre>\n<\/li>\n<\/ul>\n"
+        }]
+      }
+    },
+    "ownPages": [{
+      "reference": {
+        "path": "",
+        "baseUrl": "https://lipen.github.io/MultiArray",
+        "fileName": "wiki",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://lipen.github.io/MultiArray/wiki"
+      },
+      "description": "",
+      "title": "Wiki",
+      "content": "<html>\n <head><\/head>\n <body>\n  <ul> \n   <li><a href=\"https://lipen.github.io/MultiArray/wiki/installation\">Installation<\/a><\/li> \n   <li><a href=\"https://lipen.github.io/MultiArray/wiki/usage\">Usage<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+    }]
+  }}
+}

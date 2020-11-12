@@ -1,0 +1,302 @@
+{
+  "ownKey": "index",
+  "childrenPages": {
+    "javadoc": {
+      "ownKey": "javadoc",
+      "ownPages": [{
+        "reference": {
+          "path": "javadoc",
+          "baseUrl": "https://lipen.github.io/MultiArray",
+          "fileName": "",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://lipen.github.io/MultiArray/javadoc"
+        },
+        "description": "",
+        "title": "",
+        "content": ""
+      }]
+    },
+    "kotlindoc": {
+      "ownKey": "kotlindoc",
+      "childrenPages": {"com": {
+        "ownKey": "com",
+        "childrenPages": {"github": {
+          "ownKey": "github",
+          "childrenPages": {"lipen": {
+            "ownKey": "lipen",
+            "childrenPages": {"multiarray": {
+              "ownKey": "multiarray",
+              "childrenPages": {
+                "internal": {
+                  "ownKey": "internal",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/internal",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/internal"
+                    },
+                    "description": "",
+                    "title": "com.github.lipen.multiarray.internal",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "intmultiarray": {
+                  "ownKey": "intmultiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/intmultiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/intmultiarray"
+                    },
+                    "description": "",
+                    "title": "IntMultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "multiarray": {
+                  "ownKey": "multiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/multiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/multiarray"
+                    },
+                    "description": "",
+                    "title": "MultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "mutableintmultiarray": {
+                  "ownKey": "mutableintmultiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/mutableintmultiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutableintmultiarray"
+                    },
+                    "description": "",
+                    "title": "MutableIntMultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "mutablemultiarray": {
+                  "ownKey": "mutablemultiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/mutablemultiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablemultiarray"
+                    },
+                    "description": "",
+                    "title": "MutableMultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "mutablebooleanmultiarray": {
+                  "ownKey": "mutablebooleanmultiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/mutablebooleanmultiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/mutablebooleanmultiarray"
+                    },
+                    "description": "",
+                    "title": "MutableBooleanMultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                },
+                "booleanmultiarray": {
+                  "ownKey": "booleanmultiarray",
+                  "ownPages": [{
+                    "reference": {
+                      "path": "kotlindoc",
+                      "baseUrl": "https://lipen.github.io/MultiArray",
+                      "fileName": "com/github/lipen/multiarray/booleanmultiarray",
+                      "extension": "html",
+                      "usePrettyUrl": true,
+                      "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray/booleanmultiarray"
+                    },
+                    "description": "",
+                    "title": "BooleanMultiArray",
+                    "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+                  }]
+                }
+              },
+              "ownPages": [{
+                "reference": {
+                  "path": "kotlindoc",
+                  "baseUrl": "https://lipen.github.io/MultiArray",
+                  "fileName": "com/github/lipen/multiarray",
+                  "extension": "html",
+                  "usePrettyUrl": true,
+                  "link": "https://lipen.github.io/MultiArray/kotlindoc/com/github/lipen/multiarray"
+                },
+                "description": "",
+                "title": "com.github.lipen.multiarray",
+                "content": "<p>CommentComponent(kind=text, text=, value=null)<\/p>\n"
+              }]
+            }}
+          }}
+        }}
+      }},
+      "ownPages": [{
+        "reference": {
+          "path": "kotlindoc",
+          "baseUrl": "https://lipen.github.io/MultiArray",
+          "fileName": "",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://lipen.github.io/MultiArray/kotlindoc"
+        },
+        "description": "",
+        "title": "README",
+        "content": "<div class=\"paragraph\">\n<p><span class=\"image\"><a class=\"image\" href=\"https://travis-ci.com/Lipen/MultiArray\"><img src=\"https://travis-ci.com/Lipen/MultiArray.svg\" alt=\"Build Status\"><\/a><\/span>\n<span class=\"image\"><a class=\"image\" href=\"https://jitpack.io/p/Lipen/MultiArray\"><img src=\"https://jitpack.io/v/Lipen/MultiArray.svg\" alt=\"JitPack\"><\/a><\/span>\n<span class=\"image\"><a class=\"image\" href=\"https://hitsofcode.com/view/github/Lipen/MultiArray\"><img src=\"https://hitsofcode.com/github/Lipen/MultiArray\" alt=\"Hits-of-Code\"><\/a><\/span><\/p>\n<\/div>\n<div class=\"paragraph\">\n<p>Multidimensional array for Kotlin inspired by <a href=\"https://github.com/altavir/kmath\">kmath<\/a> and <a href=\"https://github.com/JetBrains-Research/viktor\">victor<\/a> libraries.<\/p>\n<\/div>"
+      }]
+    },
+    "wiki": {
+      "ownKey": "wiki",
+      "childrenPages": {
+        "installation": {
+          "ownKey": "installation",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://lipen.github.io/MultiArray",
+              "fileName": "installation",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://lipen.github.io/MultiArray/wiki/installation"
+            },
+            "next": {
+              "path": "wiki",
+              "baseUrl": "https://lipen.github.io/MultiArray",
+              "fileName": "usage",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://lipen.github.io/MultiArray/wiki/usage"
+            },
+            "description": "",
+            "title": "Installation",
+            "content": "<p>Using Gradle Kotlin DSL:<\/p>\n<pre><code class=\"language-kotlin\">dependencies {\n    implementation(&quot;com.github.Lipen:MultiArray:$multiarrayVersion&quot;)\n}\n<\/code><\/pre>\n"
+          }]
+        },
+        "usage": {
+          "ownKey": "usage",
+          "ownPages": [{
+            "reference": {
+              "path": "wiki",
+              "baseUrl": "https://lipen.github.io/MultiArray",
+              "fileName": "usage",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://lipen.github.io/MultiArray/wiki/usage"
+            },
+            "previous": {
+              "path": "wiki",
+              "baseUrl": "https://lipen.github.io/MultiArray",
+              "fileName": "installation",
+              "extension": "html",
+              "usePrettyUrl": true,
+              "link": "https://lipen.github.io/MultiArray/wiki/installation"
+            },
+            "description": "",
+            "title": "Usage",
+            "content": "<ul>\n<li>\n<p>Multidimensional array of arbitrary type (e.g. <code>String<\/code>):<\/p>\n<pre><code class=\"language-kotlin\">val array: MultiArray&lt;String&gt; = MultiArray.create(2, 3) { (i, j) -&gt; &quot;[$i,$j]&quot; }\n<\/code><\/pre>\n<\/li>\n<li>\n<p>Multidimensional array of <code>Int<\/code>s:<\/p>\n<pre><code class=\"language-kotlin\">val array = IntMultiArray.create(3, 2) { (i, j) -&gt; 10*i + j }\n<\/code><\/pre>\n<\/li>\n<\/ul>\n"
+          }]
+        }
+      },
+      "ownPages": [{
+        "reference": {
+          "path": "",
+          "baseUrl": "https://lipen.github.io/MultiArray",
+          "fileName": "wiki",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://lipen.github.io/MultiArray/wiki"
+        },
+        "description": "",
+        "title": "Wiki",
+        "content": "<html>\n <head><\/head>\n <body>\n  <ul> \n   <li><a href=\"https://lipen.github.io/MultiArray/wiki/installation\">Installation<\/a><\/li> \n   <li><a href=\"https://lipen.github.io/MultiArray/wiki/usage\">Usage<\/a><\/li> \n  <\/ul> \n <\/body>\n<\/html>\n"
+      }]
+    },
+    "swiftdoc": {
+      "ownKey": "swiftdoc",
+      "ownPages": [{
+        "reference": {
+          "path": "swiftdoc",
+          "baseUrl": "https://lipen.github.io/MultiArray",
+          "fileName": "",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://lipen.github.io/MultiArray/swiftdoc"
+        },
+        "description": "",
+        "title": "",
+        "content": ""
+      }]
+    },
+    "groovydoc": {
+      "ownKey": "groovydoc",
+      "ownPages": [{
+        "reference": {
+          "path": "groovydoc",
+          "baseUrl": "https://lipen.github.io/MultiArray",
+          "fileName": "",
+          "extension": "html",
+          "usePrettyUrl": true,
+          "link": "https://lipen.github.io/MultiArray/groovydoc"
+        },
+        "description": "",
+        "title": "",
+        "content": ""
+      }]
+    }
+  },
+  "ownPages": [
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://lipen.github.io/MultiArray",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://lipen.github.io/MultiArray"
+      },
+      "description": "",
+      "title": "Home",
+      "content": ""
+    },
+    {
+      "reference": {
+        "path": "",
+        "baseUrl": "https://lipen.github.io/MultiArray",
+        "fileName": "404",
+        "extension": "html",
+        "usePrettyUrl": false,
+        "link": "https://lipen.github.io/MultiArray/404.html"
+      },
+      "description": "",
+      "title": "Not Found",
+      "content": ""
+    }
+  ]
+}

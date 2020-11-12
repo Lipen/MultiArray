@@ -1,0 +1,19 @@
+{
+  "ownKey": "swiftdoc",
+  "childrenPages": {"swiftdoc": {
+    "ownKey": "swiftdoc",
+    "ownPages": [{
+      "reference": {
+        "path": "swiftdoc",
+        "baseUrl": "https://lipen.github.io/MultiArray",
+        "fileName": "",
+        "extension": "html",
+        "usePrettyUrl": true,
+        "link": "https://lipen.github.io/MultiArray/swiftdoc"
+      },
+      "description": "",
+      "title": "",
+      "content": ""
+    }]
+  }}
+}
