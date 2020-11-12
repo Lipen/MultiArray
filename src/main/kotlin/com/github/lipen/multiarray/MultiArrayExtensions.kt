@@ -56,3 +56,7 @@ inline fun <T, R> MultiArray<T>.foldRightIndexed(
         accumulator = operation(index, element, accumulator)
     return accumulator
 }
+
+fun <T> MultiArray<T>.forEachIndexed(action: (IntArray, T) -> Unit) {
+    withIndex().forEach { (index, value) -> action(index, value) }
+}
