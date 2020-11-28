@@ -1,7 +1,7 @@
 rootProject.name = "MultiArray"
 
 plugins {
-    id("com.gradle.enterprise") version "3.1.1"
+    id("com.gradle.enterprise") version "3.5"
 }
 
 gradleEnterprise {

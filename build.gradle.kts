@@ -1,17 +1,16 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat
 import org.gradle.api.tasks.testing.logging.TestLogEvent
-import org.jetbrains.dokka.gradle.DokkaTask
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
-group = "com.github.lipen"
+group = "com.github.Lipen"
 
 plugins {
     kotlin("jvm") version Versions.kotlin
+    idea
     `maven-publish`
-    id("org.jlleitschuh.gradle.ktlint") version Versions.ktlint
-    id("com.github.ben-manes.versions") version Versions.gradle_versions
-    id("fr.brouillard.oss.gradle.jgitver") version Versions.jgitver
-    id("org.jetbrains.dokka") version Versions.dokka
-    id("com.eden.orchidPlugin") version Versions.orchid
+    with(Plugins.Kotlinter) { id(id) version (version) }
+    with(Plugins.GradleVersions) { id(id) version (version) }
+    with(Plugins.Jgitver) { id(id) version (version) }
 }
 
 repositories {
@@ -21,83 +20,66 @@ repositories {
 dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
-    testImplementation(Libs.junit_jupiter_api)
-    testRuntimeOnly(Libs.junit_jupiter_engine)
-
-    orchidRuntimeOnly(Libs.orchid_all)
+    testImplementation(Libs.JUnit.jupiter_api)
+    testRuntimeOnly(Libs.JUnit.jupiter_engine)
+    testImplementation(Libs.Kluent.kluent)
 }
 
-val sourcesJar by tasks.creating(Jar::class) {
-    archiveClassifier.set("sources")
-    from(sourceSets.main.get().allSource)
+tasks.withType<KotlinCompile> {
+    kotlinOptions.jvmTarget = "1.8"
 }
 
-val dokkaJavadoc by tasks.creating(DokkaTask::class) {
-    outputFormat = "javadoc"
-    outputDirectory = "$buildDir/dokkaJavadoc"
-}
-
-val dokkaJavadocJar by tasks.creating(Jar::class) {
-    archiveClassifier.set("javadoc")
-    from(dokkaJavadoc)
-}
-
-publishing {
-    publications.create<MavenPublication>("maven") {
-        from(components["java"])
-        artifact(sourcesJar)
-        artifact(dokkaJavadocJar)
-    }
-    repositories {
-        maven(url = "$buildDir/repository")
-    }
-}
-
-ktlint {
-    ignoreFailures.set(true)
-}
-
-jgitver {
-    strategy("MAVEN")
-}
-
-orchid {
-    theme = "Editorial"
-    args = listOf("--experimentalSourceDoc")
-
-    if (findProperty("env") == "prod") {
-        baseUrl = "https://lipen.github.io/MultiArray"
-        environment = "prod"
-    }
-
-    githubToken = System.getenv("GITHUB_TOKEN")
-}
-
-tasks {
-    withType<KotlinCompile> {
-        kotlinOptions.jvmTarget = "1.8"
-    }
-
-    withType<Test> {
-        @Suppress("UnstableApiUsage")
-        useJUnitPlatform()
-        testLogging.events(
+tasks.withType<Test> {
+    useJUnitPlatform()
+    testLogging {
+        showExceptions = true
+        showStandardStreams = true
+        exceptionFormat = TestExceptionFormat.FULL
+        events(
             TestLogEvent.PASSED,
             TestLogEvent.FAILED,
             TestLogEvent.SKIPPED,
             TestLogEvent.STANDARD_ERROR
         )
     }
+}
 
-    dokka {
-        outputFormat = "html"
-        outputDirectory = "$buildDir/dokkaHtml"
-    }
+kotlinter {
+    ignoreFailures = true
+    experimentalRules = true
+    disabledRules = arrayOf("import-ordering")
+}
 
-    wrapper {
-        gradleVersion = "6.7"
-        distributionType = Wrapper.DistributionType.ALL
+java {
+    @Suppress("UnstableApiUsage")
+    withSourcesJar()
+}
+
+publishing {
+    publications {
+        create<MavenPublication>("maven") {
+            from(components["java"])
+        }
     }
+    repositories {
+        maven(url = "$buildDir/repository")
+    }
+}
+
+idea {
+    module {
+        isDownloadSources = true
+        isDownloadJavadoc = true
+    }
+}
+
+jgitver {
+    strategy("MAVEN")
+}
+
+tasks.wrapper {
+    gradleVersion = "6.7.1"
+    distributionType = Wrapper.DistributionType.ALL
 }
 
 defaultTasks("clean", "build")
