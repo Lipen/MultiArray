@@ -17,15 +17,16 @@ internal interface Strides {
 
 private abstract class AbstractStrides(shape: IntArray) : Strides {
     protected val strides: IntArray =
-        if (shape.isEmpty())
+        if (shape.isEmpty()) {
             intArrayOf()
-        else
+        } else {
             IntArray(shape.size).apply {
                 this[lastIndex] = 1
                 for (i in lastIndex - 1 downTo 0) {
                     this[i] = this[i + 1] * shape[i + 1]
                 }
             }
+        }
 }
 
 private class StridesImpl1(shape: IntArray) : AbstractStrides(shape) {

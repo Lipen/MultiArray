@@ -5,7 +5,7 @@ import com.github.lipen.multiarray.internal.Offset
 internal abstract class AbstractMultiArray<out T> internal constructor(
     final override val shape: IntArray,
     final override val values: List<T>,
-    private val offsetDelegate: Offset
+    private val offsetDelegate: Offset,
 ) : MultiArray<T> {
     final override val domains: List<IntRange> = offsetDelegate.domains
     final override val indices: Sequence<IntArray> =

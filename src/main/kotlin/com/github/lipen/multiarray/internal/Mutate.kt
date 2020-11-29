@@ -11,33 +11,33 @@ internal interface Mutate<T> {
     companion object {
         fun <T> from(
             data: MutableList<T>,
-            offsetDelegate: Offset
+            offsetDelegate: Offset,
         ): Mutate<T> = MutateImplMutableList(data, offsetDelegate)
 
         fun <T> from(
             data: Array<T>,
-            offsetDelegate: Offset
+            offsetDelegate: Offset,
         ): Mutate<T> = MutateImplArray(data, offsetDelegate)
 
         fun from(
             data: IntArray,
-            offsetDelegate: Offset
+            offsetDelegate: Offset,
         ): Mutate<Int> = MutateImplIntArray(data, offsetDelegate)
 
         fun from(
             data: BooleanArray,
-            offsetDelegate: Offset
+            offsetDelegate: Offset,
         ): Mutate<Boolean> = MutateImplBooleanArray(data, offsetDelegate)
     }
 }
 
 private abstract class AbstractMutate<T>(
-    override val offsetDelegate: Offset
+    override val offsetDelegate: Offset,
 ) : Mutate<T>
 
 private class MutateImplMutableList<T>(
     private val data: MutableList<T>,
-    offsetDelegate: Offset
+    offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
     override fun setAt(index: IntArray, value: T) {
         data[offsetDelegate.offset(index)] = value
@@ -58,7 +58,7 @@ private class MutateImplMutableList<T>(
 
 private class MutateImplArray<T>(
     private val data: Array<T>,
-    offsetDelegate: Offset
+    offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
     override fun setAt(index: IntArray, value: T) {
         data[offsetDelegate.offset(index)] = value
@@ -79,7 +79,7 @@ private class MutateImplArray<T>(
 
 private class MutateImplIntArray(
     private val data: IntArray,
-    offsetDelegate: Offset
+    offsetDelegate: Offset,
 ) : AbstractMutate<Int>(offsetDelegate) {
     override fun setAt(index: IntArray, value: Int) {
         data[offsetDelegate.offset(index)] = value
@@ -100,7 +100,7 @@ private class MutateImplIntArray(
 
 private class MutateImplBooleanArray(
     private val data: BooleanArray,
-    offsetDelegate: Offset
+    offsetDelegate: Offset,
 ) : AbstractMutate<Boolean>(offsetDelegate) {
     override fun setAt(index: IntArray, value: Boolean) {
         data[offsetDelegate.offset(index)] = value

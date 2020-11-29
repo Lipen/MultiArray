@@ -5,7 +5,7 @@ import com.github.lipen.multiarray.internal.Mutate
 internal abstract class AbstractMutableMultiArray<T> internal constructor(
     shape: IntArray,
     values: List<T>,
-    private val mutateDelegate: Mutate<T>
+    private val mutateDelegate: Mutate<T>,
 ) : MutableMultiArray<T>, AbstractMultiArray<T>(shape, values, mutateDelegate.offsetDelegate) {
     final override fun setAt(index: IntArray, value: T): Unit = mutateDelegate.setAt(index, value)
     final override fun set(i: Int, value: T): Unit = mutateDelegate.set(i, value)

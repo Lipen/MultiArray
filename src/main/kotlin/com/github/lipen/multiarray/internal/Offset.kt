@@ -22,7 +22,7 @@ internal interface Offset {
 
 private class OffsetImpl(
     shape: IntArray,
-    zerobased: Boolean
+    zerobased: Boolean,
 ) : Offset {
     private val strides: Strides = Strides.from(shape, zerobased)
     private val dims: Int = shape.size

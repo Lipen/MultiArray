@@ -9,11 +9,11 @@ private class MutableMultiArrayImpl<T>(
     mutateDelegate: Mutate<T>,
 ) : AbstractMutableMultiArray<T>(shape, values, mutateDelegate)
 
-private fun <T> _createMutableMultiArray(
+private inline fun <T> _createMutableMultiArray(
     values: List<T>,
     shape: IntArray,
     zerobased: Boolean,
-    mutateForOffset: (Offset) -> Mutate<T>
+    mutateForOffset: (Offset) -> Mutate<T>,
 ): MutableMultiArray<T> {
     val offsetDelegate: Offset = Offset.from(shape, zerobased)
     val mutateDelegate: Mutate<T> = mutateForOffset(offsetDelegate)
@@ -23,27 +23,31 @@ private fun <T> _createMutableMultiArray(
 internal fun <T> _createMutableMultiArray(
     data: MutableList<T>,
     shape: IntArray,
-    zerobased: Boolean
-): MutableMultiArray<T> =
-    _createMutableMultiArray(data, shape, zerobased) { Mutate.from(data, it) }
+    zerobased: Boolean,
+): MutableMultiArray<T> {
+    return _createMutableMultiArray(data, shape, zerobased) { Mutate.from(data, it) }
+}
 
 internal fun <T> _createMutableMultiArray(
     data: Array<T>,
     shape: IntArray,
-    zerobased: Boolean
-): MutableMultiArray<T> =
-    _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+    zerobased: Boolean,
+): MutableMultiArray<T> {
+    return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+}
 
 internal fun _createMutableMultiArray(
     data: IntArray,
     shape: IntArray,
-    zerobased: Boolean
-): MutableMultiArray<Int> =
-    _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+    zerobased: Boolean,
+): MutableMultiArray<Int> {
+    return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+}
 
 internal fun _createMutableMultiArray(
     data: BooleanArray,
     shape: IntArray,
-    zerobased: Boolean
-): MutableMultiArray<Boolean> =
-    _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+    zerobased: Boolean,
+): MutableMultiArray<Boolean> {
+    return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
+}
