@@ -18,4 +18,8 @@ internal abstract class AbstractMultiArray<out T> internal constructor(
     final override operator fun get(i: Int, j: Int): T = values[offsetDelegate.offset(i, j)]
     final override operator fun get(i: Int, j: Int, k: Int): T = values[offsetDelegate.offset(i, j, k)]
     final override operator fun get(vararg index: Int): T = getAt(index)
+
+    final override fun toString(): String {
+        return "MultiArray(shape = ${shape.asList()}, values = $values)"
+    }
 }

@@ -6,12 +6,8 @@ import com.github.lipen.multiarray.internal.Offset
 private class MutableMultiArrayImpl<T>(
     values: List<T>,
     shape: IntArray,
-    mutateDelegate: Mutate<T>
-) : AbstractMutableMultiArray<T>(shape, values, mutateDelegate) {
-    override fun toString(): String {
-        return "MultiArray(shape = ${shape.asList()}, values = $values)"
-    }
-}
+    mutateDelegate: Mutate<T>,
+) : AbstractMutableMultiArray<T>(shape, values, mutateDelegate)
 
 private fun <T> _createMutableMultiArray(
     values: List<T>,
