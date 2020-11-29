@@ -8,9 +8,9 @@ plugins {
     kotlin("jvm") version Versions.kotlin
     idea
     `maven-publish`
-    with(Plugins.Kotlinter) { id(id) version (version) }
-    with(Plugins.GradleVersions) { id(id) version (version) }
-    with(Plugins.Jgitver) { id(id) version (version) }
+    with(Plugins.Kotlinter) { id(id) version version }
+    with(Plugins.GradleVersions) { id(id) version version }
+    with(Plugins.Jgitver) { id(id) version version }
 }
 
 repositories {
