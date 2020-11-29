@@ -18,7 +18,21 @@ class MultiArraysTest {
     }
 
     @Test
-    fun `create filled MultiArray of Strings`() {
+    fun `create filled MultiArray of Strings via array factory method`() {
+        val array: MultiArray<String> = MultiArray.new(intArrayOf(6, 2, 4)) { (i, j, k) -> "($i,$j,$k)" }
+        assertEquals(48, array.values.size)
+        assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
+        assertEquals(
+            sequence {
+                for (i in 1..6) for (j in 1..2) for (k in 1..4)
+                    yield("($i,$j,$k)")
+            }.toList(),
+            array.values
+        )
+    }
+
+    @Test
+    fun `create filled MultiArray of Strings via vararg factory method`() {
         val array: MultiArray<String> = MultiArray.new(2, 3) { (i, j) -> "($i,$j)" }
         assertEquals(6, array.values.size)
         assertArrayEquals(intArrayOf(2, 3), array.shape)
@@ -47,7 +61,7 @@ class MultiArraysTest {
 
     @Test
     fun `create filled IntMultiArray via array factory method`() {
-        val array: IntMultiArray = MultiArray.newInt(6, 2, 4) { (i, j, k) -> i + j + k }
+        val array: IntMultiArray = MultiArray.newInt(intArrayOf(6, 2, 4)) { (i, j, k) -> i + j + k }
         assertEquals(48, array.values.size)
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
         assertEquals(
@@ -88,7 +102,7 @@ class MultiArraysTest {
 
     @Test
     fun `create filled BooleanMultiArray via array factory method`() {
-        val array: BooleanMultiArray = MultiArray.newBoolean(6, 2, 4) { true }
+        val array: BooleanMultiArray = MultiArray.newBoolean(intArrayOf(6, 2, 4)) { true }
         assertArrayEquals(intArrayOf(6, 2, 4), array.shape)
         array.values.forEach { assertTrue(it) }
     }
