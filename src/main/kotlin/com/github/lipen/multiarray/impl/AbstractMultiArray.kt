@@ -1,13 +1,15 @@
-package com.github.lipen.multiarray
+package com.github.lipen.multiarray.impl
 
+import com.github.lipen.multiarray.MultiArray
 import com.github.lipen.multiarray.internal.Offset
 
-internal abstract class AbstractMultiArray<out T> internal constructor(
+abstract class AbstractMultiArray<out T>(
     final override val shape: IntArray,
     final override val values: List<T>,
     private val offsetDelegate: Offset,
 ) : MultiArray<T> {
-    final override val domains: List<IntRange> = offsetDelegate.domains
+    final override val domains: List<IntRange> =
+        offsetDelegate.domains
     final override val indices: Sequence<IntArray> =
         values.indices.asSequence().map { offsetDelegate.unsafeIndex(it) }
     final override val indicesReversed: Sequence<IntArray> =
@@ -19,7 +21,7 @@ internal abstract class AbstractMultiArray<out T> internal constructor(
     final override operator fun get(i: Int, j: Int, k: Int): T = values[offsetDelegate.offset(i, j, k)]
     final override operator fun get(vararg index: Int): T = getAt(index)
 
-    final override fun toString(): String {
+    override fun toString(): String {
         return "MultiArray(shape = ${shape.asList()}, values = $values)"
     }
 }

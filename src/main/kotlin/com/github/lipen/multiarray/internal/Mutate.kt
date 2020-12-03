@@ -1,6 +1,6 @@
 package com.github.lipen.multiarray.internal
 
-internal interface Mutate<T> {
+interface Mutate<T> {
     val offsetDelegate: Offset
 
     fun setAt(index: IntArray, value: T)
@@ -31,11 +31,11 @@ internal interface Mutate<T> {
     }
 }
 
-private abstract class AbstractMutate<T>(
-    override val offsetDelegate: Offset,
+abstract class AbstractMutate<T>(
+    final override val offsetDelegate: Offset,
 ) : Mutate<T>
 
-private class MutateImplMutableList<T>(
+class MutateImplMutableList<T>(
     private val data: MutableList<T>,
     offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
@@ -56,7 +56,7 @@ private class MutateImplMutableList<T>(
     }
 }
 
-private class MutateImplArray<T>(
+class MutateImplArray<T>(
     private val data: Array<T>,
     offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
@@ -77,7 +77,7 @@ private class MutateImplArray<T>(
     }
 }
 
-private class MutateImplIntArray(
+class MutateImplIntArray(
     private val data: IntArray,
     offsetDelegate: Offset,
 ) : AbstractMutate<Int>(offsetDelegate) {
@@ -98,7 +98,7 @@ private class MutateImplIntArray(
     }
 }
 
-private class MutateImplBooleanArray(
+class MutateImplBooleanArray(
     private val data: BooleanArray,
     offsetDelegate: Offset,
 ) : AbstractMutate<Boolean>(offsetDelegate) {

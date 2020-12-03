@@ -1,6 +1,6 @@
 package com.github.lipen.multiarray.internal
 
-internal interface Offset {
+interface Offset {
     val domains: List<IntRange>
 
     fun index(offset: Int): IntArray

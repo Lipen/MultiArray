@@ -1,6 +1,6 @@
 package com.github.lipen.multiarray.internal
 
-internal interface Strides {
+interface Strides {
     val domains: List<IntRange>
 
     fun offset(index: IntArray): Int
@@ -15,7 +15,7 @@ internal interface Strides {
     }
 }
 
-private abstract class AbstractStrides(shape: IntArray) : Strides {
+abstract class AbstractStrides(shape: IntArray) : Strides {
     protected val strides: IntArray =
         if (shape.isEmpty()) {
             intArrayOf()

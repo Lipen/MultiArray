@@ -1,5 +1,8 @@
-package com.github.lipen.multiarray
+package com.github.lipen.multiarray.impl
 
+import com.github.lipen.multiarray.MutableBooleanMultiArray
+import com.github.lipen.multiarray.MutableIntMultiArray
+import com.github.lipen.multiarray.MutableMultiArray
 import com.github.lipen.multiarray.internal.Mutate
 import com.github.lipen.multiarray.internal.Offset
 
@@ -20,7 +23,7 @@ private inline fun <T> _createMutableMultiArray(
     return MutableMultiArrayImpl(values, shape, mutateDelegate)
 }
 
-internal fun <T> _createMutableMultiArray(
+fun <T> _createMutableMultiArray(
     data: MutableList<T>,
     shape: IntArray,
     zerobased: Boolean,
@@ -28,7 +31,7 @@ internal fun <T> _createMutableMultiArray(
     return _createMutableMultiArray(data, shape, zerobased) { Mutate.from(data, it) }
 }
 
-internal fun <T> _createMutableMultiArray(
+fun <T> _createMutableMultiArray(
     data: Array<T>,
     shape: IntArray,
     zerobased: Boolean,
@@ -36,18 +39,18 @@ internal fun <T> _createMutableMultiArray(
     return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
 }
 
-internal fun _createMutableMultiArray(
+fun _createMutableMultiArray(
     data: IntArray,
     shape: IntArray,
     zerobased: Boolean,
-): MutableMultiArray<Int> {
+): MutableIntMultiArray {
     return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
 }
 
-internal fun _createMutableMultiArray(
+fun _createMutableMultiArray(
     data: BooleanArray,
     shape: IntArray,
     zerobased: Boolean,
-): MutableMultiArray<Boolean> {
+): MutableBooleanMultiArray {
     return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
 }

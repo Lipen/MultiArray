@@ -2,7 +2,8 @@
 
 package com.github.lipen.multiarray
 
-import com.github.lipen.multiarray.internal.reduceIfNotEmpty
+import com.github.lipen.multiarray.impl._createMutableMultiArray
+import com.github.lipen.multiarray.utils.reduceIfNotEmpty
 
 typealias MutableIntMultiArray = MutableMultiArray<Int>
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>

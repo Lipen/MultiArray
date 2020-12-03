@@ -1,8 +1,9 @@
-package com.github.lipen.multiarray
+package com.github.lipen.multiarray.impl
 
+import com.github.lipen.multiarray.MutableMultiArray
 import com.github.lipen.multiarray.internal.Mutate
 
-internal abstract class AbstractMutableMultiArray<T> internal constructor(
+abstract class AbstractMutableMultiArray<T>(
     shape: IntArray,
     values: List<T>,
     private val mutateDelegate: Mutate<T>,
