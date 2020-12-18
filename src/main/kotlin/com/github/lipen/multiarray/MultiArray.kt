@@ -9,10 +9,10 @@ interface MultiArray<out T> {
     val values: List<T>
     val shape: IntArray
     val domains: List<IntRange>
-    val indices: Sequence<IntArray>
-    val indicesReversed: Sequence<IntArray>
+    val indices: Sequence<Index>
+    val indicesReversed: Sequence<Index>
 
-    fun getAt(index: IntArray): T
+    fun getAt(index: Index): T
     operator fun get(i: Int): T
     operator fun get(i: Int, j: Int): T
     operator fun get(i: Int, j: Int, k: Int): T
@@ -22,7 +22,7 @@ interface MultiArray<out T> {
         error("This MultiArray cannot be converted to MutableMultiArray")
 
     companion object Factory {
-        // Smart
+        //region ===[ Smart constructors ]===
 
         inline fun <reified T> newUninitialized(
             shape: IntArray,
@@ -38,17 +38,19 @@ interface MultiArray<out T> {
         inline fun <reified T> new(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MultiArray<T> = MutableMultiArray.new(shape, zerobased, init)
 
         @JvmName("newVararg")
         inline fun <reified T> new(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MultiArray<T> = new(shape, zerobased, init)
 
-        // Generic
+        //endregion
+
+        //region ===[ Generic constructors ]===
 
         fun <T> from(
             data: Array<T>,
@@ -70,17 +72,19 @@ interface MultiArray<out T> {
         inline fun <reified T> newGeneric(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MultiArray<T> = MutableMultiArray.newGeneric(shape, zerobased, init)
 
         @JvmName("newGenericVararg")
         inline fun <reified T> newGeneric(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MultiArray<T> = newGeneric(shape, zerobased, init)
 
-        // Int
+        //endregion
+
+        //region ===[ Int constructors ]===
 
         fun from(
             data: IntArray,
@@ -102,17 +106,19 @@ interface MultiArray<out T> {
         inline fun newInt(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> Int,
+            init: (Index) -> Int,
         ): IntMultiArray = MutableMultiArray.newInt(shape, zerobased, init)
 
         @JvmName("newIntVararg")
         inline fun newInt(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> Int,
+            init: (Index) -> Int,
         ): IntMultiArray = newInt(shape, zerobased, init)
 
-        // Boolean
+        //endregion
+
+        //region ===[ Boolean constructors ]===
 
         fun from(
             data: BooleanArray,
@@ -134,14 +140,16 @@ interface MultiArray<out T> {
         inline fun newBoolean(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> Boolean,
+            init: (Index) -> Boolean,
         ): BooleanMultiArray = MutableMultiArray.newBoolean(shape, zerobased, init)
 
         @JvmName("newBooleanVararg")
         inline fun newBoolean(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> Boolean,
+            init: (Index) -> Boolean,
         ): BooleanMultiArray = newBoolean(shape, zerobased, init)
+
+        //endregion
     }
 }

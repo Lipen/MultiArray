@@ -1,13 +1,15 @@
 package com.github.lipen.multiarray.internal
 
+import com.github.lipen.multiarray.Index
+
 interface Strides {
     val domains: List<IntRange>
 
-    fun offset(index: IntArray): Int
+    fun offset(index: Index): Int
     fun offset(i: Int): Int
     fun offset(i: Int, j: Int): Int
     fun offset(i: Int, j: Int, k: Int): Int
-    fun index(offset: Int): IntArray
+    fun index(offset: Int): Index
 
     companion object {
         fun from(shape: IntArray, zerobased: Boolean): Strides =
@@ -33,7 +35,7 @@ private class StridesImpl1(shape: IntArray) : AbstractStrides(shape) {
     override val domains: List<IntRange> = shape.map { 1..it }
 
     @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
-    override fun offset(index1: IntArray): Int {
+    override fun offset(index1: Index): Int {
         return strides.foldIndexed(0) { i, acc, s -> acc + (index1[i] - 1) * s }
     }
 
@@ -49,7 +51,7 @@ private class StridesImpl1(shape: IntArray) : AbstractStrides(shape) {
         return (i - 1) * strides[0] + (j - 1) * strides[1] + (k - 1) * strides[2]
     }
 
-    override fun index(offset: Int): IntArray {
+    override fun index(offset: Int): Index {
         val result = IntArray(strides.size) { 1 }
         var current = offset
         for ((i, s) in strides.withIndex()) {
@@ -65,7 +67,7 @@ private class StridesImpl0(shape: IntArray) : AbstractStrides(shape) {
     override val domains: List<IntRange> = shape.map { 0 until it }
 
     @Suppress("PARAMETER_NAME_CHANGED_ON_OVERRIDE")
-    override fun offset(index0: IntArray): Int {
+    override fun offset(index0: Index): Int {
         return strides.foldIndexed(0) { i, acc, s -> acc + index0[i] * s }
     }
 
@@ -81,7 +83,7 @@ private class StridesImpl0(shape: IntArray) : AbstractStrides(shape) {
         return i * strides[0] + j * strides[1] + k * strides[2]
     }
 
-    override fun index(offset: Int): IntArray {
+    override fun index(offset: Int): Index {
         val result = IntArray(strides.size)
         var current = offset
         for ((i, s) in strides.withIndex()) {

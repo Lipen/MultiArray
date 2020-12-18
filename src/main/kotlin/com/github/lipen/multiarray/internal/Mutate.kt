@@ -1,9 +1,11 @@
 package com.github.lipen.multiarray.internal
 
+import com.github.lipen.multiarray.Index
+
 interface Mutate<T> {
     val offsetDelegate: Offset
 
-    fun setAt(index: IntArray, value: T)
+    fun setAt(index: Index, value: T)
     operator fun set(i: Int, value: T)
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)
@@ -39,7 +41,7 @@ class MutateImplMutableList<T>(
     private val data: MutableList<T>,
     offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
-    override fun setAt(index: IntArray, value: T) {
+    override fun setAt(index: Index, value: T) {
         data[offsetDelegate.offset(index)] = value
     }
 
@@ -60,7 +62,7 @@ class MutateImplArray<T>(
     private val data: Array<T>,
     offsetDelegate: Offset,
 ) : AbstractMutate<T>(offsetDelegate) {
-    override fun setAt(index: IntArray, value: T) {
+    override fun setAt(index: Index, value: T) {
         data[offsetDelegate.offset(index)] = value
     }
 
@@ -81,7 +83,7 @@ class MutateImplIntArray(
     private val data: IntArray,
     offsetDelegate: Offset,
 ) : AbstractMutate<Int>(offsetDelegate) {
-    override fun setAt(index: IntArray, value: Int) {
+    override fun setAt(index: Index, value: Int) {
         data[offsetDelegate.offset(index)] = value
     }
 
@@ -102,7 +104,7 @@ class MutateImplBooleanArray(
     private val data: BooleanArray,
     offsetDelegate: Offset,
 ) : AbstractMutate<Boolean>(offsetDelegate) {
-    override fun setAt(index: IntArray, value: Boolean) {
+    override fun setAt(index: Index, value: Boolean) {
         data[offsetDelegate.offset(index)] = value
     }
 

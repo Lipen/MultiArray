@@ -4,14 +4,14 @@ package com.github.lipen.multiarray
 
 //region ===[ getting ]===
 
-fun <T> MultiArray<T>.getOrDefault(index: IntArray, defaultValue: T): T =
+fun <T> MultiArray<T>.getOrDefault(index: Index, defaultValue: T): T =
     if (index in indices) getAt(index) else defaultValue
 
 @JvmName("getOrDefaultVararg")
 fun <T> MultiArray<T>.getOrDefault(vararg index: Int, defaultValue: T): T =
     getOrDefault(index, defaultValue)
 
-fun <T> MultiArray<T>.getOrNull(index: IntArray): T? =
+fun <T> MultiArray<T>.getOrNull(index: Index): T? =
     if (index in indices) getAt(index) else null
 
 @JvmName("getOrNullVararg")
@@ -19,13 +19,15 @@ fun <T> MultiArray<T>.getOrNull(vararg index: Int): T? =
     getOrNull(index)
 
 inline fun <T> MultiArray<T>.getOrElse(
-    index: IntArray,
+    index: Index,
     defaultValue: () -> T,
 ): T = if (index in indices) getAt(index) else defaultValue()
 
 @JvmName("getOrElseVararg")
-inline fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T): T =
-    getOrElse(index, defaultValue)
+inline fun <T> MultiArray<T>.getOrElse(
+    vararg index: Int,
+    defaultValue: () -> T,
+): T = getOrElse(index, defaultValue)
 
 //endregion
 
@@ -34,32 +36,32 @@ inline fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T)
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
     MultiArray.new(shape) { index -> transform(getAt(index)) }
 
-inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MultiArray<R> =
+inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (Index, T) -> R): MultiArray<R> =
     MultiArray.new(shape) { index -> transform(index, getAt(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapToMut(transform: (T) -> R): MutableMultiArray<R> =
     MutableMultiArray.new(shape) { index -> transform(getAt(index)) }
 
-inline fun <T, reified R> MultiArray<T>.mapIndexedToMut(transform: (IntArray, T) -> R): MutableMultiArray<R> =
+inline fun <T, reified R> MultiArray<T>.mapIndexedToMut(transform: (Index, T) -> R): MutableMultiArray<R> =
     MutableMultiArray.new(shape) { index -> transform(index, getAt(index)) }
 
 //endregion
 
 //region ===[ indexing ]===
 
-fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
+fun <T> MultiArray<T>.withIndex(): Sequence<Pair<Index, T>> =
     indices.zip(values.asSequence())
 
-fun <T> MultiArray<T>.withIndexReversed(): Sequence<Pair<IntArray, T>> =
+fun <T> MultiArray<T>.withIndexReversed(): Sequence<Pair<Index, T>> =
     indicesReversed.zip(values.asReversed().asSequence())
 
-fun <T : Any> MultiArray<T>.indexOf(element: T): IntArray? =
+fun <T : Any> MultiArray<T>.indexOf(element: T): Index? =
     indexOfFirst { it == element }
 
-inline fun <T : Any> MultiArray<T>.indexOfFirst(predicate: (T) -> Boolean): IntArray? =
+inline fun <T : Any> MultiArray<T>.indexOfFirst(predicate: (T) -> Boolean): Index? =
     withIndex().firstOrNull { (_, item) -> predicate(item) }?.first
 
-inline fun <T : Any> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): IntArray? =
+inline fun <T : Any> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): Index? =
     withIndex().lastOrNull { (_, item) -> predicate(item) }?.first
 
 //endregion
@@ -68,7 +70,7 @@ inline fun <T : Any> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): IntAr
 
 inline fun <T, R> MultiArray<T>.foldIndexed(
     initial: R,
-    operation: (index: IntArray, acc: R, elem: T) -> R,
+    operation: (index: Index, acc: R, elem: T) -> R,
 ): R {
     var accumulator = initial
     for ((index, element) in withIndex()) {
@@ -79,7 +81,7 @@ inline fun <T, R> MultiArray<T>.foldIndexed(
 
 inline fun <T, R> MultiArray<T>.foldRightIndexed(
     initial: R,
-    operation: (index: IntArray, elem: T, acc: R) -> R,
+    operation: (index: Index, elem: T, acc: R) -> R,
 ): R {
     var accumulator = initial
     for ((index, element) in withIndexReversed()) {
@@ -92,7 +94,7 @@ inline fun <T, R> MultiArray<T>.foldRightIndexed(
 
 //region ===[ iterating ]===
 
-inline fun <T> MultiArray<T>.forEachIndexed(action: (IntArray, T) -> Unit) {
+inline fun <T> MultiArray<T>.forEachIndexed(action: (Index, T) -> Unit) {
     withIndex().forEach { (index, value) -> action(index, value) }
 }
 

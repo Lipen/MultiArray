@@ -9,14 +9,14 @@ typealias MutableIntMultiArray = MutableMultiArray<Int>
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>
 
 interface MutableMultiArray<T> : MultiArray<T> {
-    fun setAt(index: IntArray, value: T)
+    fun setAt(index: Index, value: T)
     operator fun set(i: Int, value: T)
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)
     operator fun set(vararg index: Int, value: T): Unit = setAt(index, value)
 
     companion object Factory {
-        // Smart
+        //region ===[ Smart constructors ]===
 
         @Suppress("UNCHECKED_CAST")
         inline fun <reified T> newUninitialized(
@@ -37,17 +37,19 @@ interface MutableMultiArray<T> : MultiArray<T> {
         inline fun <reified T> new(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MutableMultiArray<T> = newUninitialized<T>(shape, zerobased).filledBy(init)
 
         @JvmName("newVararg")
         inline fun <reified T> new(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MutableMultiArray<T> = new(shape, zerobased, init)
 
-        // Generic
+        //endregion
+
+        //region ===[ Generic constructors ]===
 
         fun <T> from(
             data: Array<T>,
@@ -76,17 +78,19 @@ interface MutableMultiArray<T> : MultiArray<T> {
         inline fun <reified T> newGeneric(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MutableMultiArray<T> = newGenericUninitialized<T>(shape, zerobased).filledBy(init)
 
         @JvmName("newGenericVararg")
         inline fun <reified T> newGeneric(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> T,
+            init: (Index) -> T,
         ): MutableMultiArray<T> = newGeneric(shape, zerobased, init)
 
-        // Int
+        //endregion
+
+        //region ===[ Int constructors ]===
 
         fun from(
             data: IntArray,
@@ -112,17 +116,19 @@ interface MutableMultiArray<T> : MultiArray<T> {
         inline fun newInt(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> Int,
+            init: (Index) -> Int,
         ): MutableIntMultiArray = newInt(shape, zerobased).filledBy(init)
 
         @JvmName("newIntVararg")
         inline fun newInt(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> Int,
+            init: (Index) -> Int,
         ): MutableIntMultiArray = newInt(shape, zerobased, init)
 
-        // Boolean
+        //endregion
+
+        //region ===[ Boolean constructors ]===
 
         fun from(
             data: BooleanArray,
@@ -148,14 +154,16 @@ interface MutableMultiArray<T> : MultiArray<T> {
         inline fun newBoolean(
             shape: IntArray,
             zerobased: Boolean = false,
-            init: (IntArray) -> Boolean,
+            init: (Index) -> Boolean,
         ): MutableBooleanMultiArray = newBoolean(shape, zerobased).filledBy(init)
 
         @JvmName("newBooleanVararg")
         inline fun newBoolean(
             vararg shape: Int,
             zerobased: Boolean = false,
-            init: (IntArray) -> Boolean,
+            init: (Index) -> Boolean,
         ): MutableBooleanMultiArray = newBoolean(shape, zerobased, init)
+
+        //endregion
     }
 }
