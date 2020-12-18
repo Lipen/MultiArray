@@ -1,5 +1,7 @@
 package com.github.lipen.multiarray
 
+//region ===[ filling ]===
+
 inline fun <T> MutableMultiArray<T>.fillBy(init: (IntArray) -> T) {
     for (index in indices) {
         setAt(index, init(index))
@@ -13,3 +15,15 @@ inline fun <T> MutableMultiArray<T>.mapInPlace(transform: (IntArray, T) -> T) {
         setAt(index, transform(index, value))
     }
 }
+
+//endregion
+
+//region ===[ mapping ]===
+
+inline fun <T, reified R> MutableMultiArray<T>.map(transform: (T) -> R): MutableMultiArray<R> =
+    mapToMut(transform)
+
+inline fun <T, reified R> MutableMultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MutableMultiArray<R> =
+    mapIndexedToMut(transform)
+
+//endregion

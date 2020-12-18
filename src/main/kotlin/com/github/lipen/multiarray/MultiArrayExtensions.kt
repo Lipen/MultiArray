@@ -2,6 +2,8 @@
 
 package com.github.lipen.multiarray
 
+//region ===[ getting ]===
+
 fun <T> MultiArray<T>.getOrDefault(index: IntArray, defaultValue: T): T =
     if (index in indices) getAt(index) else defaultValue
 
@@ -25,11 +27,25 @@ inline fun <T> MultiArray<T>.getOrElse(
 inline fun <T> MultiArray<T>.getOrElse(vararg index: Int, defaultValue: () -> T): T =
     getOrElse(index, defaultValue)
 
+//endregion
+
+//region ===[ mapping ]===
+
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
     MultiArray.new(shape) { index -> transform(getAt(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (IntArray, T) -> R): MultiArray<R> =
     MultiArray.new(shape) { index -> transform(index, getAt(index)) }
+
+inline fun <T, reified R> MultiArray<T>.mapToMut(transform: (T) -> R): MutableMultiArray<R> =
+    MutableMultiArray.new(shape) { index -> transform(getAt(index)) }
+
+inline fun <T, reified R> MultiArray<T>.mapIndexedToMut(transform: (IntArray, T) -> R): MutableMultiArray<R> =
+    MutableMultiArray.new(shape) { index -> transform(index, getAt(index)) }
+
+//endregion
+
+//region ===[ indexing ]===
 
 fun <T> MultiArray<T>.withIndex(): Sequence<Pair<IntArray, T>> =
     indices.zip(values.asSequence())
@@ -45,6 +61,10 @@ inline fun <T : Any> MultiArray<T>.indexOfFirst(predicate: (T) -> Boolean): IntA
 
 inline fun <T : Any> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): IntArray? =
     withIndex().lastOrNull { (_, item) -> predicate(item) }?.first
+
+//endregion
+
+//region ===[ folding ]===
 
 inline fun <T, R> MultiArray<T>.foldIndexed(
     initial: R,
@@ -68,6 +88,12 @@ inline fun <T, R> MultiArray<T>.foldRightIndexed(
     return accumulator
 }
 
+//endregion
+
+//region ===[ iterating ]===
+
 inline fun <T> MultiArray<T>.forEachIndexed(action: (IntArray, T) -> Unit) {
     withIndex().forEach { (index, value) -> action(index, value) }
 }
+
+//endregion
