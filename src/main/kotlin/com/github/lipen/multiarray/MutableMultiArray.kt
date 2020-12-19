@@ -4,6 +4,7 @@ package com.github.lipen.multiarray
 
 import com.github.lipen.multiarray.impl._createMutableMultiArray
 import com.github.lipen.multiarray.utils.reduceIfNotEmpty
+import kotlin.reflect.typeOf
 
 typealias MutableIntMultiArray = MutableMultiArray<Int>
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>
@@ -19,12 +20,23 @@ interface MutableMultiArray<T> : MultiArray<T> {
         //region ===[ Smart constructors ]===
 
         @Suppress("UNCHECKED_CAST")
-        inline fun <reified T> newUninitialized(
+        inline fun <reified T : Any> newUninitializedNotNull(
             shape: IntArray,
             zerobased: Boolean = false,
         ): MutableMultiArray<T> = when (T::class) {
             Int::class -> newInt(shape, zerobased) as MutableMultiArray<T>
             Boolean::class -> newBoolean(shape, zerobased) as MutableMultiArray<T>
+            else -> newGenericUninitialized(shape, zerobased)
+        }
+
+        @OptIn(ExperimentalStdlibApi::class)
+        @Suppress("UNCHECKED_CAST")
+        inline fun <reified T> newUninitialized(
+            shape: IntArray,
+            zerobased: Boolean = false,
+        ): MutableMultiArray<T> = when (typeOf<T>()) {
+            typeOf<Int>() -> newInt(shape, zerobased) as MutableMultiArray<T>
+            typeOf<Boolean>() -> newBoolean(shape, zerobased) as MutableMultiArray<T>
             else -> newGenericUninitialized(shape, zerobased)
         }
 

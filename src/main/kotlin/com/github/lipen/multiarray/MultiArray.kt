@@ -24,6 +24,11 @@ interface MultiArray<out T> {
     companion object Factory {
         //region ===[ Smart constructors ]===
 
+        inline fun <reified T : Any> newUninitializedNotNull(
+            shape: IntArray,
+            zerobased: Boolean = false,
+        ): MultiArray<T> = MutableMultiArray.newUninitializedNotNull(shape, zerobased)
+
         inline fun <reified T> newUninitialized(
             shape: IntArray,
             zerobased: Boolean = false,
