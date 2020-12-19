@@ -23,7 +23,7 @@ private inline fun <T> _createMutableMultiArray(
     return MutableMultiArrayImpl(values, shape, mutateDelegate)
 }
 
-fun <T> _createMutableMultiArray(
+fun <T> MutableMultiArray.Factory.from(
     data: MutableList<T>,
     shape: IntArray,
     zerobased: Boolean,
@@ -31,7 +31,7 @@ fun <T> _createMutableMultiArray(
     return _createMutableMultiArray(data, shape, zerobased) { Mutate.from(data, it) }
 }
 
-fun <T> _createMutableMultiArray(
+fun <T> MutableMultiArray.Factory.from(
     data: Array<T>,
     shape: IntArray,
     zerobased: Boolean,
@@ -39,7 +39,7 @@ fun <T> _createMutableMultiArray(
     return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
 }
 
-fun _createMutableMultiArray(
+fun MutableMultiArray.Factory.from(
     data: IntArray,
     shape: IntArray,
     zerobased: Boolean,
@@ -47,7 +47,7 @@ fun _createMutableMultiArray(
     return _createMutableMultiArray(data.asList(), shape, zerobased) { Mutate.from(data, it) }
 }
 
-fun _createMutableMultiArray(
+fun MutableMultiArray.Factory.from(
     data: BooleanArray,
     shape: IntArray,
     zerobased: Boolean,

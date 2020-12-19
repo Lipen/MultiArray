@@ -2,7 +2,7 @@
 
 package com.github.lipen.multiarray
 
-import com.github.lipen.multiarray.impl._createMutableMultiArray
+import com.github.lipen.multiarray.impl.from
 import com.github.lipen.multiarray.utils.reduceIfNotEmpty
 import kotlin.reflect.typeOf
 
@@ -63,12 +63,6 @@ interface MutableMultiArray<T> : MultiArray<T> {
 
         //region ===[ Generic constructors ]===
 
-        fun <T> from(
-            data: Array<T>,
-            shape: IntArray,
-            zerobased: Boolean = false,
-        ): MutableMultiArray<T> = _createMutableMultiArray(data, shape, zerobased)
-
         inline fun <reified T> newGenericUninitialized(
             shape: IntArray,
             zerobased: Boolean = false,
@@ -104,12 +98,6 @@ interface MutableMultiArray<T> : MultiArray<T> {
 
         //region ===[ Int constructors ]===
 
-        fun from(
-            data: IntArray,
-            shape: IntArray,
-            zerobased: Boolean,
-        ): MutableIntMultiArray = _createMutableMultiArray(data, shape, zerobased)
-
         fun newInt(
             shape: IntArray,
             zerobased: Boolean = false,
@@ -141,12 +129,6 @@ interface MutableMultiArray<T> : MultiArray<T> {
         //endregion
 
         //region ===[ Boolean constructors ]===
-
-        fun from(
-            data: BooleanArray,
-            shape: IntArray,
-            zerobased: Boolean,
-        ): MutableBooleanMultiArray = _createMutableMultiArray(data, shape, zerobased)
 
         fun newBoolean(
             shape: IntArray,

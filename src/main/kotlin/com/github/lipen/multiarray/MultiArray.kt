@@ -57,12 +57,6 @@ interface MultiArray<out T> {
 
         //region ===[ Generic constructors ]===
 
-        fun <T> from(
-            data: Array<T>,
-            shape: IntArray,
-            zerobased: Boolean = false,
-        ): MultiArray<T> = MutableMultiArray.from(data, shape, zerobased)
-
         inline fun <reified T> newGenericUninitialized(
             shape: IntArray,
             zerobased: Boolean = false,
@@ -91,12 +85,6 @@ interface MultiArray<out T> {
 
         //region ===[ Int constructors ]===
 
-        fun from(
-            data: IntArray,
-            shape: IntArray,
-            zerobased: Boolean = false,
-        ): IntMultiArray = MutableMultiArray.from(data, shape, zerobased)
-
         fun newInt(
             shape: IntArray,
             zerobased: Boolean = false,
@@ -124,12 +112,6 @@ interface MultiArray<out T> {
         //endregion
 
         //region ===[ Boolean constructors ]===
-
-        fun from(
-            data: BooleanArray,
-            shape: IntArray,
-            zerobased: Boolean = false,
-        ): BooleanMultiArray = MutableMultiArray.from(data, shape, zerobased)
 
         fun newBoolean(
             shape: IntArray,
