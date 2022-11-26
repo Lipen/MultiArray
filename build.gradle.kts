@@ -18,6 +18,7 @@ repositories {
 }
 
 dependencies {
+    implementation(platform(kotlin("bom")))
     implementation(kotlin("stdlib-jdk8"))
 
     testImplementation(Libs.JUnit.jupiter_api)
@@ -27,7 +28,6 @@ dependencies {
 
 tasks.withType<KotlinCompile> {
     kotlinOptions.jvmTarget = "1.8"
-    kotlinOptions.freeCompilerArgs += "-Xopt-in=kotlin.RequiresOptIn"
 }
 
 tasks.withType<Test> {
@@ -52,7 +52,6 @@ kotlinter {
 }
 
 java {
-    @Suppress("UnstableApiUsage")
     withSourcesJar()
 }
 

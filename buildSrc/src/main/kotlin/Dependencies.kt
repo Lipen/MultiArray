@@ -5,7 +5,7 @@ object Versions {
     const val jgitver = "0.9.1"
     const val junit = "5.7.0"
     const val kluent = "1.63"
-    const val kotlin = "1.4.20"
+    const val kotlin = "1.7.21"
     const val kotlinter = "3.2.0"
     const val shadow = "5.2.0"
 }
