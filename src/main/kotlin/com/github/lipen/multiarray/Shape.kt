@@ -1,24 +1,17 @@
 package com.github.lipen.multiarray
 
-import com.github.lipen.genikos.GenericArray
-
 // typealias Shape = IntArray
 
 @JvmInline
-value class Shape(val inner: IntArray) : GenericArray<Int> {
-    override val data: List<Int> get() = inner.asList()
-    override val size: Int get() = inner.size
+value class Shape(val inner: IntArray) {
+    val size: Int get() = inner.size
 
-    override operator fun get(index: Int): Int {
+    operator fun get(index: Int): Int {
         return inner[index]
     }
 
-    override operator fun set(index: Int, value: Int) {
+    operator fun set(index: Int, value: Int) {
         inner[index] = value
-    }
-
-    override fun iterator(): Iterator<Int> {
-        return inner.iterator()
     }
 
     operator fun component1(): Int = get(0)
@@ -32,7 +25,7 @@ value class Shape(val inner: IntArray) : GenericArray<Int> {
     operator fun component9(): Int = get(8)
 
     override fun toString(): String {
-        return data.toString()
+        return inner.asList().toString()
     }
 }
 
