@@ -2,8 +2,7 @@
 
 package com.github.lipen.multiarray
 
-import com.github.lipen.multiarray.impl.from
-import kotlin.reflect.typeOf
+import com.github.lipen.genikos.GenericArray
 
 typealias MutableIntMultiArray = MutableMultiArray<Int>
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>
@@ -13,29 +12,17 @@ interface MutableMultiArray<T> : MultiArray<T> {
     operator fun set(i: Int, value: T)
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)
-    operator fun set(vararg index: Int, value: T): Unit = setAt(Index(index), value)
 
     companion object Factory {
         //region ===[ Smart constructors ]===
 
-        @Suppress("UNCHECKED_CAST")
-        inline fun <reified T : Any> newUninitializedNotNull(
-            shape: Shape,
-            zerobased: Boolean = false,
-        ): MutableMultiArray<T> = when (T::class) {
-            Int::class -> newInt(shape, zerobased) as MutableMultiArray<T>
-            Boolean::class -> newBoolean(shape, zerobased) as MutableMultiArray<T>
-            else -> newGenericUninitialized(shape, zerobased)
-        }
-
-        @Suppress("UNCHECKED_CAST")
         inline fun <reified T> newUninitialized(
             shape: Shape,
             zerobased: Boolean = false,
-        ): MutableMultiArray<T> = when (typeOf<T>()) {
-            typeOf<Int>() -> newInt(shape, zerobased) as MutableMultiArray<T>
-            typeOf<Boolean>() -> newBoolean(shape, zerobased) as MutableMultiArray<T>
-            else -> newGenericUninitialized(shape, zerobased)
+        ): MutableMultiArray<T> {
+            val size = shape.productIfNotEmpty()
+            val array = GenericArray.new<T>(size)
+            return from(array, shape, zerobased)
         }
 
         inline fun <reified T> newUninitialized(
@@ -63,7 +50,7 @@ interface MutableMultiArray<T> : MultiArray<T> {
             shape: Shape,
             zerobased: Boolean = false,
         ): MutableMultiArray<T> {
-            val size = shape.reduceIfNotEmpty()
+            val size = shape.productIfNotEmpty()
 
             @Suppress("UNCHECKED_CAST")
             val data = arrayOfNulls<T>(size) as Array<T>
@@ -96,7 +83,7 @@ interface MutableMultiArray<T> : MultiArray<T> {
             shape: Shape,
             zerobased: Boolean = false,
         ): MutableIntMultiArray {
-            val size = shape.reduceIfNotEmpty()
+            val size = shape.productIfNotEmpty()
             val data = IntArray(size)
             return from(data, shape, zerobased)
         }
@@ -126,7 +113,7 @@ interface MutableMultiArray<T> : MultiArray<T> {
             shape: Shape,
             zerobased: Boolean = false,
         ): MutableBooleanMultiArray {
-            val size = shape.reduceIfNotEmpty()
+            val size = shape.productIfNotEmpty()
             val data = BooleanArray(size)
             return from(data, shape, zerobased)
         }

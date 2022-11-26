@@ -1,10 +1,8 @@
-@file:Suppress("FunctionName")
-
 package com.github.lipen.multiarray
 
-import com.github.lipen.multiarray.impl.from
-
 //region ===[ getting ]===
+
+operator fun <T> MultiArray<T>.get(vararg index: Int): T = getAt(Index(index))
 
 fun <T> MultiArray<T>.getOrDefault(index: Index, defaultValue: T): T =
     if (index in indices) getAt(index) else defaultValue

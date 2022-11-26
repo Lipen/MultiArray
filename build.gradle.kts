@@ -14,16 +14,20 @@ plugins {
 }
 
 repositories {
-    jcenter()
+    mavenCentral()
+    maven(url = "https://jitpack.io")
 }
 
 dependencies {
+    // Kotlin
     implementation(platform(kotlin("bom")))
     implementation(kotlin("stdlib-jdk8"))
 
-    testImplementation(Libs.JUnit.jupiter_api)
-    testRuntimeOnly(Libs.JUnit.jupiter_engine)
-    testImplementation(Libs.Kluent.kluent)
+    // Dependencies
+    implementation(Libs.Genikos.genikos)
+
+    // Test
+    testImplementation(kotlin("test"))
 }
 
 tasks.withType<KotlinCompile> {
@@ -48,7 +52,7 @@ tasks.withType<Test> {
 kotlinter {
     ignoreFailures = true
     experimentalRules = true
-    disabledRules = arrayOf("import-ordering")
+    disabledRules = arrayOf("import-ordering", "trailing-comma-on-declaration-site", "filename")
 }
 
 java {

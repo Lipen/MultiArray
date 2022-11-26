@@ -16,18 +16,12 @@ interface MultiArray<out T> {
     operator fun get(i: Int): T
     operator fun get(i: Int, j: Int): T
     operator fun get(i: Int, j: Int, k: Int): T
-    operator fun get(vararg index: Int): T
 
     fun asMut(): MutableMultiArray<@UnsafeVariance T> =
         error("This MultiArray cannot be converted to MutableMultiArray")
 
     companion object Factory {
         //region ===[ Smart constructors ]===
-
-        inline fun <reified T : Any> newUninitializedNotNull(
-            shape: Shape,
-            zerobased: Boolean = false,
-        ): MultiArray<T> = MutableMultiArray.newUninitializedNotNull(shape, zerobased)
 
         inline fun <reified T> newUninitialized(
             shape: Shape,

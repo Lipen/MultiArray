@@ -3,7 +3,7 @@ package com.github.lipen.multiarray.internal
 import com.github.lipen.multiarray.Index
 import com.github.lipen.multiarray.Shape
 
-interface Strides {
+internal interface Strides {
     val domains: List<IntRange>
 
     fun offset(index: Index): Int

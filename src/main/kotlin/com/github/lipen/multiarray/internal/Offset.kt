@@ -3,7 +3,7 @@ package com.github.lipen.multiarray.internal
 import com.github.lipen.multiarray.Index
 import com.github.lipen.multiarray.Shape
 
-interface Offset {
+internal interface Offset {
     val domains: List<IntRange>
 
     fun index(offset: Int): Index
@@ -22,6 +22,11 @@ interface Offset {
         fun from(shape: Shape, zerobased: Boolean): Offset = OffsetImpl(shape, zerobased)
     }
 }
+
+// internal operator fun Offset.invoke(index: Index): Int = offset(index)
+// internal operator fun Offset.invoke(i: Int): Int = offset(i)
+// internal operator fun Offset.invoke(i: Int, j: Int): Int = offset(i, j)
+// internal operator fun Offset.invoke(i: Int, j: Int, k: Int): Int = offset(i, j, k)
 
 private class OffsetImpl(
     shape: Shape,

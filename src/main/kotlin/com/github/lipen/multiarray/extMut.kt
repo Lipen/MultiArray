@@ -1,5 +1,13 @@
 package com.github.lipen.multiarray
 
+//region ===[ setting ]===
+
+operator fun <T> MutableMultiArray<T>.set(vararg index: Int, value: T) {
+    setAt(Index(index), value)
+}
+
+//endregion
+
 //region ===[ filling ]===
 
 inline fun <T> MutableMultiArray<T>.fillBy(init: (Index) -> T) {

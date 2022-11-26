@@ -1,13 +1,12 @@
 @file:Suppress("PublicApiImplicitType", "MemberVisibilityCanBePrivate")
 
 object Versions {
-    const val gradle_versions = "0.33.0"
+    const val genikos = "0.1.0"
+    const val gradle_versions = "0.44.0"
     const val jgitver = "0.9.1"
     const val junit = "5.7.0"
-    const val kluent = "1.63"
     const val kotlin = "1.7.21"
-    const val kotlinter = "3.2.0"
-    const val shadow = "5.2.0"
+    const val kotlinter = "3.12.0"
 }
 
 object Libs {
@@ -19,10 +18,10 @@ object Libs {
         const val jupiter_params = "org.junit.jupiter:junit-jupiter-params:$version"
     }
 
-    // https://github.com/MarkusAmshove/Kluent
-    object Kluent {
-        const val version = Versions.kluent
-        const val kluent = "org.amshove.kluent:kluent:$version"
+    // https://github.com/Lipen/genikos
+    object Genikos {
+        const val version = Versions.genikos
+        const val genikos = "com.github.Lipen:genikos:$version"
     }
 }
 
@@ -43,11 +42,5 @@ object Plugins {
     object Kotlinter {
         const val version = Versions.kotlinter
         const val id = "org.jmailen.kotlinter"
-    }
-
-    // https://github.com/johnrengelman/shadow
-    object Shadow {
-        const val version = Versions.shadow
-        const val id = "com.github.johnrengelman.shadow"
     }
 }
