@@ -2,6 +2,8 @@
 
 package com.github.lipen.multiarray
 
+import com.github.lipen.multiarray.impl.from
+
 //region ===[ getting ]===
 
 fun <T> MultiArray<T>.getOrDefault(index: Index, defaultValue: T): T =
@@ -9,14 +11,14 @@ fun <T> MultiArray<T>.getOrDefault(index: Index, defaultValue: T): T =
 
 @JvmName("getOrDefaultVararg")
 fun <T> MultiArray<T>.getOrDefault(vararg index: Int, defaultValue: T): T =
-    getOrDefault(index, defaultValue)
+    getOrDefault(Index(index), defaultValue)
 
 fun <T> MultiArray<T>.getOrNull(index: Index): T? =
     if (index in indices) getAt(index) else null
 
 @JvmName("getOrNullVararg")
 fun <T> MultiArray<T>.getOrNull(vararg index: Int): T? =
-    getOrNull(index)
+    getOrNull(Index(index))
 
 inline fun <T> MultiArray<T>.getOrElse(
     index: Index,
@@ -27,7 +29,7 @@ inline fun <T> MultiArray<T>.getOrElse(
 inline fun <T> MultiArray<T>.getOrElse(
     vararg index: Int,
     defaultValue: () -> T,
-): T = getOrElse(index, defaultValue)
+): T = getOrElse(Index(index), defaultValue)
 
 //endregion
 
@@ -97,5 +99,12 @@ inline fun <T, R> MultiArray<T>.foldRightIndexed(
 inline fun <T> MultiArray<T>.forEachIndexed(action: (Index, T) -> Unit) {
     withIndex().forEach { (index, value) -> action(index, value) }
 }
+
+//endregion
+
+//region ===[ other extensions ]===
+
+inline fun <reified T> MultiArray<T>.toMut(zerobased: Boolean = false): MutableMultiArray<T> =
+    MutableMultiArray.from(values.toTypedArray(), shape, zerobased)
 
 //endregion

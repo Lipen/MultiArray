@@ -1,6 +1,7 @@
 package com.github.lipen.multiarray.internal
 
 import com.github.lipen.multiarray.Index
+import com.github.lipen.multiarray.Shape
 
 interface Offset {
     val domains: List<IntRange>
@@ -18,12 +19,12 @@ interface Offset {
     fun unsafeOffset(i: Int, j: Int, k: Int): Int
 
     companion object {
-        fun from(shape: IntArray, zerobased: Boolean): Offset = OffsetImpl(shape, zerobased)
+        fun from(shape: Shape, zerobased: Boolean): Offset = OffsetImpl(shape, zerobased)
     }
 }
 
 private class OffsetImpl(
-    shape: IntArray,
+    shape: Shape,
     zerobased: Boolean,
 ) : Offset {
     private val strides: Strides = Strides.from(shape, zerobased)
@@ -71,7 +72,7 @@ private class OffsetImpl(
         require(index.size == dims) {
             "Invalid number of dimensions passed (index.size = ${index.size}, dims = $dims)"
         }
-        for (i in index.indices) {
+        for (i in index.inner.indices) {
             val ix = index[i]
             val domain = domains[i]
             require(ix in domain) { "${i + 1}-th index $ix is out of bounds ($domain)" }

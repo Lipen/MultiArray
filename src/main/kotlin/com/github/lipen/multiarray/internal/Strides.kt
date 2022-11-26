@@ -1,6 +1,7 @@
 package com.github.lipen.multiarray.internal
 
 import com.github.lipen.multiarray.Index
+import com.github.lipen.multiarray.Shape
 
 interface Strides {
     val domains: List<IntRange>
@@ -12,12 +13,12 @@ interface Strides {
     fun index(offset: Int): Index
 
     companion object {
-        fun from(shape: IntArray, zerobased: Boolean): Strides =
-            if (zerobased) StridesImpl0(shape) else StridesImpl1(shape)
+        fun from(shape: Shape, zerobased: Boolean): Strides =
+            if (zerobased) StridesImpl0(shape.inner) else StridesImpl1(shape.inner)
     }
 }
 
-abstract class AbstractStrides(shape: IntArray) : Strides {
+private abstract class AbstractStrides(shape: IntArray) : Strides {
     protected val strides: IntArray =
         if (shape.isEmpty()) {
             intArrayOf()
@@ -59,7 +60,7 @@ private class StridesImpl1(shape: IntArray) : AbstractStrides(shape) {
             current %= s
             if (current == 0) break
         }
-        return result
+        return Index(result)
     }
 }
 
@@ -91,6 +92,6 @@ private class StridesImpl0(shape: IntArray) : AbstractStrides(shape) {
             current %= s
             if (current == 0) break
         }
-        return result
+        return Index(result)
     }
 }

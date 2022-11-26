@@ -1,9 +1,9 @@
 package com.github.lipen.multiarray
 
-// typealias Index = IntArray
+// typealias Shape = IntArray
 
 @JvmInline
-value class Index(val inner: IntArray) {
+value class Shape(val inner: IntArray) {
     val size: Int get() = inner.size
 
     operator fun get(index: Int): Int {
@@ -26,4 +26,8 @@ value class Index(val inner: IntArray) {
 }
 
 // vararg-constructor
-fun Index(vararg index: Int): Index = Index(index)
+fun Shape(vararg shape: Int): Shape = Shape(shape)
+
+@PublishedApi
+internal fun Shape.reduceIfNotEmpty(default: Int = 0): Int =
+    if (inner.isNotEmpty()) inner.reduce(Int::times) else default
