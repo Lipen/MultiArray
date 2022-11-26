@@ -1,10 +1,10 @@
 = MultiArray
 
+> Multidimensional array for Kotlin inspired by https://github.com/altavir/kmath[kmath] and https://github.com/JetBrains-Research/viktor[victor] libraries.
+
 image:https://github.com/Lipen/MultiArray/workflows/Build/badge.svg?branch=master["Build", link="https://github.com/Lipen/MultiArray/actions"]
 image:https://jitpack.io/v/Lipen/MultiArray.svg["JitPack", link="https://jitpack.io/p/Lipen/MultiArray"]
 image:https://hitsofcode.com/github/Lipen/MultiArray["Hits-of-Code", link="https://hitsofcode.com/view/github/Lipen/MultiArray"]
-
-Multidimensional array for Kotlin inspired by https://github.com/altavir/kmath[kmath] and https://github.com/JetBrains-Research/viktor[victor] libraries.
 
 == Installation
 
