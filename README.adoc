@@ -5,3 +5,18 @@ image:https://jitpack.io/v/Lipen/MultiArray.svg["JitPack", link="https://jitpack
 image:https://hitsofcode.com/github/Lipen/MultiArray["Hits-of-Code", link="https://hitsofcode.com/view/github/Lipen/MultiArray"]
 
 Multidimensional array for Kotlin inspired by https://github.com/altavir/kmath[kmath] and https://github.com/JetBrains-Research/viktor[victor] libraries.
+
+== Installation
+
+.build.gradle.kts
+[source,kotlin]
+----
+repositories {
+    mavenCentral()
+    maven(url = "https://jitpack.io")
+}
+
+dependencies {
+    implementation("com.github.Lipen:MultiArray:$version")
+}
+----
