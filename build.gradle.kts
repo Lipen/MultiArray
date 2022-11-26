@@ -24,7 +24,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     // Dependencies
-    implementation(Libs.Genikos.genikos)
+    api(Libs.Genikos.genikos)
 
     // Test
     testImplementation(kotlin("test"))
