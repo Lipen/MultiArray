@@ -17,9 +17,6 @@ interface MultiArray<out T> {
     operator fun get(i: Int, j: Int): T
     operator fun get(i: Int, j: Int, k: Int): T
 
-    fun asMut(): MutableMultiArray<@UnsafeVariance T> =
-        error("This MultiArray cannot be converted to MutableMultiArray")
-
     companion object Factory {
         //region ===[ Smart constructors ]===
 

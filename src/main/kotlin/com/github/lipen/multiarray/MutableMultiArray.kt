@@ -13,8 +13,6 @@ interface MutableMultiArray<T> : MultiArray<T> {
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)
 
-    override fun asMut(): MutableMultiArray<T> = this
-
     companion object Factory {
         //region ===[ Smart constructors ]===
 

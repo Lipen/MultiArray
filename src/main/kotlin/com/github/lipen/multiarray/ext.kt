@@ -102,6 +102,11 @@ inline fun <T> MultiArray<T>.forEachIndexed(action: (Index, T) -> Unit) {
 
 //region ===[ other extensions ]===
 
+fun <T> MultiArray<T>.asMut(): MutableMultiArray<T> = when (this) {
+    is MutableMultiArray<T> -> this
+    else -> error("This MultiArray cannot be converted to MutableMultiArray")
+}
+
 inline fun <reified T> MultiArray<T>.toMut(zerobased: Boolean = false): MutableMultiArray<T> =
     MutableMultiArray.from(values.toTypedArray(), shape, zerobased)
 
