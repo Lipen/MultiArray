@@ -55,13 +55,13 @@ fun <T> MultiArray<T>.withIndex(): Sequence<Pair<Index, T>> =
 fun <T> MultiArray<T>.withIndexReversed(): Sequence<Pair<Index, T>> =
     indicesReversed.zip(values.asReversed().asSequence())
 
-fun <T : Any> MultiArray<T>.indexOf(element: T): Index? =
+fun <T> MultiArray<T>.indexOf(element: T): Index? =
     indexOfFirst { it == element }
 
-inline fun <T : Any> MultiArray<T>.indexOfFirst(predicate: (T) -> Boolean): Index? =
+inline fun <T> MultiArray<T>.indexOfFirst(predicate: (T) -> Boolean): Index? =
     withIndex().firstOrNull { (_, item) -> predicate(item) }?.first
 
-inline fun <T : Any> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): Index? =
+inline fun <T> MultiArray<T>.indexOfLast(predicate: (T) -> Boolean): Index? =
     withIndex().lastOrNull { (_, item) -> predicate(item) }?.first
 
 //endregion
