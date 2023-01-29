@@ -12,7 +12,7 @@ interface MultiArray<out T> {
     val indices: Sequence<Index>
     val indicesReversed: Sequence<Index>
 
-    fun getAt(index: Index): T
+    operator fun get(index: Index): T
     operator fun get(i: Int): T
     operator fun get(i: Int, j: Int): T
     operator fun get(i: Int, j: Int, k: Int): T

@@ -30,12 +30,12 @@ private class MutableMultiArrayImpl<T>(
         array[index] = value
     }
 
-    override fun getAt(index: Index): T = _get(offset.offset(index))
+    override operator fun get(index: Index): T = _get(offset.offset(index))
     override operator fun get(i: Int): T = _get(offset.offset(i))
     override operator fun get(i: Int, j: Int): T = _get(offset.offset(i, j))
     override operator fun get(i: Int, j: Int, k: Int): T = _get(offset.offset(i, j, k))
 
-    override fun setAt(index: Index, value: T): Unit = _set(offset.offset(index), value)
+    override operator fun set(index: Index, value: T): Unit = _set(offset.offset(index), value)
     override operator fun set(i: Int, value: T): Unit = _set(offset.offset(i), value)
     override operator fun set(i: Int, j: Int, value: T): Unit = _set(offset.offset(i, j), value)
     override operator fun set(i: Int, j: Int, k: Int, value: T): Unit = _set(offset.offset(i, j, k), value)

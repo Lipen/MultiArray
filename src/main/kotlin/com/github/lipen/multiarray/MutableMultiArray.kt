@@ -8,7 +8,7 @@ typealias MutableIntMultiArray = MutableMultiArray<Int>
 typealias MutableBooleanMultiArray = MutableMultiArray<Boolean>
 
 interface MutableMultiArray<T> : MultiArray<T> {
-    fun setAt(index: Index, value: T)
+    operator fun set(index: Index, value: T)
     operator fun set(i: Int, value: T)
     operator fun set(i: Int, j: Int, value: T)
     operator fun set(i: Int, j: Int, k: Int, value: T)

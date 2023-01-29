@@ -2,17 +2,17 @@ package com.github.lipen.multiarray
 
 //region ===[ getting ]===
 
-operator fun <T> MultiArray<T>.get(vararg index: Int): T = getAt(Index(index))
+operator fun <T> MultiArray<T>.get(vararg index: Int): T = get(Index(index))
 
 fun <T> MultiArray<T>.getOrDefault(index: Index, defaultValue: T): T =
-    if (index in indices) getAt(index) else defaultValue
+    if (index in indices) get(index) else defaultValue
 
 @JvmName("getOrDefaultVararg")
 fun <T> MultiArray<T>.getOrDefault(vararg index: Int, defaultValue: T): T =
     getOrDefault(Index(index), defaultValue)
 
 fun <T> MultiArray<T>.getOrNull(index: Index): T? =
-    if (index in indices) getAt(index) else null
+    if (index in indices) get(index) else null
 
 @JvmName("getOrNullVararg")
 fun <T> MultiArray<T>.getOrNull(vararg index: Int): T? =
@@ -21,7 +21,7 @@ fun <T> MultiArray<T>.getOrNull(vararg index: Int): T? =
 inline fun <T> MultiArray<T>.getOrElse(
     index: Index,
     defaultValue: () -> T,
-): T = if (index in indices) getAt(index) else defaultValue()
+): T = if (index in indices) get(index) else defaultValue()
 
 @JvmName("getOrElseVararg")
 inline fun <T> MultiArray<T>.getOrElse(
@@ -34,16 +34,16 @@ inline fun <T> MultiArray<T>.getOrElse(
 //region ===[ mapping ]===
 
 inline fun <T, reified R> MultiArray<T>.map(transform: (T) -> R): MultiArray<R> =
-    MultiArray.new(shape) { index -> transform(getAt(index)) }
+    MultiArray.new(shape) { index -> transform(get(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapIndexed(transform: (Index, T) -> R): MultiArray<R> =
-    MultiArray.new(shape) { index -> transform(index, getAt(index)) }
+    MultiArray.new(shape) { index -> transform(index, get(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapToMut(transform: (T) -> R): MutableMultiArray<R> =
-    MutableMultiArray.new(shape) { index -> transform(getAt(index)) }
+    MutableMultiArray.new(shape) { index -> transform(get(index)) }
 
 inline fun <T, reified R> MultiArray<T>.mapIndexedToMut(transform: (Index, T) -> R): MutableMultiArray<R> =
-    MutableMultiArray.new(shape) { index -> transform(index, getAt(index)) }
+    MutableMultiArray.new(shape) { index -> transform(index, get(index)) }
 
 //endregion
 

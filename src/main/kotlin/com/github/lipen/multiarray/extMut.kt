@@ -3,7 +3,7 @@ package com.github.lipen.multiarray
 //region ===[ setting ]===
 
 operator fun <T> MutableMultiArray<T>.set(vararg index: Int, value: T) {
-    setAt(Index(index), value)
+    set(Index(index), value)
 }
 
 //endregion
@@ -12,7 +12,7 @@ operator fun <T> MutableMultiArray<T>.set(vararg index: Int, value: T) {
 
 inline fun <T> MutableMultiArray<T>.fillBy(init: (Index) -> T) {
     for (index in indices) {
-        setAt(index, init(index))
+        set(index, init(index))
     }
 }
 
@@ -20,7 +20,7 @@ inline fun <M : MutableMultiArray<T>, T> M.filledBy(init: (Index) -> T): M = app
 
 inline fun <T> MutableMultiArray<T>.mapInPlace(transform: (Index, T) -> T) {
     for ((index, value) in withIndex()) {
-        setAt(index, transform(index, value))
+        set(index, transform(index, value))
     }
 }
 
