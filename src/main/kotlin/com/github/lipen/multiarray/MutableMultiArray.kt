@@ -25,22 +25,11 @@ interface MutableMultiArray<T> : MultiArray<T> {
             return from(array, shape, zerobased)
         }
 
-        inline fun <reified T> newUninitialized(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-        ): MutableMultiArray<T> = newUninitialized(Shape(shape), zerobased)
-
         inline fun <reified T> new(
             shape: Shape,
             zerobased: Boolean = false,
             init: (Index) -> T,
         ): MutableMultiArray<T> = newUninitialized<T>(shape, zerobased).filledBy(init)
-
-        inline fun <reified T> new(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-            init: (Index) -> T,
-        ): MutableMultiArray<T> = new(Shape(shape), zerobased, init)
 
         //endregion
 
@@ -58,22 +47,11 @@ interface MutableMultiArray<T> : MultiArray<T> {
             return from(data, shape, zerobased)
         }
 
-        inline fun <reified T> newGenericUninitialized(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-        ): MutableMultiArray<T> = newGenericUninitialized(Shape(shape), zerobased)
-
         inline fun <reified T> newGeneric(
             shape: Shape,
             zerobased: Boolean = false,
             init: (Index) -> T,
         ): MutableMultiArray<T> = newGenericUninitialized<T>(shape, zerobased).filledBy(init)
-
-        inline fun <reified T> newGeneric(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-            init: (Index) -> T,
-        ): MutableMultiArray<T> = newGeneric(Shape(shape), zerobased, init)
 
         //endregion
 
@@ -88,22 +66,11 @@ interface MutableMultiArray<T> : MultiArray<T> {
             return from(data, shape, zerobased)
         }
 
-        fun newInt(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-        ): MutableIntMultiArray = newInt(Shape(shape), zerobased)
-
         inline fun newInt(
             shape: Shape,
             zerobased: Boolean = false,
             init: (Index) -> Int,
         ): MutableIntMultiArray = newInt(shape, zerobased).filledBy(init)
-
-        inline fun newInt(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-            init: (Index) -> Int,
-        ): MutableIntMultiArray = newInt(Shape(shape), zerobased, init)
 
         //endregion
 
@@ -118,23 +85,56 @@ interface MutableMultiArray<T> : MultiArray<T> {
             return from(data, shape, zerobased)
         }
 
-        fun newBoolean(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-        ): MutableBooleanMultiArray = newBoolean(Shape(shape), zerobased)
-
         inline fun newBoolean(
             shape: Shape,
             zerobased: Boolean = false,
             init: (Index) -> Boolean,
         ): MutableBooleanMultiArray = newBoolean(shape, zerobased).filledBy(init)
 
-        inline fun newBoolean(
-            vararg shape: Int,
-            zerobased: Boolean = false,
-            init: (Index) -> Boolean,
-        ): MutableBooleanMultiArray = newBoolean(Shape(shape), zerobased, init)
-
         //endregion
     }
 }
+
+inline fun <reified T> MutableMultiArray.Factory.newUninitialized(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+): MutableMultiArray<T> = newUninitialized(Shape(shape), zerobased)
+
+inline fun <reified T> MutableMultiArray.Factory.new(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (Index) -> T,
+): MutableMultiArray<T> = new(Shape(shape), zerobased, init)
+
+inline fun <reified T> MutableMultiArray.Factory.newGenericUninitialized(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+): MutableMultiArray<T> = newGenericUninitialized(Shape(shape), zerobased)
+
+inline fun <reified T> MutableMultiArray.Factory.newGeneric(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (Index) -> T,
+): MutableMultiArray<T> = newGeneric(Shape(shape), zerobased, init)
+
+fun MutableMultiArray.Factory.newInt(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+): MutableIntMultiArray = newInt(Shape(shape), zerobased)
+
+inline fun MutableMultiArray.Factory.newInt(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (Index) -> Int,
+): MutableIntMultiArray = newInt(Shape(shape), zerobased, init)
+
+fun MutableMultiArray.Factory.newBoolean(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+): MutableBooleanMultiArray = newBoolean(Shape(shape), zerobased)
+
+inline fun MutableMultiArray.Factory.newBoolean(
+    vararg shape: Int,
+    zerobased: Boolean = false,
+    init: (Index) -> Boolean,
+): MutableBooleanMultiArray = newBoolean(Shape(shape), zerobased, init)
