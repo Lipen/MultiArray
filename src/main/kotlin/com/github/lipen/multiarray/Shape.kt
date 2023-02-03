@@ -27,10 +27,12 @@ value class Shape(val inner: IntArray) {
     override fun toString(): String {
         return inner.asList().toString()
     }
-}
 
-// vararg-constructor
-fun Shape(vararg shape: Int): Shape = Shape(shape)
+    companion object {
+        // vararg-constructor
+        operator fun invoke(vararg dimensions: Int): Shape = Shape(dimensions)
+    }
+}
 
 @PublishedApi
 internal fun Shape.productIfNotEmpty(default: Int = 0): Int =

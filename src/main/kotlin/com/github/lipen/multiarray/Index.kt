@@ -27,7 +27,9 @@ value class Index(val inner: IntArray) {
     override fun toString(): String {
         return inner.asList().toString()
     }
-}
 
-// vararg-constructor
-fun Index(vararg index: Int): Index = Index(index)
+    companion object {
+        // vararg-constructor
+        operator fun invoke(vararg indices: Int): Index = Index(indices)
+    }
+}
